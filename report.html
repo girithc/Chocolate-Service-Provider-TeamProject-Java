@@ -355,21 +355,72 @@
 	<p><strong>Use case: </strong>Add New Members or Providers</p>
 	<p><strong>Context: </strong>The operator intends to add new member or provider records to the system.</p>
 	<p><strong>Actors: </strong>ChocAn Operator</p>
-	<p><strong>Main sucess scenario:</strong></p>
-	<p style="padding-left: 20px">1. The operator is able to add new member records using the interactive mode function of the software.<br><br>
-	2. The operator is able to add new provider records using the interactive mode function of the software.
+	<p><strong>Main success scenario:</strong></p>
+	<p style="padding-left: 20px">
+	1. The operator interacts with the software in Interactive mode.
+	<br><br>
+	2. The software prompts the operator to Add, Edit or Delete Member and Provider records.
+	</br></br>
+	3. The operator chooses the "Add Member" or the "Add Provider" option.
+	</br></br>
+	4. Based on the option selected [Member or Provider], the software prompts the Operator to enter details such as first name, last name, address, zip code, phone number.
+	</br></br>
+	5. The Operator enters the necessary details.
+	</br></br>
+	6. The software validates the operator's inputs, adds the new record to the database and subsequently sends a confirmation message to the Operator.
+	</br></br>
 	</p>
-	<p><strong>Extensions: </strong>None</p>
+	<p><strong>Extensions: </br></br></strong>
+	6a.1 After validation by software, members details already exist in database. 
+	</br></br>
+	6a.2 The software in Interactive mode sends the following message "Member/Provider exists in database" and redirects the operator to step 2.
+	</br></br>
+	6b.1 The validation of the operator's input fails.
+	</br></br>
+	6b.2 The software in Interactive mode sends the following message "Member/Provider details are invalid" and redirects the operator to step 5.
+	</p>
+	
 	
 	<hr>
 	<p><strong>Use case: </strong>Delete Members or Providers</p>
 	<p><strong>Context: </strong>The operator intends to delete existing member or provider records from the system.</p>
 	<p><strong>Actors: </strong>ChocAn Operator</p>
 	<p><strong>Main sucess scenario:</strong></p>
-	<p style="padding-left: 20px">1. The operator is able to delete existing member records using the interactive mode function of the software.<br><br>
-	2. The operator is able to delete existing provider records using the interactive mode function of the software.
+	<p style="padding-left: 20px">
+	1. The operator interacts with the software in Interactive mode. 
+	<br><br>
+	2. The software prompts the operator to Add, Edit or Delete Member and Provider records.
+	</br></br>
+	3. The operator chooses the "Delete Member" or the "Delete Provider" option.
+	</br></br>
+	4. Based on the option selected [Member or Provider], the software prompts the Operator to enter details such as first name, last name, address, zip code, phone number to fetch the necessary Member/Provider records.
+	</br></br>
+	5. The Operator enters the necessary details. 
+	</br></br>
+	6. The software validates the operator's input and returns the records matching the details.
+	</br></br>
+	7. The Operator selects the necessary records and presses the "Delete" option.
+	</br></br>
+	8. The system re-confirms the records that are to be deleted and sends the message "Delete Records" with option "Yes" and "No".
+	</br></br>
+	9. The Operator selects the option "Yes".
+	</br></br>
+	10. The software deletes the records from the database, sends a confirmation message to the Operator and returns to the home page.
+	</br></br>
 	</p>
-	<p><strong>Extensions: </strong>None</p>
+	<p><strong>Extensions: </br></br></strong>
+	6a.1 The validation of the operator's input fails.
+	</br></br>
+	6a.2 The software sends the message "Details entered are invalid" and redirects the Operator to step 5.
+	</br></br>
+	6b.1 The software finds no records matching the details entered by the Operator.
+	</br></br>
+	6b.2 The software sends the message "No records found" and redirects the user to step 2.
+	</br></br>
+	10a.1 The software is unable to delete records from the database due to insufficient permission given to the Operator.
+	</br></br>
+	10a.2 The software sends the message "Request denied. User does not have the necessary permissions to delete the following records." and redirects the Operator to step 2.
+	</p>
 	
 	<hr>
 	<p><strong>Use case: </strong>Update Members or Providers</p>
