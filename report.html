@@ -153,7 +153,7 @@
 		
 		<tr style="border:0px">
 			<td style="border:0px"><strong>Operator</strong></td>
-			<td style="border:0px">A ChocAn representative who is using the software</td>
+			<td style="border:0px">A ChocAn representative who manages the database of members and providers</td>
 		</tr>
 		
 		<tr style="border:0px">
@@ -167,6 +167,11 @@
 		</tr>
 		
 		<tr>
+			<td style="border:0px"><strong>Run main accounting procedure</strong></td>
+			<td style="border:0px">Weekly tasks done to read the week’s files of services provided and print a number of reports</td>
+		</tr>
+		
+		<tr>
 			<td style="border:0px"><strong>Service Code</strong></td>
 			<td style="border:0px">A unique 6 digit code associated with a service provided by ChocAn</td>
 		</tr>
@@ -176,7 +181,7 @@
 	
 <div class="main">
 	<h2>UML Use Case Diagram</h2>
-	<p class="aligncenter"> <img src="UseCaseDiagram6.png" alt="Team 11 Use Case Diagram" style="text-align: center">
+	<p class="aligncenter"> <img src="Team 11 Final Use Case.png" alt="Team 11 Use Case Diagram" style="text-align: center">
 	</p>
 </div>
 	
@@ -184,7 +189,7 @@
 	<h2>Use Case Descriptions</h2>
 	
 	<p><strong>Use case: </strong>Write Weekly Reports</p>
-	<p><strong>Context: </strong>This use case does the main accounting procedures and sends out reports to various actors.</p>
+	<p><strong>Context: </strong>This use case does the main accounting procedures and sends out reports to various entities.</p>
 	<p><strong>Actors: </strong>Clock</p>
 	<p><strong>Main sucess scenario:</strong></p>
 	<p style="padding-left: 20px">1. The week’s record of services are used to create a report for each member who has used ChocAn services that week, includes Write Member Reports.<br><br>
@@ -213,9 +218,9 @@
 	<p><strong>Extensions: </strong>None</p>
 	
 	<hr>
-	<p><strong>Use case: </strong>Manager Reports</p>
+	<p><strong>Use case: </strong>Summary Reports</p>
 	<p><strong>Context: </strong>This use case provides reports for the manager to see what each provider is owed.</p>
-	<p><strong>Actors:</strong> List the actors here.</p>
+	<p><strong>Actors:</strong> Clock, Manager</p>
 	<p><strong>Main sucess scenario:</strong></p>
 	<p style="padding-left: 20px">1. The software will search through each service provided that week and total the amount owed to each provider and the number of consultations they had.<br><br>
 	2. The software will calculate the total fee, consultations, and providers for that week.<br><br>
@@ -272,7 +277,8 @@
 	<p><strong>Extensions:</strong></p>
 	<p style="padding-left: 20px">
 		3a. If invalid, it could be that an invalid number was entered, or the member was suspended because the member has not paid fees for at least a month.<br><br>
-      4a. Error messages are printed if nonexistent code is entered.
+      4a. Error messages are printed if nonexistent code is entered.<br><br>
+		5a. If invalid date is entered, an error message is displayed.
 	</p>
 	
 	<hr>
@@ -360,24 +366,24 @@
 	1. The operator interacts with the software in Interactive mode.
 	<br><br>
 	2. The software prompts the operator to Add, Edit or Delete Member and Provider records.
-	</br></br>
+	<br><br>
 	3. The operator chooses the "Add Member" or the "Add Provider" option.
-	</br></br>
+	<br><br>
 	4. Based on the option selected [Member or Provider], the software prompts the Operator to enter details such as first name, last name, address, zip code, phone number.
-	</br></br>
+	<br><br>
 	5. The Operator enters the necessary details.
-	</br></br>
+	<br><br>
 	6. The software validates the operator's inputs, adds the new record to the database and subsequently sends a confirmation message to the Operator.
-	</br></br>
+	<br><br>
 	</p>
-	<p><strong>Extensions: </br></br></strong>
-	6a.1 After validation by software, members details already exist in database. 
-	</br></br>
-	6a.2 The software in Interactive mode sends the following message "Member/Provider exists in database" and redirects the operator to step 2.
-	</br></br>
-	6b.1 The validation of the operator's input fails.
-	</br></br>
-	6b.2 The software in Interactive mode sends the following message "Member/Provider details are invalid" and redirects the operator to step 5.
+	<p><strong>Extensions: <br><br></strong>
+	&nbsp;&nbsp;&nbsp;&nbsp;6a.1 After validation by software, members details already exist in database. 
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;6a.2 The software in Interactive mode sends the following message "Member/Provider exists in database" and redirects the operator to step 2.
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;6b.1 The validation of the operator's input fails.
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;6b.2 The software in Interactive mode sends the following message "Member/Provider details are invalid" and redirects the operator to step 5.
 	</p>
 	
 	
@@ -390,36 +396,36 @@
 	1. The operator interacts with the software in Interactive mode. 
 	<br><br>
 	2. The software prompts the operator to Add, Edit or Delete Member and Provider records.
-	</br></br>
+	<br><br>
 	3. The operator chooses the "Delete Member" or the "Delete Provider" option.
-	</br></br>
+	<br><br>
 	4. Based on the option selected [Member or Provider], the software prompts the Operator to enter details such as first name, last name, address, zip code, phone number to fetch the necessary Member/Provider records.
-	</br></br>
+	<br><br>
 	5. The Operator enters the necessary details. 
-	</br></br>
+	<br><br>
 	6. The software validates the operator's input and returns the records matching the details.
-	</br></br>
+	<br><br>
 	7. The Operator selects the necessary records and presses the "Delete" option.
-	</br></br>
+	<br><br>
 	8. The system re-confirms the records that are to be deleted and sends the message "Delete Records" with option "Yes" and "No".
-	</br></br>
+	<br><br>
 	9. The Operator selects the option "Yes".
-	</br></br>
+	<br><br>
 	10. The software deletes the records from the database, sends a confirmation message to the Operator and returns to the home page.
-	</br></br>
+	<br><br>
 	</p>
-	<p><strong>Extensions: </br></br></strong>
-	6a.1 The validation of the operator's input fails.
-	</br></br>
-	6a.2 The software sends the message "Details entered are invalid" and redirects the Operator to step 5.
-	</br></br>
-	6b.1 The software finds no records matching the details entered by the Operator.
-	</br></br>
-	6b.2 The software sends the message "No records found" and redirects the user to step 2.
-	</br></br>
-	10a.1 The software is unable to delete records from the database due to insufficient permission given to the Operator.
-	</br></br>
-	10a.2 The software sends the message "Request denied. User does not have the necessary permissions to delete the following records." and redirects the Operator to step 2.
+	<p><strong>Extensions: <br><br></strong>
+	&nbsp;&nbsp;&nbsp;&nbsp;6a.1 The validation of the operator's input fails.
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;6a.2 The software sends the message "Details entered are invalid" and redirects the Operator to step 5.
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;6b.1 The software finds no records matching the details entered by the Operator.
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;6b.2 The software sends the message "No records found" and redirects the user to step 2.
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;10a.1 The software is unable to delete records from the database due to insufficient permission given to the Operator.
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;10a.2 The software sends the message "Request denied. User does not have the necessary permissions to delete the following records." and redirects the Operator to step 2.
 	</p>
 	
 	<hr>
@@ -427,42 +433,161 @@
 	<p><strong>Context: </strong>The operator intends to update existing member or provider records in the system.</p>
 	<p><strong>Actors: </strong>ChocAn Operator</p>
 	<p><strong>Main sucess scenario:</strong></p>
-	<p style="padding-left: 20px"></br></br>
+	<p style="padding-left: 20px">
 	1. The operator interacts with the software in Interactive mode. 
 	<br><br>
 	2. The software prompts the operator to Add, Edit or Delete Member and Provider records.
-	</br></br>
+	<br><br>
 	3. The operator chooses the "Edit Member" or the "Edit Provider" option.
-	</br></br>
+	<br><br>
 	4. Based on the option selected [Member or Provider], the software prompts the Operator to enter details such as first name, last name, address, zip code, phone number to fetch the necessary Member/Provider records.
-	</br></br>
+	<br><br>
 	5. The Operator enters the necessary details. 
-	</br></br>
+	<br><br>
 	6. The software validates the operator's input and returns the records matching the details.
-	</br></br>
+	<br><br>
 	7. The Operator selects the necessary records and presses the "Edit" option.
-	</br></br>
+	<br><br>
 	8. The Operator changes the necessary details of the records.
-	</br></br>
+	<br><br>
 	9. The software prompts the Operator to save the changes made to the records.
-	</br></br>
+	<br><br>
 	10. The Operator enters the "Save" option.
-	</br></br>
+	<br><br>
 	11. The software commits the changes made to the records to the database, then sends a confirmation message to the Operator and returns to the home page.
-	</br></br></p>
-	<p><strong>Extensions:</br></br></strong>
-	6a.1 The validation of the operator's input fails.
-	</br></br>
-	6a.2 The software sends the message "Details entered are invalid" and redirects the Operator to step 5.
-	</br></br>
-	6b.1 The software finds no records matching the details entered by the Operator.
-	</br></br>
-	6b.2 The software sends the message "No records found" and redirects the user to step 2.
-	</br></br>
-	10a.1 The software is unable to commit the the changes made to the records to the database due to insufficient permission given to the Operator.
-	</br></br>
-	10a.2 The software sends the message "Request denied. User does not have the necessary permissions to edit the following records." and redirects the Operator to step 2.
+	<br><br></p>
+	<p><strong>Extensions:<br><br></strong>
+	&nbsp;&nbsp;&nbsp;&nbsp;6a.1 The validation of the operator's input fails.
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;6a.2 The software sends the message "Details entered are invalid" and redirects the Operator to step 5.
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;6b.1 The software finds no records matching the details entered by the Operator.
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;6b.2 The software sends the message "No records found" and redirects the user to step 2.
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;10a.1 The software is unable to commit the the changes made to the records to the database due to insufficient permission given to the Operator.
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;10a.2 The software sends the message "Request denied. User does not have the necessary permissions to edit the following records." and redirects the Operator to step 2.
 	</p>
 </div>
+	
+<div class="header2">
+	<h1>Project 2</h1>
+</div>
+	
+<div class="main">
+	<h2>Stereotyped Class Diagram</h2>
+	<p class="aligncenter"> <img src="" alt="Sterotyped Class Diagram" style="text-align: center">
+	</p>
+</div>
+	
+<div class="main">
+	<h2>Main Activity Diagram</h2>
+	<p class="aligncenter"> <img src="" alt="Main Activity Diagram" style="text-align: center">
+	</p>
+</div>
+	
+<div class="main">
+	<h2>Main Activity Diagram</h2>
+	<p class="aligncenter"> <img src="" alt="Main Activity Diagram" style="text-align: center">
+	</p>
+</div>
+	
+<div class="main">
+	<h2>Write Weekly Reports Activity Diagram</h2>
+	<p class="aligncenter"> <img src="" alt="Write Weekly Reports Activity Diagram" style="text-align: center">
+	</p>
+</div>
+	
+<div class="main">
+	<h2>Member Reports Activity Diagram</h2>
+	<p class="aligncenter"> <img src="" alt="Member Reports Activity Diagram" style="text-align: center">
+	</p>
+</div>
+	
+<div class="main">
+	<h2>Provider Reports Activity Diagram</h2>
+	<p class="aligncenter"> <img src="" alt="Provider Reports Activity Diagram" style="text-align: center">
+	</p>
+</div>
+	
+<div class="main">
+	<h2>Summary Reports Activity Diagram</h2>
+	<p class="aligncenter"> <img src="" alt="Summary Reports Activity Diagram" style="text-align: center">
+	</p>
+</div>
+	
+<div class="main">
+	<h2>ETF Reports Activity Diagram</h2>
+	<p class="aligncenter"> <img src="" alt="ETF Reports Activity Diagram" style="text-align: center">
+	</p>
+</div>
+	
+<div class="main">
+	<h2>Request Reports Activity Diagram</h2>
+	<p class="aligncenter"> <img src="" alt="Request Reports Activity Diagram" style="text-align: center">
+	</p>
+</div>
+	
+<div class="main">
+	<h2>Bill ChocAn Activity Diagram</h2>
+	<p class="aligncenter"> <img src="" alt="Bill ChocAn Activity Diagram" style="text-align: center">
+	</p>
+</div>
+	
+<div class="main">
+	<h2>Use Provider Directory Activity Diagram</h2>
+	<p class="aligncenter"> <img src="" alt="Use Provider Directory Activity Diagram" style="text-align: center">
+	</p>
+</div>
+	
+<div class="main">
+	<h2>Look Up Service Fee Activity Diagram</h2>
+	<p class="aligncenter"> <img src="" alt="Look Up Service Fee Activity Diagram" style="text-align: center">
+	</p>
+</div>
+	
+<div class="main">
+	<h2>Write Service Report Activity Diagram</h2>
+	<p class="aligncenter"> <img src="" alt="Write Service Report Activity Diagram" style="text-align: center">
+	</p>
+</div>
+	
+<div class="main">
+	<h2>Request Provider Directory Activity Diagram</h2>
+	<p class="aligncenter"> <img src="" alt="Request Provider Directory Activity Diagram" style="text-align: center">
+	</p>
+</div>
+	
+<div class="main">
+	<h2>Verify ChocAn Member Activity Diagram</h2>
+	<p class="aligncenter"> <img src="" alt="Verify ChocAn Member Activity Diagram" style="text-align: center">
+	</p>
+</div>
+	
+<div class="main">
+	<h2>Interactive Mode Activity Diagram</h2>
+	<p class="aligncenter"> <img src="" alt="Interactive Mode Activity Diagram" style="text-align: center">
+	</p>
+</div>
+	
+<div class="main">
+	<h2>Add New Members or Providers Activity Diagram</h2>
+	<p class="aligncenter"> <img src="" alt="Add New Members or Providers Activity Diagram" style="text-align: center">
+	</p>
+</div>
+
+<div class="main">
+	<h2>Delete Members or Providers Activity Diagram</h2>
+	<p class="aligncenter"> <img src="" alt="Delete Members or Providers Activity Diagram" style="text-align: center">
+	</p>
+</div>	
+
+<div class="main">
+	<h2>Update Members of Providers Activity Diagram</h2>
+	<p class="aligncenter"> <img src="" alt="Update Members or Providers Activity Diagram" style="text-align: center">
+	</p>
+</div>
+	
 </body>
 </html>
