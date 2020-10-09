@@ -92,27 +92,27 @@
 	</tr>
 	<tr>
 		<td>Jake Bischoff</td>
-		<td>Contributed to the Reports use case descriptions<br>Contributed to the use case diagram</td>
+		<td>Created all the Report activity diagrams<br>Revised use cases and use case diagram from Project 1</td>
 		<td>20%</td>
 	</tr>
 	<tr>
 		<td>Girith Choudhary</td>
-		<td>Glossary terms and definitions<br>Made additions to use case description</td>
+		<td>Created all the activity diagrams related to "Interactive Mode"<br>Revised use cases and use case diagram from Project 1</td>
 		<td>20%</td>
 	</tr>
 	<tr>
 		<td>Anne Katherine Fike</td>
-		<td>Made additions to use case diagram<br>Wrote use case descriptions for all use cases with Provider as the actor</td>
+		<td>Created all the Provider activity diagrams<br>Revised use cases and use case diagram from Project 1</td>
 		<td>20%</td>
 	</tr>
 	<tr>
 		<td>Jared Folden (submitter)</td>
-		<td>Formatted html document<br>Contributed to the Reports use case descriptions</td>
+		<td>Created the class diagram and main activity diagram<br>Managed the html report<br>Revised use cases and use case diagram from Project 1</td>
 		<td>20%</td>
 	</tr>
 	<tr>
 		<td>Alisha Kale</td>
-		<td>Wrote description for the interactive mode use case<br>Made additions to the use case diagram</td>
+		<td>Wrote the summary for task 1<br>Revised use cases and use case diagram from Project 1</td>
 		<td>20%</td>
 	</tr>
 </table>
@@ -194,11 +194,14 @@
 	<p><strong>Main sucess scenario:</strong></p>
 	<p style="padding-left: 20px">1. The week’s record of services are used to create a report for each member who has used ChocAn services that week, includes Write Member Reports.<br><br>
 	2. The week’s record of services are used to create a report for each provider who has provided ChocAn services that week, includes Write Provider Reports. <br><br>
-	3. The week’s record of services are used to create a report for the manager, includes Write Manager Reports.
+	3. The week’s record of services are used to create a report for the manager, includes Write Manager Reports.<br><br>
 	4. All of the reports are sent out as email attachments. <br><br>
 	5. A record of electronic funds transfer is written to the disk.
 	</p>
-	<p><strong>Extensions: </strong>None</p>
+	<p><strong>Extensions:</strong></p>
+	<p style="padding-left: 20px">
+		4a. If error occurs in any of the reports, return error message and recompile reports
+	</p>
 	
 	<hr>
 	<p><strong>Use case: </strong>Member Reports</p>
@@ -206,16 +209,47 @@
 	</p>
 	<p><strong>Actors: </strong>Clock, Manager</p>
 	<p><strong>Main sucess scenario:</strong></p>
-	<p style="padding-left: 20px"> 1. The software will search through each service starting with the beginning of the week and groups all of the services provided to each member in an individual report.</p>
-	<p><strong>Extensions: </strong>None</p>
+	<p style="padding-left: 20px"> 1. The software will search through each service starting with the beginning of the week and groups all of the services provided to each member in an individual report which includes the following information:<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;a.  Member name (25 characters)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;b. Member number (9 digits)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;c.  Member street address (25 characters)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;d.  Member city (14 characters)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;e. Member state (2 letters)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;f.  Member ZIP code (5 digits)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;g. Date of service (MM–DD–YYYY)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;h. Provider name (25 characters)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;Service name (20 characters)<br><br>
+	2. A report will then be compiled and returned.</p>
+	<p><strong>Extensions:</strong></p>
+	<p style="padding-left: 20px">
+		1a. If no records are found, return an error message.
+	</p>
 	
 	<hr>
 	<p><strong>Use case: </strong>Provider Reports</p>
 	<p><strong>Context: </strong>This use case provides reports for each provider who provided ChocAn services that week.</p>
 	<p><strong>Actors: </strong>Clock, Manager</p>
 	<p><strong>Main sucess scenario:</strong></p>
-	<p style="padding-left: 20px">1. The software will search through each service starting with the beginning of the week and groups all of the services provided by each provider in an individual report.</p>
-	<p><strong>Extensions: </strong>None</p>
+	<p style="padding-left: 20px">1. The software will search through each service starting with the beginning of the week and groups all of the services provided by each provider in an individual report which includes the following information:<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;a. Provider name (25 characters)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;b.  Provider number (9 digits)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;c. Provider street address (25 characters)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;d. Provider city (14 characters)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;e. Provider state (2 letters)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;f. Provider ZIP code (5 digits)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;g. Date of service (MM–DD–YYYY)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;h. Date and time data were received by the computer (MM–DD–YYYY HH:MM:SS)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;i. Member name (25 characters)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;j. Member number (9 digits)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;k. Service code (6 digits)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;l. Fee to be paid (up to $999.99)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;m. Total number of consultations with members (3 digits)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;n. Total fee for week (up to $99,999.99)<br><br>
+	2. A report will then be compiled and returned.</p>
+	<p><strong>Extensions:</strong></p>
+	<p style="padding-left: 20px">
+		1a. If no records are found, return an error message.
+	</p>
 	
 	<hr>
 	<p><strong>Use case: </strong>Summary Reports</p>
@@ -225,7 +259,10 @@
 	<p style="padding-left: 20px">1. The software will search through each service provided that week and total the amount owed to each provider and the number of consultations they had.<br><br>
 	2. The software will calculate the total fee, consultations, and providers for that week.<br><br>
 	3. All of this information is printed to a file.</p>
-	<p><strong>Extensions: </strong>None</p>
+	<p><strong>Extensions:</strong></p>
+	<p style="padding-left: 20px">
+		1a. If no services are found, return an error message.
+	</p>
 	
 	<hr>
 	<p><strong>Use case: </strong>EFT Reports</p>
@@ -236,7 +273,10 @@
 	2. The software searches for each instance a Provider performed a service for a member.<br><br> 
 	3. The software compiles all of its findings in a single report and calculates totals.<br><br>
 	4. The report is returned to the Manager and written to a disk to be sent to banking software automatically.</p>
-	<p><strong>Extensions: </strong>None</p>
+	<p><strong>Extensions:</strong></p>
+	<p style="padding-left: 20px">
+		2a. If a Provider or service is not found, return an error message
+	</p>
 	
 	<hr>
 	<p><strong>Use case: </strong>Request Reports</p>
@@ -300,8 +340,8 @@
 	<p style="padding-left: 20px">1. After finding the service code for the service the Provider provided to the ChocAn member and completing the writing of the service report, the software product next looks up the service fee to be paid for that service.<br><br>
 	2. This fee is displayed on the ChocAn Provider’s terminal.
 	</p>
-	<p><strong>Extensions:</strong></p>
-	<p style="padding-left: 20px">2a. If something is added to the service report that is invalid, the fee will not display and an error message should be displayed indicating which parameter of the report is invalid.</p>
+	<p><strong>Extensions:</strong> None</p>
+	
 	
 	<hr>
 	<p><strong>Use case: </strong>Write Service Report</p>
@@ -499,7 +539,22 @@
 <div class="header2">
 	<h1>Project 2</h1>
 </div>
-	
+
+<div class="main">
+	<h2>Task 1 System Summary</h2>
+	<p> Member verification, verifying service code, writing records to the disk, looking up fee to be paid, printing reports, and emailing reports are all functions of the software that are totally computerized as the software handles them.<br><br>
+
+	The ChocAn Data Center and the provider terminal holds the data for the software.<br><br>
+
+	The hardware includes the card, card reader, the ChocAn Data Centre computer, and the user terminal which helps the operators, providers, and members interact with the system.<br><br>
+
+	The data processing software interacts with the communications software which enables the data entered to be processed and stored for future use which can be used by the billing software to process payments.<br><br>
+
+	The user interacts with the software using a keyboard input and the data is transmitted to a terminal display screen.<br>
+
+	</p>
+</div>
+
 <div class="main">
 	<h2>Stereotyped Class Diagram</h2>
 	<p class="aligncenter"> <img src="Team 11 Class Diagram.png" alt="Sterotyped Class Diagram" style="text-align: center">
@@ -514,37 +569,37 @@
 	
 <div class="main">
 	<h2>Write Weekly Reports Activity Diagram</h2>
-	<p class="aligncenter"> <img src="" alt="Write Weekly Reports Activity Diagram" style="text-align: center">
+	<p class="aligncenter"> <img src="WriteWeeklyReports2.png" alt="Write Weekly Reports Activity Diagram" style="text-align: center">
 	</p>
 </div>
 	
 <div class="main">
 	<h2>Member Reports Activity Diagram</h2>
-	<p class="aligncenter"> <img src="" alt="Member Reports Activity Diagram" style="text-align: center">
+	<p class="aligncenter"> <img src="MemberReports.png" alt="Member Reports Activity Diagram" style="text-align: center">
 	</p>
 </div>
 	
 <div class="main">
 	<h2>Provider Reports Activity Diagram</h2>
-	<p class="aligncenter"> <img src="" alt="Provider Reports Activity Diagram" style="text-align: center">
+	<p class="aligncenter"> <img src="ProviderReports.png" alt="Provider Reports Activity Diagram" style="text-align: center">
 	</p>
 </div>
 	
 <div class="main">
 	<h2>Summary Reports Activity Diagram</h2>
-	<p class="aligncenter"> <img src="" alt="Summary Reports Activity Diagram" style="text-align: center">
+	<p class="aligncenter"> <img src="WriteSummaryReport2.png" alt="Summary Reports Activity Diagram" style="text-align: center">
 	</p>
 </div>
 	
 <div class="main">
 	<h2>ETF Reports Activity Diagram</h2>
-	<p class="aligncenter"> <img src="" alt="ETF Reports Activity Diagram" style="text-align: center">
+	<p class="aligncenter"> <img src="EFTReports.png" alt="ETF Reports Activity Diagram" style="text-align: center">
 	</p>
 </div>
 	
 <div class="main">
 	<h2>Request Reports Activity Diagram</h2>
-	<p class="aligncenter"> <img src="" alt="Request Reports Activity Diagram" style="text-align: center">
+	<p class="aligncenter"> <img src="RequestReport2.png" alt="Request Reports Activity Diagram" style="text-align: center">
 	</p>
 </div>
 	
@@ -592,19 +647,19 @@
 	
 <div class="main">
 	<h2>Add New Members or Providers Activity Diagram</h2>
-	<p class="aligncenter"> <img src="" alt="Add New Members or Providers Activity Diagram" style="text-align: center">
+	<p class="aligncenter"> <img src="Add Member_Provider.png" alt="Add New Members or Providers Activity Diagram" style="text-align: center">
 	</p>
 </div>
 
 <div class="main">
 	<h2>Delete Members or Providers Activity Diagram</h2>
-	<p class="aligncenter"> <img src="" alt="Delete Members or Providers Activity Diagram" style="text-align: center">
+	<p class="aligncenter"> <img src="Delete Member_Provider.png" alt="Delete Members or Providers Activity Diagram" style="text-align: center">
 	</p>
 </div>	
 
 <div class="main">
 	<h2>Update Members of Providers Activity Diagram</h2>
-	<p class="aligncenter"> <img src="" alt="Update Members or Providers Activity Diagram" style="text-align: center">
+	<p class="aligncenter"> <img src="Edit Member_Provider.png" alt="Update Members or Providers Activity Diagram" style="text-align: center">
 	</p>
 </div>
 	
