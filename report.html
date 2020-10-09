@@ -387,6 +387,36 @@
 	</p>
 	
 	
+		<hr>
+	<p><strong>Use case: </strong>Add New Members or Providers</p>
+	<p><strong>Context: </strong>The operator intends to add new member or provider records to the system.</p>
+	<p><strong>Actors: </strong>ChocAn Operator</p>
+	<p><strong>Main success scenario:</strong></p>
+	<p style="padding-left: 20px">
+	1. The operator interacts with the software in Interactive mode.
+	<br><br>
+	2. The software prompts the operator to Add, Edit or Delete Member and Provider records.
+	<br><br>
+	3. The operator chooses the "Add Member" or the "Add Provider" option.
+	<br><br>
+	4. Based on the option selected [Member or Provider], the software prompts the Operator to enter details such as first name, last name, address, zip code, phone number.
+	<br><br>
+	5. The Operator enters the necessary details.
+	<br><br>
+	6. The software validates the operator's inputs, adds the new record to the database and subsequently sends a confirmation message to the Operator.
+	<br><br>
+	</p>
+	<p><strong>Extensions: <br><br></strong>
+	&nbsp;&nbsp;&nbsp;&nbsp;6a.1 After validation by software, members details already exist in database. 
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;6a.2 The software in Interactive mode sends the following message "Member/Provider exists in database" and redirects the operator to step 2.
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;6b.1 The validation of the operator's input fails.
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;6b.2 The software in Interactive mode sends the following message "Member/Provider details are invalid" and redirects the operator to step 5.
+	</p>
+	
+	
 	<hr>
 	<p><strong>Use case: </strong>Delete Members or Providers</p>
 	<p><strong>Context: </strong>The operator intends to delete existing member or provider records from the system.</p>
@@ -472,19 +502,13 @@
 	
 <div class="main">
 	<h2>Stereotyped Class Diagram</h2>
-	<p class="aligncenter"> <img src="" alt="Sterotyped Class Diagram" style="text-align: center">
+	<p class="aligncenter"> <img src="Team 11 Class Diagram.png" alt="Sterotyped Class Diagram" style="text-align: center">
 	</p>
 </div>
 	
 <div class="main">
 	<h2>Main Activity Diagram</h2>
-	<p class="aligncenter"> <img src="" alt="Main Activity Diagram" style="text-align: center">
-	</p>
-</div>
-	
-<div class="main">
-	<h2>Main Activity Diagram</h2>
-	<p class="aligncenter"> <img src="" alt="Main Activity Diagram" style="text-align: center">
+	<p class="aligncenter"> <img src="Main Activity Diagram.png" alt="Main Activity Diagram" style="text-align: center">
 	</p>
 </div>
 	
@@ -526,37 +550,37 @@
 	
 <div class="main">
 	<h2>Bill ChocAn Activity Diagram</h2>
-	<p class="aligncenter"> <img src="" alt="Bill ChocAn Activity Diagram" style="text-align: center">
+	<p class="aligncenter"> <img src="BillChocAn.png" alt="Bill ChocAn Activity Diagram" style="text-align: center">
 	</p>
 </div>
 	
 <div class="main">
 	<h2>Use Provider Directory Activity Diagram</h2>
-	<p class="aligncenter"> <img src="" alt="Use Provider Directory Activity Diagram" style="text-align: center">
+	<p class="aligncenter"> <img src="UseProviderDirectory.png" alt="Use Provider Directory Activity Diagram" style="text-align: center">
 	</p>
 </div>
 	
 <div class="main">
 	<h2>Look Up Service Fee Activity Diagram</h2>
-	<p class="aligncenter"> <img src="" alt="Look Up Service Fee Activity Diagram" style="text-align: center">
+	<p class="aligncenter"> <img src="LookUpServiceFee.png" alt="Look Up Service Fee Activity Diagram" style="text-align: center">
 	</p>
 </div>
 	
 <div class="main">
 	<h2>Write Service Report Activity Diagram</h2>
-	<p class="aligncenter"> <img src="" alt="Write Service Report Activity Diagram" style="text-align: center">
+	<p class="aligncenter"> <img src="WriteServiceReport1.png" alt="Write Service Report Activity Diagram" style="text-align: center">
 	</p>
 </div>
 	
 <div class="main">
 	<h2>Request Provider Directory Activity Diagram</h2>
-	<p class="aligncenter"> <img src="" alt="Request Provider Directory Activity Diagram" style="text-align: center">
+	<p class="aligncenter"> <img src="RequestProviderDirectory.png" alt="Request Provider Directory Activity Diagram" style="text-align: center">
 	</p>
 </div>
 	
 <div class="main">
 	<h2>Verify ChocAn Member Activity Diagram</h2>
-	<p class="aligncenter"> <img src="" alt="Verify ChocAn Member Activity Diagram" style="text-align: center">
+	<p class="aligncenter"> <img src="VerifyChocAnMember1.png" alt="Verify ChocAn Member Activity Diagram" style="text-align: center">
 	</p>
 </div>
 	
