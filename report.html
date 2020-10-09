@@ -194,11 +194,14 @@
 	<p><strong>Main sucess scenario:</strong></p>
 	<p style="padding-left: 20px">1. The week’s record of services are used to create a report for each member who has used ChocAn services that week, includes Write Member Reports.<br><br>
 	2. The week’s record of services are used to create a report for each provider who has provided ChocAn services that week, includes Write Provider Reports. <br><br>
-	3. The week’s record of services are used to create a report for the manager, includes Write Manager Reports.
+	3. The week’s record of services are used to create a report for the manager, includes Write Manager Reports.<br><br>
 	4. All of the reports are sent out as email attachments. <br><br>
 	5. A record of electronic funds transfer is written to the disk.
 	</p>
-	<p><strong>Extensions: </strong>None</p>
+	<p><strong>Extensions:</strong></p>
+	<p style="padding-left: 20px">
+		4a. If error occurs in any of the reports, return error message and recompile reports
+	</p>
 	
 	<hr>
 	<p><strong>Use case: </strong>Member Reports</p>
@@ -206,16 +209,47 @@
 	</p>
 	<p><strong>Actors: </strong>Clock, Manager</p>
 	<p><strong>Main sucess scenario:</strong></p>
-	<p style="padding-left: 20px"> 1. The software will search through each service starting with the beginning of the week and groups all of the services provided to each member in an individual report.</p>
-	<p><strong>Extensions: </strong>None</p>
+	<p style="padding-left: 20px"> 1. The software will search through each service starting with the beginning of the week and groups all of the services provided to each member in an individual report which includes the following information:<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;a.  Member name (25 characters)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;b. Member number (9 digits)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;c.  Member street address (25 characters)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;d.  Member city (14 characters)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;e. Member state (2 letters)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;f.  Member ZIP code (5 digits)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;g. Date of service (MM–DD–YYYY)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;h. Provider name (25 characters)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;Service name (20 characters)<br><br>
+	2. A report will then be compiled and returned.</p>
+	<p><strong>Extensions:</strong></p>
+	<p style="padding-left: 20px">
+		1a. If no records are found, return an error message.
+	</p>
 	
 	<hr>
 	<p><strong>Use case: </strong>Provider Reports</p>
 	<p><strong>Context: </strong>This use case provides reports for each provider who provided ChocAn services that week.</p>
 	<p><strong>Actors: </strong>Clock, Manager</p>
 	<p><strong>Main sucess scenario:</strong></p>
-	<p style="padding-left: 20px">1. The software will search through each service starting with the beginning of the week and groups all of the services provided by each provider in an individual report.</p>
-	<p><strong>Extensions: </strong>None</p>
+	<p style="padding-left: 20px">1. The software will search through each service starting with the beginning of the week and groups all of the services provided by each provider in an individual report which includes the following information:<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;a. Provider name (25 characters)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;b.  Provider number (9 digits)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;c. Provider street address (25 characters)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;d. Provider city (14 characters)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;e. Provider state (2 letters)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;f. Provider ZIP code (5 digits)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;g. Date of service (MM–DD–YYYY)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;h. Date and time data were received by the computer (MM–DD–YYYY HH:MM:SS)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;i. Member name (25 characters)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;j. Member number (9 digits)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;k. Service code (6 digits)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;l. Fee to be paid (up to $999.99)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;m. Total number of consultations with members (3 digits)<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;n. Total fee for week (up to $99,999.99)<br><br>
+	2. A report will then be compiled and returned.</p>
+	<p><strong>Extensions:</strong></p>
+	<p style="padding-left: 20px">
+		1a. If no records are found, return an error message.
+	</p>
 	
 	<hr>
 	<p><strong>Use case: </strong>Summary Reports</p>
@@ -225,7 +259,10 @@
 	<p style="padding-left: 20px">1. The software will search through each service provided that week and total the amount owed to each provider and the number of consultations they had.<br><br>
 	2. The software will calculate the total fee, consultations, and providers for that week.<br><br>
 	3. All of this information is printed to a file.</p>
-	<p><strong>Extensions: </strong>None</p>
+	<p><strong>Extensions:</strong></p>
+	<p style="padding-left: 20px">
+		1a. If no services are found, return an error message.
+	</p>
 	
 	<hr>
 	<p><strong>Use case: </strong>EFT Reports</p>
@@ -236,7 +273,10 @@
 	2. The software searches for each instance a Provider performed a service for a member.<br><br> 
 	3. The software compiles all of its findings in a single report and calculates totals.<br><br>
 	4. The report is returned to the Manager and written to a disk to be sent to banking software automatically.</p>
-	<p><strong>Extensions: </strong>None</p>
+	<p><strong>Extensions:</strong></p>
+	<p style="padding-left: 20px">
+		2a. If a Provider or service is not found, return an error message
+	</p>
 	
 	<hr>
 	<p><strong>Use case: </strong>Request Reports</p>
@@ -300,8 +340,8 @@
 	<p style="padding-left: 20px">1. After finding the service code for the service the Provider provided to the ChocAn member and completing the writing of the service report, the software product next looks up the service fee to be paid for that service.<br><br>
 	2. This fee is displayed on the ChocAn Provider’s terminal.
 	</p>
-	<p><strong>Extensions:</strong></p>
-	<p style="padding-left: 20px">2a. If something is added to the service report that is invalid, the fee will not display and an error message should be displayed indicating which parameter of the report is invalid.</p>
+	<p><strong>Extensions:</strong> None</p>
+	
 	
 	<hr>
 	<p><strong>Use case: </strong>Write Service Report</p>
