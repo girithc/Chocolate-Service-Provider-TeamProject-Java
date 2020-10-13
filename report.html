@@ -427,112 +427,183 @@
 	</p>
 	
 	
-		<hr>
-	<p><strong>Use case: </strong>Add New Members or Providers</p>
-	<p><strong>Context: </strong>The operator intends to add new member or provider records to the system.</p>
+	<hr>
+	<p><strong>Use case: </strong>Add New Members</p>
+	<p><strong>Context: </strong>The operator intends to add new member records to the system.</p>
 	<p><strong>Actors: </strong>ChocAn Operator</p>
 	<p><strong>Main success scenario:</strong></p>
 	<p style="padding-left: 20px">
-	1. The operator interacts with the software in Interactive mode.
+	1. The software prompts the Operator to enter details such as first name, last name, address, zip code, phone number.
 	<br><br>
-	2. The software prompts the operator to Add, Edit or Delete Member and Provider records.
+	2. The Operator enters the necessary details.
 	<br><br>
-	3. The operator chooses the "Add Member" or the "Add Provider" option.
-	<br><br>
-	4. Based on the option selected [Member or Provider], the software prompts the Operator to enter details such as first name, last name, address, zip code, phone number.
-	<br><br>
-	5. The Operator enters the necessary details.
-	<br><br>
-	6. The software validates the operator's inputs, adds the new record to the database and subsequently sends a confirmation message to the Operator.
+	3. The software validates the operator's inputs, adds the new record to the database and subsequently sends a confirmation message to the Operator.
 	<br><br>
 	</p>
 	<p><strong>Extensions: <br><br></strong>
-	&nbsp;&nbsp;&nbsp;&nbsp;6a.1 After validation by software, members details already exist in database. 
+	&nbsp;&nbsp;&nbsp;&nbsp;3a.1 After validation by software, members details already exist in database. 
 	<br><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;6a.2 The software in Interactive mode sends the following message "Member/Provider exists in database" and redirects the operator to step 2.
+	&nbsp;&nbsp;&nbsp;&nbsp;3a.2 The software in Interactive mode sends the following message "Member exists in database" and redirects the operator to step 2.
 	<br><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;6b.1 The validation of the operator's input fails.
+	&nbsp;&nbsp;&nbsp;&nbsp;3b.1 The validation of the operator's input fails.
 	<br><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;6b.2 The software in Interactive mode sends the following message "Member/Provider details are invalid" and redirects the operator to step 5.
+	&nbsp;&nbsp;&nbsp;&nbsp;3b.2 The software in Interactive mode sends the following message "Member details are invalid" and redirects the operator to step 5.
+	</p>
+	
+	<hr>
+	<p><strong>Use case: </strong>Add New Providers</p>
+	<p><strong>Context: </strong>The operator intends to add new provider records to the system.</p>
+	<p><strong>Actors: </strong>ChocAn Operator</p>
+	<p><strong>Main success scenario:</strong></p>
+	<p style="padding-left: 20px">
+	1. The software prompts the Operator to enter details such as first name, last name, address, zip code, phone number.
+	<br><br>
+	2. The Operator enters the necessary details.
+	<br><br>
+	3. The software validates the operator's inputs, adds the new record to the database and subsequently sends a confirmation message to the Operator.
+	<br><br>
+	</p>
+	<p><strong>Extensions: <br><br></strong>
+	&nbsp;&nbsp;&nbsp;&nbsp;3a.1 After validation by software, provider's details already exist in database. 
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;3a.2 The software in Interactive mode sends the following message "Provider exists in database" and redirects the operator to step 2.
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;3b.1 The validation of the operator's input fails.
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;3b.2 The software in Interactive mode sends the following message "Provider details are invalid" and redirects the operator to step 5.
 	</p>
 	
 	
 	<hr>
-	<p><strong>Use case: </strong>Delete Members or Providers</p>
-	<p><strong>Context: </strong>The operator intends to delete existing member or provider records from the system.</p>
+	<p><strong>Use case: </strong>Delete Members</p>
+	<p><strong>Context: </strong>The operator intends to delete existing member records from the system.</p>
 	<p><strong>Actors: </strong>ChocAn Operator</p>
 	<p><strong>Main success scenario:</strong></p>
 	<p style="padding-left: 20px">
-	1. The operator interacts with the software in Interactive mode. 
+	1. The software prompts the Operator to enter details such as first name, last name, address, zip code, phone number to fetch the necessary Member records.
 	<br><br>
-	2. The software prompts the operator to Add, Edit or Delete Member and Provider records.
+	2. The Operator enters the necessary details. 
 	<br><br>
-	3. The operator chooses the "Delete Member" or the "Delete Provider" option.
+	3. The software returns the records matching the details.
 	<br><br>
-	4. Based on the option selected [Member or Provider], the software prompts the Operator to enter details such as first name, last name, address, zip code, phone number to fetch the necessary Member/Provider records.
+	4. The Operator selects the necessary records and presses the "Delete" option.
 	<br><br>
-	5. The Operator enters the necessary details. 
+	5. The system re-confirms the records that are to be deleted and sends the message "Delete Records" with option "Yes" and "No".
 	<br><br>
-	6. The software returns the records matching the details.
+	6. The Operator selects the option "Yes".
 	<br><br>
-	7. The Operator selects the necessary records and presses the "Delete" option.
-	<br><br>
-	8. The system re-confirms the records that are to be deleted and sends the message "Delete Records" with option "Yes" and "No".
-	<br><br>
-	9. The Operator selects the option "Yes".
-	<br><br>
-	10. The software deletes the records from the database, sends a confirmation message to the Operator and returns to the home page.
+	7. The software deletes the records from the database, sends a confirmation message to the Operator and returns to the home page.
 	<br><br>
 	</p>
 	<p><strong>Extensions: <br><br></strong>
-	&nbsp;&nbsp;&nbsp;&nbsp;6a.1 The software finds no records matching the details entered by the Operator.
+	&nbsp;&nbsp;&nbsp;&nbsp;3a.1 The software finds no records matching the details entered by the Operator.
 	<br><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;6a.2 The software sends the message "No records found" and redirects the user to step 2.
+	&nbsp;&nbsp;&nbsp;&nbsp;3a.2 The software sends the message "No records found" and redirects the user to step 2.
 	<br><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;9a.1 The Operator selects the option "No".
+	&nbsp;&nbsp;&nbsp;&nbsp;6a.1 The Operator selects the option "No".
 	<br><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;9a.2 The software redirects the Operator to step 2.
+	&nbsp;&nbsp;&nbsp;&nbsp;6a.2 The software redirects the Operator to step 2.
 	</p>
 	
 	<hr>
-	<p><strong>Use case: </strong>Update Members or Providers</p>
-	<p><strong>Context: </strong>The operator intends to update existing member or provider records in the system.</p>
+	<p><strong>Use case: </strong>Delete Providers</p>
+	<p><strong>Context: </strong>The operator intends to delete existing provider records from the system.</p>
 	<p><strong>Actors: </strong>ChocAn Operator</p>
 	<p><strong>Main success scenario:</strong></p>
 	<p style="padding-left: 20px">
-	1. The operator interacts with the software in Interactive mode. 
+	1. The software prompts the Operator to enter details such as first name, last name, address, zip code, phone number to fetch the necessary Member records.
 	<br><br>
-	2. The software prompts the operator to Add, Edit or Delete Member and Provider records.
+	2. The Operator enters the necessary details. 
 	<br><br>
-	3. The operator chooses the "Edit Member" or the "Edit Provider" option.
+	3. The software returns the records matching the details.
 	<br><br>
-	4. Based on the option selected [Member or Provider], the software prompts the Operator to enter details such as first name, last name, address, zip code, phone number to fetch the necessary Member/Provider records.
+	4. The Operator selects the necessary records and presses the "Delete" option.
 	<br><br>
-	5. The Operator enters the necessary details. 
+	5. The system re-confirms the records that are to be deleted and sends the message "Delete Records" with option "Yes" and "No".
 	<br><br>
-	6. The software returns the records matching the details.
+	6. The Operator selects the option "Yes".
 	<br><br>
-	7. The Operator selects the necessary records and presses the "Edit" option.
+	7. The software deletes the records from the database, sends a confirmation message to the Operator and returns to the home page.
 	<br><br>
-	8. The Operator changes the necessary details of the records.
+	</p>
+	<p><strong>Extensions: <br><br></strong>
+	&nbsp;&nbsp;&nbsp;&nbsp;3a.1 The software finds no records matching the details entered by the Operator.
 	<br><br>
-	9. The software prompts the Operator to save the changes made to the records.
+	&nbsp;&nbsp;&nbsp;&nbsp;3a.2 The software sends the message "No records found" and redirects the user to step 2.
 	<br><br>
-	10. The Operator enters the "Save" option.
+	&nbsp;&nbsp;&nbsp;&nbsp;6a.1 The Operator selects the option "No".
 	<br><br>
-	11. The software validates the changes made to the record.
+	&nbsp;&nbsp;&nbsp;&nbsp;6a.2 The software redirects the Operator to step 2.
+	</p>
+	
+	<hr>
+	<p><strong>Use case: </strong>Update Members</p>
+	<p><strong>Context: </strong>The operator intends to update existing member records in the system.</p>
+	<p><strong>Actors: </strong>ChocAn Operator</p>
+	<p><strong>Main success scenario:</strong></p>
+	<p style="padding-left: 20px">
+	1. The software prompts the Operator to enter details such as first name, last name, address, zip code, phone number to fetch the necessary Member records.
 	<br><br>
-	12. The software commits the changes made to the records to the database, then sends a confirmation message to the Operator and returns to the home page.
+	2. The Operator enters the necessary details. 
+	<br><br>
+	3. The software returns the records matching the details.
+	<br><br>
+	4. The Operator selects the necessary records and presses the "Edit" option.
+	<br><br>
+	5. The Operator changes the necessary details of the records.
+	<br><br>
+	6. The software prompts the Operator to save the changes made to the records.
+	<br><br>
+	7. The Operator enters the "Save" option.
+	<br><br>
+	8. The software validates the changes made to the record.
+	<br><br>
+	9. The software commits the changes made to the records to the database, then sends a confirmation message to the Operator and returns to the home page.
 	<br><br></p>
 	<p><strong>Extensions:<br><br></strong>
-	&nbsp;&nbsp;&nbsp;&nbsp;6a.1 The software finds no records matching the details entered by the Operator.
+	&nbsp;&nbsp;&nbsp;&nbsp;3a.1 The software finds no records matching the details entered by the Operator.
 	<br><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;6a.2 The software sends the message "No records found" and redirects the user to step 2.
-	</br></br>
-	&nbsp;&nbsp;&nbsp;&nbsp;11a.1 The validation of the operator's input fails.
+	&nbsp;&nbsp;&nbsp;&nbsp;3a.2 The software sends the message "No records found" and redirects the user to step 2.
 	<br><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;11a.2 The software sends the message "Details entered are invalid" and redirects the Operator to step 8.
+	&nbsp;&nbsp;&nbsp;&nbsp;9a.1 The validation of the operator's input fails.
 	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;9a.2 The software sends the message "Details entered are invalid" and redirects the Operator to step 8.
+	<br><br>
+		
+	<hr>
+	<p><strong>Use case: </strong>Update Providers</p>
+	<p><strong>Context: </strong>The operator intends to update existing provider records in the system.</p>
+	<p><strong>Actors: </strong>ChocAn Operator</p>
+	<p><strong>Main success scenario:</strong></p>
+	<p style="padding-left: 20px">
+	1. The software prompts the Operator to enter details such as first name, last name, address, zip code, phone number to fetch the necessary Member records.
+	<br><br>
+	2. The Operator enters the necessary details. 
+	<br><br>
+	3. The software returns the records matching the details.
+	<br><br>
+	4. The Operator selects the necessary records and presses the "Edit" option.
+	<br><br>
+	5. The Operator changes the necessary details of the records.
+	<br><br>
+	6. The software prompts the Operator to save the changes made to the records.
+	<br><br>
+	7. The Operator enters the "Save" option.
+	<br><br>
+	8. The software validates the changes made to the record.
+	<br><br>
+	9. The software commits the changes made to the records to the database, then sends a confirmation message to the Operator and returns to the home page.
+	<br><br></p>
+	<p><strong>Extensions:<br><br></strong>
+	&nbsp;&nbsp;&nbsp;&nbsp;3a.1 The software finds no records matching the details entered by the Operator.
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;3a.2 The software sends the message "No records found" and redirects the user to step 2.
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;9a.1 The validation of the operator's input fails.
+	<br><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;9a.2 The software sends the message "Details entered are invalid" and redirects the Operator to step 8.
+	<br><br>
+	</p>
 	</p>
 </div>
 	
@@ -641,25 +712,43 @@
 	
 <div class="main">
 	<h2>Interactive Mode Activity Diagram</h2>
-	<p class="aligncenter"> <img src="" alt="Interactive Mode Activity Diagram" style="text-align: center">
+	<p class="aligncenter"> <img src="interactive_mode.png" alt="Interactive Mode Activity Diagram" style="text-align: center">
 	</p>
 </div>
 	
 <div class="main">
-	<h2>Add New Members or Providers Activity Diagram</h2>
-	<p class="aligncenter"> <img src="Add Member_Provider.png" alt="Add New Members or Providers Activity Diagram" style="text-align: center">
+	<h2>Add New Members Activity Diagram</h2>
+	<p class="aligncenter"> <img src="add_Member.png" alt="Add New Members Activity Diagram" style="text-align: center">
 	</p>
 </div>
 
 <div class="main">
-	<h2>Delete Members or Providers Activity Diagram</h2>
-	<p class="aligncenter"> <img src="Delete Member_Provider.png" alt="Delete Members or Providers Activity Diagram" style="text-align: center">
+	<h2>Add New Providers Activity Diagram</h2>
+	<p class="aligncenter"> <img src="add_Provider.png" alt="Add New Providers Activity Diagram" style="text-align: center">
+	</p>
+</div>
+
+<div class="main">
+	<h2>Delete Members Activity Diagram</h2>
+	<p class="aligncenter"> <img src="delete_Member.png" alt="Delete Members Activity Diagram" style="text-align: center">
 	</p>
 </div>	
 
 <div class="main">
-	<h2>Update Members of Providers Activity Diagram</h2>
-	<p class="aligncenter"> <img src="Edit Member_Provider.png" alt="Update Members or Providers Activity Diagram" style="text-align: center">
+	<h2>Delete Providers Activity Diagram</h2>
+	<p class="aligncenter"> <img src="delete_Provider.png" alt="Delete Providers Activity Diagram" style="text-align: center">
+	</p>
+</div>	
+
+<div class="main">
+	<h2>Update Members Activity Diagram</h2>
+	<p class="aligncenter"> <img src="edit_Member.png" alt="Update Members Activity Diagram" style="text-align: center">
+	</p>
+</div>
+
+<div class="main">
+	<h2>Update Providers Activity Diagram</h2>
+	<p class="aligncenter"> <img src="edit_Provider.png" alt="Update Providers Activity Diagram" style="text-align: center">
 	</p>
 </div>
 	
