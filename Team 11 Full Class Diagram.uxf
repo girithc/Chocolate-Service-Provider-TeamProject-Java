@@ -1,0 +1,139 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>190</x><y>80</y><w>200</w><h>100</h></coordinates><panel_attributes>*RequestReports*
+--
+
+--
++reportRequestPrompt( ) : int
++requestReport(int id) : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>190</x><y>250</y><w>240</w><h>80</h></coordinates><panel_attributes>*SendWeeklyReports*
+--
+
+--
++mainAccountingProcedure( ) : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>80</y><w>230</w><h>140</h></coordinates><panel_attributes>*WriteReports*
+--
+
+--
++writeMemberReports( ) : void
++writeProviderReports( ) : void
++writeSummaryReport( ) : void
++writeEFTReports( ) : void
++writeIndividualReport(int id) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>730</x><y>80</y><w>340</w><h>120</h></coordinates><panel_attributes>*WeeksServices*
+--
+-weeksServices : ServicePerformed[ ]
+--
++getServicesByProvider(int id) : ServicePerformed[ ]
++getServicesByMember(int id) : ServicePerformed[ ]
++addService(ServicePerformed service) : void
++deleteService(int id) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>730</x><y>230</y><w>330</w><h>230</h></coordinates><panel_attributes>*ServicePerformed*
+--
+-currDateAndTime : string
+-dateProvided : string
+-providerNumber : int
+-memberNumber : int
+-serviceCode : int
+-comments : string
+--
++setCurrDateAndTime(string dateAndTime) : void
++setDateProvided(string date) : void
++setProviderNumber(int id) : void
++setMemberNumber(int id) : void
++setServiceCode(int code) : void
++setComments(string comments) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1100</x><y>260</y><w>300</w><h>330</h></coordinates><panel_attributes>*Person*
+--
+-name : string
+-IDNumber : int
+-email : string
+-streetAddress : string
+-city : string
+-state : string
+--
++setName(string name) : void
++getName( ) : string
++setIDNumber(int id) : void
++getIDNumber( ) : int
++setEmail(string email ) : void
++getEmail( ) : string
++setStreetAddress(string address) : void
++getStreetAddress( ) : string
++setCity(string city) : void
++getCity( ) : string
++setState(string state) : void
++getState( ) : string
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>900</x><y>620</y><w>280</w><h>90</h></coordinates><panel_attributes>*Member*
+--
+-suspended : boolean
+--
++setSuspended(boolean suspended) : void
++getSuspended( ) : boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1220</x><y>640</y><w>140</w><h>70</h></coordinates><panel_attributes>*Provider*
+--
+
+--
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>620</x><y>490</y><w>190</w><h>90</h></coordinates><panel_attributes>*Manager*
+--
+-email : string
+--
++getEmail( ) : string
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>930</x><y>770</y><w>340</w><h>200</h></coordinates><panel_attributes>*Person Database*
+--
+-members : Member[ ]
+-providers : Provider[ ] 
+--
++getMember(int id) : Member
++getProvider(int id) : Provider
++addMember(Member member) : void
++addProvider(Provider provider) : void
++deleteMember(int id) : void
++deleteProvider(int id) : void
++updateMember(int id, Member member) : void
++updateProvider(int id, Provider provider) : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>380</x><y>80</y><w>80</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>60;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>80</y><w>90</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>70;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>800</x><y>190</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>1030</x><y>700</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1240</x><y>700</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1140</x><y>580</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>1240</x><y>580</y><w>30</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>210</y><w>430</w><h>620</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>410;600;10;600;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>210</y><w>30</w><h>300</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;280;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1090</x><y>0</y><w>210</w><h>140</h></coordinates><panel_attributes>*ServiceOffered*
+--
+-serviceCode : int
+-name : string
+-fee : float
+--
++getServiceCode( ) : int
++getName( ) : string
++getFee( ) : float
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1330</x><y>0</y><w>320</w><h>90</h></coordinates><panel_attributes>*ProviderDirectory*
+--
+-allServices : ServiceOffered[ ]
+--
++getAllServices( ) : ServiceOffered[ ]
++getService(int serviceCode) : ServiceOffered[ ]</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1290</x><y>40</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>40;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1490</x><y>260</y><w>350</w><h>100</h></coordinates><panel_attributes>*BillChocAn*
+--
+
+--
++writeServiceReport(ServicePerformed service ) : void
++lookUpService(int serviceCode) : ServicePerformed
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1060</x><y>150</y><w>450</w><h>140</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;400;10;400;120;430;120</additional_attributes></element><element><id>Relation</id><coordinates><x>1050</x><y>230</y><w>460</w><h>100</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;390;10;390;80;440;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1490</x><y>410</y><w>210</w><h>140</h></coordinates><panel_attributes>*ProviderTerminal*
+--
+-IDNumber : int
+--
++swipeCard( ) : void
++enterIDNumber(int id) : void
++writeNewService( ) : void
++notifyProvider(Char valid) : void
++getProviderDirectory() : void
++verifyMember(int id) : char
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1560</x><y>350</y><w>30</w><h>80</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1300</x><y>770</y><w>320</w><h>190</h></coordinates><panel_attributes>*EditPersonDatabase*
+--
+
+--
++getMember(int id) : Member
++getProvider(int id) : Provider
++addMember(Member member) : void
++addProvider(Provider provider) : void
++deleteMember(int id) : void
++deleteProvider(int id) : void
++updateMember(int id, Member member) : void
++updateProvider(int id, Provider provider) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1470</x><y>580</y><w>230</w><h>100</h></coordinates><panel_attributes>*InteractiveMode*
+--
+
+--
++promptForAction( ) : string
++performAction(string action) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1530</x><y>80</y><w>30</w><h>200</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;180</additional_attributes></element><element><id>Relation</id><coordinates><x>1260</x><y>810</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;40;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1490</x><y>670</y><w>30</w><h>120</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;100;10;10</additional_attributes></element><element><id>UMLActor</id><coordinates><x>1730</x><y>770</y><w>120</w><h>110</h></coordinates><panel_attributes>*ChocAn Operator*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1610</x><y>790</y><w>160</w><h>40</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;140;20</additional_attributes></element><element><id>UMLActor</id><coordinates><x>0</x><y>80</y><w>120</w><h>110</h></coordinates><panel_attributes>*ChocAn Manager*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>210</y><w>90</w><h>70</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>70;10;70;50;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>100</y><w>140</w><h>40</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;120;20</additional_attributes></element><element><id>UMLActor</id><coordinates><x>30</x><y>240</y><w>60</w><h>110</h></coordinates><panel_attributes>*Clock*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>260</y><w>140</w><h>40</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;120;20</additional_attributes></element><element><id>UMLActor</id><coordinates><x>1800</x><y>620</y><w>120</w><h>110</h></coordinates><panel_attributes>*ChocAn Provider*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1690</x><y>510</y><w>160</w><h>160</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;140;140</additional_attributes></element><element><id>Relation</id><coordinates><x>1120</x><y>480</y><w>850</w><h>600</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;490;10;570;830;580;830;10;580;10</additional_attributes></element></diagram>
