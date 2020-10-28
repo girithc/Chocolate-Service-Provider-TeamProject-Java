@@ -1,30 +1,86 @@
-<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>190</x><y>80</y><w>200</w><h>100</h></coordinates><panel_attributes>*RequestReports*
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>180</x>
+      <y>180</y>
+      <w>252</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>*RequestReports*
 --
-
+-request : string
+-id : int
 --
-+reportRequestPrompt( ) : int
-+requestReport(int id) : void
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>190</x><y>250</y><w>240</w><h>80</h></coordinates><panel_attributes>*SendWeeklyReports*
++reportRequestPrompt( ) : string
++idPrompt( ) : int
++requestReport(string request, int id) : void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>180</x>
+      <y>333</y>
+      <w>216</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>*SendWeeklyReports*
 --
 
 --
 +mainAccountingProcedure( ) : void
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>80</y><w>230</w><h>140</h></coordinates><panel_attributes>*WriteReports*
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>441</x>
+      <y>180</y>
+      <w>207</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>*WriteReports*
 --
 
 --
-+writeMemberReports( ) : void
-+writeProviderReports( ) : void
++writeMemberReport(int id) : void
++writeProviderReport(int id) : void
 +writeSummaryReport( ) : void
-+writeEFTReports( ) : void
-+writeIndividualReport(int id) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>730</x><y>80</y><w>340</w><h>120</h></coordinates><panel_attributes>*WeeksServices*
++writeEFTReports( ) : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>666</x>
+      <y>180</y>
+      <w>306</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>*WeeksServices*
 --
 -weeksServices : ServicePerformed[ ]
 --
 +getServicesByProvider(int id) : ServicePerformed[ ]
 +getServicesByMember(int id) : ServicePerformed[ ]
 +addService(ServicePerformed service) : void
-+deleteService(int id) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>730</x><y>230</y><w>330</w><h>230</h></coordinates><panel_attributes>*ServicePerformed*
++deleteService(int id) : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>666</x>
+      <y>315</y>
+      <w>297</w>
+      <h>207</h>
+    </coordinates>
+    <panel_attributes>*ServicePerformed*
 --
 -currDateAndTime : string
 -dateProvided : string
@@ -38,7 +94,18 @@
 +setProviderNumber(int id) : void
 +setMemberNumber(int id) : void
 +setServiceCode(int code) : void
-+setComments(string comments) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1100</x><y>260</y><w>300</w><h>330</h></coordinates><panel_attributes>*Person*
++setComments(string comments) : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>999</x>
+      <y>342</y>
+      <w>270</w>
+      <h>297</h>
+    </coordinates>
+    <panel_attributes>*Person*
 --
 -name : string
 -IDNumber : int
@@ -59,37 +126,186 @@
 +getCity( ) : string
 +setState(string state) : void
 +getState( ) : string
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>900</x><y>620</y><w>280</w><h>90</h></coordinates><panel_attributes>*Member*
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>981</x>
+      <y>675</y>
+      <w>252</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>*Member*
 --
 -suspended : boolean
 --
 +setSuspended(boolean suspended) : void
-+getSuspended( ) : boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1220</x><y>640</y><w>140</w><h>70</h></coordinates><panel_attributes>*Provider*
++getSuspended( ) : boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>828</x>
+      <y>675</y>
+      <w>126</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>*Provider*
 --
 
 --
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>620</x><y>490</y><w>190</w><h>90</h></coordinates><panel_attributes>*Manager*
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>567</x>
+      <y>549</y>
+      <w>171</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>*Manager*
 --
 -email : string
 --
 +getEmail( ) : string
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>930</x><y>770</y><w>340</w><h>200</h></coordinates><panel_attributes>*Person Database*
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>972</x>
+      <y>801</y>
+      <w>306</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>*MemberDatabase*
 --
 -members : Member[ ]
--providers : Provider[ ] 
 --
 +getMember(int id) : Member
-+getProvider(int id) : Provider
 +addMember(Member member) : void
-+addProvider(Provider provider) : void
 +deleteMember(int id) : void
-+deleteProvider(int id) : void
 +updateMember(int id, Member member) : void
-+updateProvider(int id, Provider provider) : void
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>380</x><y>80</y><w>80</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
-</panel_attributes><additional_attributes>60;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>80</y><w>90</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
-</panel_attributes><additional_attributes>70;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>800</x><y>190</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>1030</x><y>700</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1240</x><y>700</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1140</x><y>580</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>1240</x><y>580</y><w>30</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>210</y><w>430</w><h>620</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>410;600;10;600;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>210</y><w>30</w><h>300</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;280;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1090</x><y>0</y><w>210</w><h>140</h></coordinates><panel_attributes>*ServiceOffered*
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>432</x>
+      <y>189</y>
+      <w>27</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>639</x>
+      <y>180</y>
+      <w>45</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>30.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>729</x>
+      <y>279</y>
+      <w>27</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1161</x>
+      <y>747</y>
+      <w>27</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>846</x>
+      <y>729</y>
+      <w>27</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1134</x>
+      <y>630</y>
+      <w>27</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>846</x>
+      <y>630</y>
+      <w>207</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>210.0;10.0;210.0;30.0;10.0;30.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>504</x>
+      <y>297</y>
+      <w>153</w>
+      <h>558</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>150.0;600.0;10.0;600.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>585</x>
+      <y>297</y>
+      <w>27</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;280.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>990</x>
+      <y>108</y>
+      <w>189</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>*ServiceOffered*
 --
 -serviceCode : int
 -name : string
@@ -98,18 +314,84 @@
 +getServiceCode( ) : int
 +getName( ) : string
 +getFee( ) : float
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1330</x><y>0</y><w>320</w><h>90</h></coordinates><panel_attributes>*ProviderDirectory*
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1206</x>
+      <y>108</y>
+      <w>288</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>*ProviderDirectory*
 --
 -allServices : ServiceOffered[ ]
 --
 +getAllServices( ) : ServiceOffered[ ]
-+getService(int serviceCode) : ServiceOffered[ ]</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1290</x><y>40</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>40;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1490</x><y>260</y><w>350</w><h>100</h></coordinates><panel_attributes>*BillChocAn*
++getService(int serviceCode) : ServiceOffered[ ]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1170</x>
+      <y>144</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1350</x>
+      <y>342</y>
+      <w>315</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>*BillChocAn*
 --
 
 --
 +writeServiceReport(ServicePerformed service ) : void
 +lookUpService(int serviceCode) : ServicePerformed
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1060</x><y>150</y><w>450</w><h>140</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;400;10;400;120;430;120</additional_attributes></element><element><id>Relation</id><coordinates><x>1050</x><y>230</y><w>460</w><h>100</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;390;10;390;80;440;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1490</x><y>410</y><w>210</w><h>140</h></coordinates><panel_attributes>*ProviderTerminal*
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>963</x>
+      <y>243</y>
+      <w>405</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;400.0;10.0;400.0;120.0;430.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>954</x>
+      <y>315</y>
+      <w>414</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;390.0;10.0;390.0;80.0;440.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1350</x>
+      <y>477</y>
+      <w>207</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>*ProviderTerminal*
 --
 -IDNumber : int
 --
@@ -119,7 +401,29 @@
 +notifyProvider(Char valid) : void
 +getProviderDirectory() : void
 +verifyMember(int id) : char
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1560</x><y>350</y><w>30</w><h>80</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1300</x><y>770</y><w>320</w><h>190</h></coordinates><panel_attributes>*EditPersonDatabase*
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1413</x>
+      <y>414</y>
+      <w>27</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1305</x>
+      <y>801</y>
+      <w>288</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>*InteractiveModeControl*
 --
 
 --
@@ -130,10 +434,241 @@
 +deleteMember(int id) : void
 +deleteProvider(int id) : void
 +updateMember(int id, Member member) : void
-+updateProvider(int id, Provider provider) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1470</x><y>580</y><w>230</w><h>100</h></coordinates><panel_attributes>*InteractiveMode*
++updateProvider(int id, Provider provider) : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1332</x>
+      <y>657</y>
+      <w>207</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>*InteractiveModeTerminal*
 --
 
 --
 +promptForAction( ) : string
-+performAction(string action) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1530</x><y>80</y><w>30</w><h>200</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;180</additional_attributes></element><element><id>Relation</id><coordinates><x>1260</x><y>810</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;40;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1490</x><y>670</y><w>30</w><h>120</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;100;10;10</additional_attributes></element><element><id>UMLActor</id><coordinates><x>1730</x><y>770</y><w>120</w><h>110</h></coordinates><panel_attributes>*ChocAn Operator*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1610</x><y>790</y><w>160</w><h>40</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;140;20</additional_attributes></element><element><id>UMLActor</id><coordinates><x>0</x><y>80</y><w>120</w><h>110</h></coordinates><panel_attributes>*ChocAn Manager*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>210</y><w>90</w><h>70</h></coordinates><panel_attributes>lt=&lt;-
-</panel_attributes><additional_attributes>70;10;70;50;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>100</y><w>140</w><h>40</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;120;20</additional_attributes></element><element><id>UMLActor</id><coordinates><x>30</x><y>240</y><w>60</w><h>110</h></coordinates><panel_attributes>*Clock*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>260</y><w>140</w><h>40</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;120;20</additional_attributes></element><element><id>UMLActor</id><coordinates><x>1800</x><y>620</y><w>120</w><h>110</h></coordinates><panel_attributes>*ChocAn Provider*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1690</x><y>510</y><w>160</w><h>160</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;140;140</additional_attributes></element><element><id>Relation</id><coordinates><x>1120</x><y>480</y><w>850</w><h>600</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;490;10;570;830;580;830;10;580;10</additional_attributes></element></diagram>
++performAction(string action) : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1386</x>
+      <y>180</y>
+      <w>27</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1269</x>
+      <y>837</y>
+      <w>54</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1476</x>
+      <y>738</y>
+      <w>27</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>1539</x>
+      <y>666</y>
+      <w>126</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>*ChocAn Operator*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1530</x>
+      <y>693</y>
+      <w>63</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;50.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>0</x>
+      <y>180</y>
+      <w>126</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>*ChocAn Manager*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>387</x>
+      <y>297</y>
+      <w>81</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>70.0;10.0;70.0;50.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>72</x>
+      <y>198</y>
+      <w>126</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>36</x>
+      <y>324</y>
+      <w>54</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>*Clock*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>72</x>
+      <y>342</y>
+      <w>126</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>1611</x>
+      <y>549</y>
+      <w>126</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>*ChocAn Provider*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1548</x>
+      <y>558</y>
+      <w>117</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>639</x>
+      <y>801</y>
+      <w>306</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>*ProviderDatabase*
+--
+-providers : Provider[ ] 
+--
++getProvider(int id) : Provider
++addProvider(Provider provider) : void
++deleteProvider(int id) : void
++updateProvider(int id, Provider provider) : void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1242</x>
+      <y>522</y>
+      <w>126</w>
+      <h>297</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;310.0;10.0;280.0;70.0;280.0;70.0;10.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>459</x>
+      <y>297</y>
+      <w>558</w>
+      <h>684</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>600.0;680.0;600.0;740.0;10.0;740.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>873</x>
+      <y>900</y>
+      <w>450</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;480.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1485</x>
+      <y>162</y>
+      <w>216</w>
+      <h>351</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;220.0;10.0;220.0;370.0;80.0;370.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1224</x>
+      <y>702</y>
+      <w>126</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>900</x>
+      <y>702</y>
+      <w>396</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;70.0;420.0;70.0;420.0;10.0</additional_attributes>
+  </element>
+</diagram>
