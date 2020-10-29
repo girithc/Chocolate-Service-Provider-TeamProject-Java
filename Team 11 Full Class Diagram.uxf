@@ -545,7 +545,7 @@ uses</panel_attributes>
     <id>UMLActor</id>
     <coordinates>
       <x>413</x>
-      <y>28</y>
+      <y>14</y>
       <w>42</w>
       <h>77</h>
     </coordinates>
@@ -556,12 +556,12 @@ uses</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>427</x>
-      <y>91</y>
+      <y>77</y>
       <w>21</w>
-      <h>63</h>
+      <h>77</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLActor</id>
