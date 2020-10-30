@@ -468,7 +468,7 @@ uses</panel_attributes>
 --
 +promptForAction( ) : void
 +promptForMemberOrProvider( ) : void
-+performAction(string action) : void</panel_attributes>
++performAction( ) : void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
