@@ -2,7 +2,7 @@ package chocan;
 
 public class Provider extends Person {
 	
-	public Provider{
+	public Provider() {
 	}
 	
 }

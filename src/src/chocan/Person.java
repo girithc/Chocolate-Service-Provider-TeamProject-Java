@@ -1,6 +1,5 @@
 package chocan;
 
-
 public class Person {
 	
 	private String name;
