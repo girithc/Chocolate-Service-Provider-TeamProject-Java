@@ -78,10 +78,55 @@ public class ProviderDatabase {
 		return dummyProvider;
 	}
 	
-	public void addProvider(Provider newProvider) {
+	public void addProvider(Provider newProvider) throws IOException {
 		
 		providers.add(newProvider);
+		updateDatabase();
 		
 	}
+	
+	public void deleteProvider(String id) throws Exception{
+		
+		ListIterator<Provider> listIterator = providers.listIterator();
+		while (listIterator.hasNext()) {
+			Provider current = listIterator.next();
+			if(current.getIDNumber().equals(id)) {
+				providers.remove(current);
+			}
+		}
+		
+		updateDatabase();
+	}
+	
+public void updateProvider(String id, Provider provider) throws Exception{
+		
+		ListIterator<Provider> listIterator = providers.listIterator();
+		while (listIterator.hasNext()) {
+			Provider current = listIterator.next();
+			if(current.getIDNumber().equals(id)) {
+				providers.remove(current);
+			}
+		}
+		
+		providers.add(provider);
+		
+		updateDatabase();
+	}
+	
+	public String[] getAllProviderID() throws Exception{
+		
+		ListIterator<Provider> listIterator = providers.listIterator();
+		int size = providers.size();
+		String providerID[] = new String[size];
+		while (listIterator.hasNext()) {
+			Provider current = listIterator.next();
+			providerID[providers.indexOf(current)] = current.getIDNumber();
+		}
+		
+		return providerID;
+		
+		
+	}
+	
 	
 }
