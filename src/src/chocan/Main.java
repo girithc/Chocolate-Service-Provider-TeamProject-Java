@@ -8,13 +8,21 @@ public class Main {
 		
 		ProviderDatabase providerDatabase = new ProviderDatabase();
 		
-		System.out.println(providerDatabase.getProvider("11880129").getName());
-		System.out.println(providerDatabase.getProvider("11880129").getIDNumber());
-		System.out.println(providerDatabase.getProvider("11880129").getStreetAddress());
-		System.out.println(providerDatabase.getProvider("11880129").getCity());
-		System.out.println(providerDatabase.getProvider("11880129").getState());
-		System.out.println(providerDatabase.getProvider("11880129").getZip());
-		System.out.println(providerDatabase.getProvider("11880129").getEmail());
+		//providerDatabase.deleteProvider("11880129");
+		
+		Provider Jared = new Provider();
+		Jared.setCity("Oxford");
+		Jared.setEmail("jtfolden@crimson.ua.edu");
+		Jared.setIDNumber("11880129");
+		Jared.setName("Jared Folden");
+		Jared.setState("MI");
+		Jared.setStreetAddress("34 Spring Lake Drive");
+		Jared.setZip("48371");
+		providerDatabase.addProvider(Jared);
+		String[] providerID = providerDatabase.getAllProviderID();
+		for (int i=0; i < providerID.length; i++) {
+			System.out.println(providerID[i]);
+		}
 		
 	}
 	
