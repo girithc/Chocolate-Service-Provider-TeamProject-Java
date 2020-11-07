@@ -24,11 +24,11 @@ public void getServiceName(String serviceCode) throws Exception {
 	
 }
 
-public void getServiceFee(String serviceCode) throws Exception {
-	
+public String getServiceFee(String serviceCode) throws Exception {
+	String returnItem = "";
 	ServicesOffered servicesOffered = new ServicesOffered();
-	servicesOffered.getServiceFee(serviceCode);	
-	
+	returnItem = servicesOffered.getServiceFee(serviceCode);	
+	return returnItem;
 }
 
 }

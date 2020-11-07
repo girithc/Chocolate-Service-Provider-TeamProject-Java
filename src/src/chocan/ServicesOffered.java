@@ -20,8 +20,9 @@ public void getServiceCode() {
 	
 }
 
-public void getServiceName(String serviceCode) throws Exception {
+public String getServiceName(String serviceCode) throws Exception {
 	int bool = 0;
+	String returnItem = "";
 	String line = "";
 	String splitBy = ",";
 	BufferedReader br = new BufferedReader(new FileReader("ServicesOffered.csv"));
@@ -29,31 +30,36 @@ public void getServiceName(String serviceCode) throws Exception {
 		String[] servicesOffered = line.split(splitBy);
 		if (servicesOffered[0].equals(serviceCode)) {
 			System.out.println(servicesOffered[1]);
+			returnItem = servicesOffered[1];
 			bool = 1;
 		}
 	}
 	if (bool == 0) {
-		System.out.print("Service code entered is invalid.");
+		System.out.println("Service code entered is invalid.");
 	}
 	br.close();
+	return returnItem;
 }
 
-public void getServiceFee(String serviceCode) throws Exception {
+public String getServiceFee(String serviceCode) throws Exception {
 	int bool = 0;
+	String returnItem = "";
 	String line = "";
 	String splitBy = ",";
 	BufferedReader br = new BufferedReader(new FileReader("ServicesOffered.csv"));
 	while((line = br.readLine())!= null) {
 		String[] servicesOffered = line.split(splitBy);
 		if (servicesOffered[0].equals(serviceCode)) {
+			returnItem = servicesOffered[2];
 			System.out.println(servicesOffered[2]);
 			bool = 1;
 		}
 	}
 	if (bool == 0) {
-		System.out.print("Service code entered is invalid.");
+		System.out.println("Service code entered is invalid.");
 	}
 	br.close();
+	return returnItem;
 }
 
 }
