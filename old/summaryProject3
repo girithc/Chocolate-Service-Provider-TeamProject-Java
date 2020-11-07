@@ -1,0 +1,12 @@
+If the design isn’t planned well it could have low cohesion which would result in lack of 
+reuse and harder maintainability. Similarly, if we get high coupling there is more scope 
+for error since variables among classes are highly dependent on each other and the code 
+is harder to reuse. So, we tried to implement high cohesion and a low coupling in our 
+design. Our classes encapsulate attributes and operations that are closely related to 
+each other and to the class itself. We tried to implement informational and functional 
+cohesion making each module have elements directly related to the functionality of that 
+module. We tried implementing data coupling so our parameters could be homogenous data 
+items and won’t depend too much on other modules. Any good design requires high cohesion
+and low coupling and that is what we tried to implement with our class diagram and
+modules.
+

@@ -1,0 +1,11 @@
+Member verification, verifying service code, writing records to the disk, looking up fee to be paid, printing reports, and emailing reports are all functions of the software that are totally computerized as the software handles them.
+
+The ChocAn Data Center and the provider terminal holds the data for the software.
+
+The hardware includes the card, card reader, the ChocAn Data Centre computer, and the user terminal which helps the operators, providers, and members interact with the system.
+
+The data processing software interacts with the communications software which enables the data entered to be processed and stored for future use which can be used by the billing software to process payments.
+
+The user interacts with the software using a keyboard input and the data is transmitted to a terminal display screen.
+
+
