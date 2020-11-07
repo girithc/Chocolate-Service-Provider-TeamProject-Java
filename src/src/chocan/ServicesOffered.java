@@ -4,12 +4,15 @@ import java.io.*;
 import java.util.Scanner;
 
 public class ServicesOffered {
+	
 public void read(String string) throws Exception {
-    Scanner sc = new Scanner(new File("ProviderDirectory.csv"));
+	File providerDirectory = new File("ServicesOffered.csv");
+    Scanner sc = new Scanner(providerDirectory);
     sc.useDelimiter(",");
     while(sc.hasNext()) {
         System.out.print(sc.next());
     }
     sc.close();
 }
+
 }
