@@ -26,8 +26,9 @@ public class Main {
 		//}
 		
 		ServicesOffered servicesOffered = new ServicesOffered();
-		servicesOffered.read("Read CSV file.");
-		
+
+		servicesOffered.getServiceName("883948");
+		servicesOffered.getServiceFee("883948");
 	}
 	
 }
