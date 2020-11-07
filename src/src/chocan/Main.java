@@ -25,10 +25,11 @@ public class Main {
 			System.out.println(MemberID[i]);*/
 		//}
 		
-		ServicesOffered servicesOffered = new ServicesOffered();
+		ProviderDirectory providerDirectory = new ProviderDirectory();
 
-		servicesOffered.getServiceName("883948");
-		servicesOffered.getServiceFee("883948");
+		providerDirectory.getServiceName("883948");
+		providerDirectory.getServiceFee("883948");
+		providerDirectory.getAllServices();
 	}
 	
 }
