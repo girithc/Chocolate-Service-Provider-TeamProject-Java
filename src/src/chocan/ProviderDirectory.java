@@ -20,7 +20,7 @@ public void getAllServices() throws Exception {
 public String getServiceName(String serviceCode) throws Exception {
 	String returnItem = "";
 	ServicesOffered servicesOffered = new ServicesOffered();
-	servicesOffered.getServiceName(serviceCode);
+	returnItem = servicesOffered.getServiceName(serviceCode);
 	return returnItem;
 }
 

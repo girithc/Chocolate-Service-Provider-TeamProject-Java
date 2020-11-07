@@ -26,9 +26,14 @@ public class Main {
 		//}
 		
 		ProviderDirectory providerDirectory = new ProviderDirectory();
-
-		providerDirectory.getServiceName("883948");
-		providerDirectory.getServiceFee("883948");
+		String serviceName = "";
+		String serviceFee = "";
+		
+		serviceName = providerDirectory.getServiceName("598470");
+		serviceFee = providerDirectory.getServiceFee("598470");
+		
+		System.out.println("Service Name: " + serviceName);
+		System.out.println("Service Fee: " + serviceFee);
 		providerDirectory.getAllServices();
 	}
 	
