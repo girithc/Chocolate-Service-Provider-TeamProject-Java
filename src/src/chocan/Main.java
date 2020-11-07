@@ -6,11 +6,11 @@ public class Main {
 	
 	public static void main(String[] args) throws Exception {
 		
-		MemberDatabase MemberDatabase = new MemberDatabase();
+		//MemberDatabase MemberDatabase = new MemberDatabase();
 		
 		//MemberDatabase.deleteMember("11880129");
 		
-		Member Jared = new Member();
+		/*Member Jared = new Member();
 		Jared.setCity("Oxford");
 		Jared.setEmail("jtfolden@crimson.ua.edu");
 		Jared.setIDNumber("11880129");
@@ -22,8 +22,11 @@ public class Main {
 		MemberDatabase.addMember(Jared);
 		String[] MemberID = MemberDatabase.getAllMemberID();
 		for (int i=0; i < MemberID.length; i++) {
-			System.out.println(MemberID[i]);
-		}
+			System.out.println(MemberID[i]);*/
+		//}
+		
+		ServicesOffered servicesOffered = new ServicesOffered();
+		servicesOffered.read("Read CSV file.");
 		
 	}
 	
