@@ -6,11 +6,11 @@ public class Main {
 	
 	public static void main(String[] args) throws Exception {
 		
-		ProviderDatabase providerDatabase = new ProviderDatabase();
+		//MemberDatabase MemberDatabase = new MemberDatabase();
 		
-		//providerDatabase.deleteProvider("11880129");
+		//MemberDatabase.deleteMember("11880129");
 		
-		Provider Jared = new Provider();
+		/*Member Jared = new Member();
 		Jared.setCity("Oxford");
 		Jared.setEmail("jtfolden@crimson.ua.edu");
 		Jared.setIDNumber("11880129");
@@ -18,12 +18,23 @@ public class Main {
 		Jared.setState("MI");
 		Jared.setStreetAddress("34 Spring Lake Drive");
 		Jared.setZip("48371");
-		providerDatabase.addProvider(Jared);
-		String[] providerID = providerDatabase.getAllProviderID();
-		for (int i=0; i < providerID.length; i++) {
-			System.out.println(providerID[i]);
-		}
+		Jared.setSuspended(false);
+		MemberDatabase.addMember(Jared);
+		String[] MemberID = MemberDatabase.getAllMemberID();
+		for (int i=0; i < MemberID.length; i++) {
+			System.out.println(MemberID[i]);*/
+		//}
 		
+		ProviderDirectory providerDirectory = new ProviderDirectory();
+		String serviceName = "";
+		String serviceFee = "";
+		
+		serviceName = providerDirectory.getServiceName("598470");
+		serviceFee = providerDirectory.getServiceFee("598470");
+		
+		System.out.println("Service Name: " + serviceName);
+		System.out.println("Service Fee: " + serviceFee);
+		providerDirectory.getAllServices();
 	}
 	
 }
