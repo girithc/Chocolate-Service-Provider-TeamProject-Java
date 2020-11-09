@@ -12,7 +12,7 @@ public class ServicePerformed {
 	private String dateProvided;
 	private int providerNumber;
 	private int memberNumber;
-	private int serviceCode;
+	protected int serviceCode;
 	private String comments;
 	
 	/**
