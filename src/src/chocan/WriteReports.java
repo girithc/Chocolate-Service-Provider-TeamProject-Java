@@ -17,7 +17,7 @@ public class WriteReports {
 		//ServicesPerformed = new LinkedList<ServicePerformed>();
 	}
 	
-	public void writeMemberReport(String code) throws Exception{
+	public void writeMemberReport(String code) throws Exception {
 		if (code != "0") {
 			
 		String name = "";
