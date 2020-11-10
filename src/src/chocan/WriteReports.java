@@ -10,21 +10,36 @@ import java.util.Scanner;
 
 public class WriteReports {
 	
-	private LinkedList<ServicePerformed> ServicesPerformed;
+	//private LinkedList<ServicePerformed> ServicesPerformed;
+	
 		
 	public WriteReports() {
-		ServicesPerformed = new LinkedList<ServicePerformed>();
-	
+		//ServicesPerformed = new LinkedList<ServicePerformed>();
 	}
 	
-	public void writeMemberReport(int code) {
-		ServicesPerformed = new LinkedList<ServicePerformed>();
-		WeeksServices weeksServices = new WeeksServices();
-		ServicesPerformed = weeksServices.getServicesByMember(code);
-		for (int i = 0; i < ServicesPerformed.size(); i++) {
-			ServicesPerformed.get(0);
+	public void writeMemberReport(String code) throws Exception{
+		if (code != "0") {
+			
+		String name = "";
+			
+		Member member = new Member();
+		MemberDatabase memberDatabase = new MemberDatabase();
+		member = memberDatabase.getMember(code);
+		name = member.getName();
+		
+		FileWriter fw = new FileWriter("Member.txt");
+		fw.write("Member name: " + name);
+		
+		fw.close();
+		
+		//ServicesPerformed = new LinkedList<ServicePerformed>();
+		//WeeksServices weeksServices = new WeeksServices();
+		//ServicesPerformed = weeksServices.getServicesByMember(code);
+		//for (int i = 0; i < ServicesPerformed.size(); i++) {
+			//ServicesPerformed.get(0);
 			
 		}
+		
 		
 		
 	}
