@@ -50,11 +50,11 @@ public class InteractiveModeControl {
 		
 		sc.close();
 		
-		mbase.addMember(newMember);
-		String[] MemberID = mbase.getAllMemberID();
-		for (int i=0; i < MemberID.length; i++) {
-			System.out.println(MemberID[i]);
-		}
+		//mbase.addMember(newMember);
+		//String[] MemberID = mbase.getAllMemberID();
+		//for (int i=0; i < MemberID.length; i++) {
+		//	System.out.println(MemberID[i]);
+		//}
 		
 		
 		//printMember(newMember);	
@@ -72,10 +72,10 @@ public class InteractiveModeControl {
 		sc.close();
 		
 		mbase.deleteMember(Id);
-		String[] MemberID = mbase.getAllMemberID();
-		for (int i=0; i < MemberID.length; i++) {
-			System.out.println(MemberID[i]);
-		}
+		//String[] MemberID = mbase.getAllMemberID();
+		//for (int i=0; i < MemberID.length; i++) {
+		//	System.out.println(MemberID[i]);
+		//}
 		
 		
 	}
@@ -130,10 +130,10 @@ public class InteractiveModeControl {
 		sc.close();
 		
 		mbase.updateMember(IdMember, temp);
-		String[] MemberID = mbase.getAllMemberID();
-		for (int i=0; i < MemberID.length; i++) {
-			System.out.println(MemberID[i]);
-		}
+		//String[] MemberID = mbase.getAllMemberID();
+		//for (int i=0; i < MemberID.length; i++) {
+		//	System.out.println(MemberID[i]);
+		//}
 		
 		
 	}
