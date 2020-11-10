@@ -27,7 +27,18 @@ public class Main {
 		}
 		else if(initialAction == 2) {
 			InteractiveModeTerminal interactiveModeTerminal = new InteractiveModeTerminal();
-			interactiveModeTerminal.main();
+			System.out.println("Interactive mode stub");
+		}
+		else if(initialAction == 3) {
+			int providerAction = 0;
+			System.out.println("What action would you like to perform?");
+			System.out.println("1 = Bill ChocAn");
+			System.out.println("2 = Request Provider Directory");
+			
+			
+			
+			BillChocAn billChocAn = new BillChocAn();
+			billChocAn.displayProviderDirectory();
 		}
 	}
 	

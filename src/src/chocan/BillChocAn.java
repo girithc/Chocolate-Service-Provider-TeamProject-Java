@@ -6,6 +6,11 @@ import java.util.*;
 public class BillChocAn extends ServicePerformed {
 	ServicePerformed s1 = new ServicePerformed();
 	ProviderDirectory p1 = new ProviderDirectory();
+	
+	public BillChocAn() {
+		
+	}
+	
 	public void lookUpService() 
 	{
 		
