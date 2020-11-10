@@ -2,7 +2,7 @@ package chocan;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class Terminal {
+public class InteractiveModeTerminal {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
