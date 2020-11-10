@@ -20,9 +20,9 @@ public class ProviderTerminal extends BillChocAn {
 	{
 		writeServiceReport();
 	}
-	public void notifyProvider(char valid)
+	public void notifyProvider(String message)
 	{
-		
+		System.out.println(message);
 	}
 	public void getProviderDirectory() throws Exception
 	{

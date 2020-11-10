@@ -6,13 +6,12 @@ import java.util.*;
 public class BillChocAn extends ServicePerformed {
 	ServicePerformed s1 = new ServicePerformed();
 	ProviderDirectory p1 = new ProviderDirectory();
-	public void lookUpService() 
+	public void lookUpService(String serviceCode) throws Exception 
 	{
-		
+		p1.getServiceName(serviceCode);
 	}
 	public void displayProviderDirectory() throws Exception {
 		p1.getAllServices();
-	//	p1.getServiceFee(serviceCode);
 	}
 	public void writeServiceReport()
 	{
