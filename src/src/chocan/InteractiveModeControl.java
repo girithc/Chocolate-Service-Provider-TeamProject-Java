@@ -5,11 +5,10 @@ import java.util.Scanner;  // Import the Scanner class
 
 public class InteractiveModeControl {
 	
-	public static void addMember() throws Exception{
+	public static void addMember(Member newMember) throws Exception{
 		
 		MemberDatabase mbase =  new MemberDatabase();
 
-		Member newMember = new Member();
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Enter name:");
@@ -50,6 +49,7 @@ public class InteractiveModeControl {
 		
 		sc.close();
 		
+		mbase.addMember(newMember);
 		//mbase.addMember(newMember);
 		//String[] MemberID = mbase.getAllMemberID();
 		//for (int i=0; i < MemberID.length; i++) {
@@ -80,15 +80,15 @@ public class InteractiveModeControl {
 		
 	}
 	
-	public static void updateMember() throws Exception{
+	public static void updateMember(String IdMember, Member temp) throws Exception{
 		
 		MemberDatabase mbase =  new MemberDatabase();
 
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Enter Id:");
-		String IdMember = sc.nextLine();
-		Member temp = mbase.getMember(IdMember);
+		IdMember = sc.nextLine();
+		temp = mbase.getMember(IdMember);
 		
 		System.out.println("Update Record:");
 		
@@ -138,6 +138,139 @@ public class InteractiveModeControl {
 		
 	}
 
+	
+public static void addProvider(Provider newProvider) throws Exception{
+		
+		ProviderDatabase pbase =  new ProviderDatabase();
+
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter name:");
+		String name = sc.nextLine();
+		
+		newProvider.setName(name);
+		
+		System.out.println("Enter Id:");
+		String Id = sc.nextLine();
+		
+		newProvider.setIDNumber(Id);
+		
+		System.out.println("Enter email:");
+		String email = sc.nextLine();
+		
+		newProvider.setEmail(email);
+		
+		System.out.println("Enter street Address:");
+		String streetAddress = sc.nextLine();
+		
+		newProvider.setStreetAddress(streetAddress);
+		
+		System.out.println("Enter city:");
+		String city = sc.nextLine();
+		
+		newProvider.setCity(city);
+		
+		System.out.println("Enter state:");
+		String state = sc.nextLine();
+		
+		newProvider.setState(state);
+		
+		System.out.println("Enter Zip code:");
+		String zip = sc.nextLine();
+		
+		newProvider.setZip(zip);
+		
+		sc.close();
+		
+		pbase.addProvider(newProvider);
+		//mbase.addMember(newMember);
+		//String[] MemberID = mbase.getAllMemberID();
+		//for (int i=0; i < MemberID.length; i++) {
+		//	System.out.println(MemberID[i]);
+		//}
+		
+		
+		//printMember(newMember);	
+		
+	}
+	
+	public static void deleteProvider() throws Exception{
+		ProviderDatabase pbase =  new ProviderDatabase();
+
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter Id:");
+		String Id = sc.nextLine();
+		
+		sc.close();
+		
+		pbase.deleteProvider(Id);
+		//String[] MemberID = mbase.getAllMemberID();
+		//for (int i=0; i < MemberID.length; i++) {
+		//	System.out.println(MemberID[i]);
+		//}
+		
+		
+	}
+	
+	public static void updateProvider(String IdProvider, Provider temp) throws Exception{
+		
+		ProviderDatabase pbase =  new ProviderDatabase();
+
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter Id:");
+		IdProvider = sc.nextLine();
+		temp = pbase.getProvider(IdProvider);
+		
+		System.out.println("Update Record:");
+		
+		System.out.println("Enter name:(" + temp.getName() + ")");
+		String name = sc.nextLine();
+		
+		temp.setName(name);
+		
+		System.out.println("Enter Id:(" + temp.getIDNumber() + ")");
+		String Id = sc.nextLine();
+		
+		temp.setIDNumber(Id);
+		
+		System.out.println("Enter email:(" + temp.getEmail() + ")");
+		String email = sc.nextLine();
+		
+		temp.setEmail(email);
+		
+		System.out.println("Enter street Address:(" + temp.getStreetAddress() + ")");
+		String streetAddress = sc.nextLine();
+		
+		temp.setStreetAddress(streetAddress);
+		
+		System.out.println("Enter city:(" + temp.getCity() + ")");
+		String city = sc.nextLine();
+		
+		temp.setCity(city);
+		
+		System.out.println("Enter state:(" + temp.getState() + ")");
+		String state = sc.nextLine();
+		
+		temp.setState(state);
+		
+		System.out.println("Enter Zip code:(" + temp.getZip() + ")");
+		String zip = sc.nextLine();
+		
+		temp.setZip(zip);
+		
+		sc.close();
+		
+		pbase.updateProvider(IdProvider, temp);
+		//String[] MemberID = mbase.getAllMemberID();
+		//for (int i=0; i < MemberID.length; i++) {
+		//	System.out.println(MemberID[i]);
+		//}
+		
+		
+	}
+	
 	
 	public static void printMember(Member p) {
 		

@@ -50,17 +50,36 @@ public class InteractiveModeTerminal {
 			
 			
 			
-			if(cRecord == 1) { // Member
+			if(cRecord == 1){ // Member
 				if(cType == 1) {
-					InteractiveModeControl.addMember();
+					Member newMember = new Member();
+					InteractiveModeControl.addMember(newMember);
 				}
 				else if(cType == 2) {
+					
 					InteractiveModeControl.deleteMember();
 				}
 				else {
-					InteractiveModeControl.updateMember();
+					Member temp;
+					String Id;
+					InteractiveModeControl.updateMember(Id, temp);
 				}
 				
+			}
+			else if(cRecord == 2) {
+				if(cType == 1) {
+					Provider newProvider = new Provider();
+					InteractiveModeControl.addProvider(newProvider);
+				}
+				else if(cType == 2) {
+					
+					InteractiveModeControl.deleteProvider();
+				}
+				else {
+					Provider temp;
+					String Id;
+					InteractiveModeControl.updateProvider(Id, temp);
+				}
 			}
 			
 			
