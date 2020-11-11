@@ -11,14 +11,27 @@ public class BillChocAn extends ServicePerformed {
 		
 	}
 	
+	/**
+	 * Prompt user for service code
+	 * Display the asssociated service
+	 */
 	public void lookUpService() 
 	{
 		
 	}
+	
+	/**
+	 * Display provider directory to terminal
+	 * @throws Exception
+	 */
 	public void displayProviderDirectory() throws Exception {
 		p1.getAllServices();
-	//	p1.getServiceFee(serviceCode);
 	}
+	
+	/**
+	 * Prompt user for all the information related to a provided service
+	 * Add that service to the WeeksServices database
+	 */
 	public void writeServiceReport()
 	{
 		System.out.println("Current Date and Time:"+ s1.getCurrDateAndTime() );
