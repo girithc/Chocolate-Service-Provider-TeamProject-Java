@@ -5,6 +5,20 @@ import java.util.Scanner;  // Import the Scanner class
 
 public class InteractiveModeControl {
 	
+	public InteractiveModeControl{
+		
+	}
+	
+	public Member getMember(String id) {
+		MemberDatabase memberDatabase = new MemberDatabase();
+		return memberDatabase.getMember(id);
+	}
+	
+	public Provider getProvider(string id) {
+		ProviderDatabase providerDatabase = new ProviderDatabase();
+		return providerDatabase.getProvider(id);
+	}
+	
 	public static void addMember(Member newMember) throws Exception{
 		
 		MemberDatabase mbase =  new MemberDatabase();
