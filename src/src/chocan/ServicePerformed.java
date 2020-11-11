@@ -12,7 +12,7 @@ public class ServicePerformed {
 	private String dateProvided;
 	private int providerNumber;
 	private int memberNumber;
-	protected int serviceCode;
+	protected String serviceCode;
 	private String comments;
 	
 	/**
@@ -90,7 +90,7 @@ public class ServicePerformed {
 	 * 
 	 * @param code, code of the service being performed
 	 */
-	public void setServiceCode(int code) {
+	public void setServiceCode(String code) {
 		serviceCode = code;
 	}
 	
@@ -98,7 +98,7 @@ public class ServicePerformed {
 	 * 
 	 * @return serviceCode, returns the code of the service
 	 */
-	public int getServiceCode() {
+	public String getServiceCode() {
 		return serviceCode;
 	}
 	

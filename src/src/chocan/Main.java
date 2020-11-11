@@ -14,9 +14,9 @@ public class Main {
 			System.out.println("3 = Provider");
 			System.out.println("Or enter 4 to run the Main Accounting Procedure");
 		
-<<<<<<< HEAD
+
 		MemberDatabase MemberDatabase = new MemberDatabase();
-=======
+
 			Scanner input = new Scanner(System.in);
 			initialAction = input.nextInt();
 			
@@ -24,9 +24,7 @@ public class Main {
 				System.out.println("Invalid entry. Please try again.");
 			}
 		}
->>>>>>> branch 'master' of https://bitbucket.org/popoola/fall2020team11
-		
-<<<<<<< HEAD
+
 		MemberDatabase.deleteMember("11880129");
 		
 		Member Jared = new Member();
@@ -54,7 +52,7 @@ public class Main {
 		System.out.println("Service Name: " + serviceName);
 		System.out.println("Service Fee: " + serviceFee);
 		providerDirectory.getAllServices();
-=======
+
 		if(initialAction == 1) {
 			System.out.println("Request Reports stub");
 		}
@@ -73,7 +71,7 @@ public class Main {
 			BillChocAn billChocAn = new BillChocAn();
 			billChocAn.displayProviderDirectory();
 		}
->>>>>>> branch 'master' of https://bitbucket.org/popoola/fall2020team11
+
 	}
 	
 	
