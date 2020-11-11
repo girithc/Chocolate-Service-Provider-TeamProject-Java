@@ -44,7 +44,7 @@ public class WriteReports {
 		
 	}
 	
-	public void writeProviderReport(int code) {
+	public void writeProviderReport(String id) {
 		
 	}
 	
