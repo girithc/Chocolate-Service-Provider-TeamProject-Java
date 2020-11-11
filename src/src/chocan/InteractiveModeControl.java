@@ -14,7 +14,7 @@ public class InteractiveModeControl {
 		return memberDatabase.getMember(id);
 	}
 	
-	public Provider getProvider(string id) {
+	public Provider getProvider(String id) {
 		ProviderDatabase providerDatabase = new ProviderDatabase();
 		return providerDatabase.getProvider(id);
 	}
