@@ -7,10 +7,12 @@ public class ProviderTerminal extends BillChocAn {
  
 	private int IDNumber;
 	
-	public void swipeCard()
-	{
+	//public void swipeCard()
+	//{
 		
-	}
+	//}
+	
+	
 	public void enterIdNumber(String id) throws Exception
 	{
 		MemberDatabase m1 = new MemberDatabase();
@@ -23,7 +25,8 @@ public class ProviderTerminal extends BillChocAn {
 	}
 	public void notifyProvider(String message)
 	{
-		System.out.println(message);
+			System.out.println(message);
+		
 	}
 	public void getProviderDirectory() throws Exception
 	{

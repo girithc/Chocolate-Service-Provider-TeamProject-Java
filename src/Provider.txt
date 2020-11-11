@@ -1,6 +1,0 @@
-Provider name: Rachel Nau
-Provider number: 11862114
-Provider street address: 4144 Kenzie Boulevard
-Provider city: Jackson
-Provider state: MI
-Provider ZIP code: 49201
