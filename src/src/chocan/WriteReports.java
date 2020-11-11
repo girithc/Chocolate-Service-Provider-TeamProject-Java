@@ -20,19 +20,21 @@ public class WriteReports {
 	public void writeMemberReport(String code) throws Exception {
 		
 		if (code != "0") {
-			
-			String name = ""; //place to store member name
-				
+							
 			Member member = new Member(); //creating member variable of Member type
-			MemberDatabase memberDatabase = new MemberDatabase();
-			member = memberDatabase.getMember(code);
-			name = member.getName();
-			System.out.println(name);
+			MemberDatabase mDatabase = new MemberDatabase();
+			member = mDatabase.getMember(code);
+			//System.out.println(name);
 			
-			//FileWriter fw = new FileWriter("Member.txt");
-			//fw.write("Member name: " + name);
+			FileWriter fw = new FileWriter("Member.txt");
+			fw.write("Member name: " + member.getName() + "\n");
+			fw.write("Member number: " + code + "\n");
+			fw.write("Member street address: " + member.getStreetAddress() + "\n");
+			fw.write("Member city: " + member.getCity() + "\n");
+			fw.write("Member state: " + member.getState() + "\n");
+			fw.write("Member ZIP code: " + member.getZip() + "\n");
 			
-			//fw.close();
+			fw.close();
 		
 		//ServicesPerformed = new LinkedList<ServicePerformed>();
 		//WeeksServices weeksServices = new WeeksServices();
@@ -46,8 +48,24 @@ public class WriteReports {
 		
 	}
 	
-	public void writeProviderReport(int code) {
+	public void writeProviderReport(String code) throws Exception {
 		
+		if (code != "0") {
+			
+			Provider provider = new Provider();
+			ProviderDatabase pDatabase = new ProviderDatabase();
+			provider = pDatabase.getProvider(code);
+			
+			FileWriter fw = new FileWriter("Provider.txt");
+			fw.write("Provider name: " + provider.getName() + "\n");
+			fw.write("Provider number: " + code + "\n");
+			fw.write("Provider street address: " + provider.getStreetAddress() + "\n");
+			fw.write("Provider city: " + provider.getCity() + "\n");
+			fw.write("Provider state: " + provider.getState() + "\n");
+			fw.write("Provider ZIP code: " + provider.getZip() + "\n");
+			
+			fw.close();
+		}
 	}
 	
 	public void writeSummaryReport() {
