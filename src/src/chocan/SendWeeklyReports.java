@@ -24,4 +24,4 @@ public class SendWeeklyReports {
 			weeklyReports.writeProviderReport(0);
 			weeklyReports.writeSummaryReport();
 		}
-}
+}  
