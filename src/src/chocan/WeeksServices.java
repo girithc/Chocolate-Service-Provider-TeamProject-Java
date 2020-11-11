@@ -110,8 +110,8 @@ public class WeeksServices {
 		ServicePerformed service4 = new ServicePerformed();
 		service1.setProviderNumber(1234);
 		service2.setProviderNumber(1234);
-		service1.setServiceCode(6666);
-		service2.setServiceCode(5555);
+		service1.setServiceCode("6666");
+		service2.setServiceCode("5555");
 		service3.setProviderNumber(54321);
 		service4.setProviderNumber(65432);
 		test.addService(service1);

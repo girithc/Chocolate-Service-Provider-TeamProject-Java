@@ -42,13 +42,18 @@ public class WriteReports {
 			mServices = weeksServices.getServicesByMember(codeInt);
 			
 			for (int i = 0; i < mServices.length; i++) {
+				//System.out.println(mServices[i].getDateProvided());
 				fw.write("Date provided: " + mServices[i].getDateProvided() + "\n");
+				int pID = mServices[i].getProviderNumber();
+				String pIDString = Integer.toString(pID);
+				ProviderDatabase pDatabase = new ProviderDatabase();
+				Provider p = new Provider();
+				p = pDatabase.getProvider(pIDString);
+				fw.write("Provider name: " + p.getName() + "\n");
+				String sCode = mServices[i].getServiceCode();
+				ServicesOffered servicesOffered = new ServicesOffered();
+				fw.write("Service name: " + servicesOffered.getServiceName(sCode) + "\n");
 			}
-		//ServicesPerformed = new LinkedList<ServicePerformed>();
-		//WeeksServices weeksServices = new WeeksServices();
-		//ServicesPerformed = weeksServices.getServicesByMember(code);
-		//for (int i = 0; i < ServicesPerformed.size(); i++) {
-			//ServicesPerformed.get(0);
 			
 			fw.close();
 
