@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class WriteReports {
 	
-	//private LinkedList<ServicePerformed> ServicesPerformed;
+	private LinkedList<ServicePerformed> ServicesPerformed;
 	
 		
 	public WriteReports() {
@@ -34,14 +34,24 @@ public class WriteReports {
 			fw.write("Member state: " + member.getState() + "\n");
 			fw.write("Member ZIP code: " + member.getZip() + "\n");
 			
-			fw.close();
-		
+			
+			WeeksServices weeksServices = new WeeksServices();
+			//ServicesPerformed = new LinkedList<ServicePerformed>();
+			int codeInt = Integer.parseInt(code);
+			ServicePerformed[] mServices = new ServicePerformed[100];
+			mServices = weeksServices.getServicesByMember(codeInt);
+			
+			for (int i = 0; i < mServices.length; i++) {
+				fw.write("Date provided: " + mServices[i].getDateProvided() + "\n");
+			}
 		//ServicesPerformed = new LinkedList<ServicePerformed>();
 		//WeeksServices weeksServices = new WeeksServices();
 		//ServicesPerformed = weeksServices.getServicesByMember(code);
 		//for (int i = 0; i < ServicesPerformed.size(); i++) {
 			//ServicesPerformed.get(0);
 			
+			fw.close();
+
 		}
 		
 		

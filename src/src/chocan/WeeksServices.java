@@ -102,7 +102,7 @@ public class WeeksServices {
 	/**
 	 * Main function for testing
 	 */
-	public static int main(String[] args) {
+	public static void main(String[] args) {
 		WeeksServices test = new WeeksServices();
 		ServicePerformed service1 = new ServicePerformed();
 		ServicePerformed service2 = new ServicePerformed();
