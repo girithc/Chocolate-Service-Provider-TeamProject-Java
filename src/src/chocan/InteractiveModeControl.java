@@ -1,10 +1,12 @@
 package chocan;
 import java.io.FileNotFoundException;
+import java.util.LinkedList;
+import java.util.ListIterator;
 import java.util.Scanner;  // Import the Scanner class
 
 
 public class InteractiveModeControl {
-	
+
 	public static void addMember(Member newMember) throws Exception{
 		
 		MemberDatabase mbase =  new MemberDatabase();
