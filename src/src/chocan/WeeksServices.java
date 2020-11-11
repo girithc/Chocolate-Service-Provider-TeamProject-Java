@@ -1,4 +1,4 @@
-package chocan;
+package src.chocan;
 import java.util.*;
 
 
@@ -102,6 +102,7 @@ public class WeeksServices {
 	/**
 	 * Main function for testing
 	 */
+	/*
 	public static int main(String[] args) {
 		WeeksServices test = new WeeksServices();
 		ServicePerformed service1 = new ServicePerformed();
@@ -121,6 +122,7 @@ public class WeeksServices {
 		test.printArray(test.getServicesByProvider(1234), 100);
 		test.printList();
 	}
+	*/
 }
 
 
