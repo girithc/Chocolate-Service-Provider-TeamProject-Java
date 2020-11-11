@@ -11,7 +11,7 @@ public class SendWeeklyReports {
 		/**
 		 * Constructor for service
 		 */
-		public SendWeeklyReport() {
+		public SendWeeklyReports() {
 
 		}
 		
