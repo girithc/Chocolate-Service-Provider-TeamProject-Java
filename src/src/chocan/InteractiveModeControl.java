@@ -5,16 +5,16 @@ import java.util.Scanner;  // Import the Scanner class
 
 public class InteractiveModeControl {
 	
-	public InteractiveModeControl{
+	public InteractiveModeControl(){
 		
 	}
 	
-	public Member getMember(String id) {
+	public Member getMember(String id) throws Exception {
 		MemberDatabase memberDatabase = new MemberDatabase();
 		return memberDatabase.getMember(id);
 	}
 	
-	public Provider getProvider(String id) {
+	public Provider getProvider(String id) throws Exception {
 		ProviderDatabase providerDatabase = new ProviderDatabase();
 		return providerDatabase.getProvider(id);
 	}
