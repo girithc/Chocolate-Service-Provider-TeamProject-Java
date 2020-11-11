@@ -1,4 +1,5 @@
-package src.chocan;
+package chocan;
+import java.io.File;
 import java.util.*;
 
 
@@ -16,7 +17,45 @@ public class WeeksServices {
 	 * Constructor for services list
 	 */
 	public WeeksServices() {
+		/*
+		Members = new LinkedList<Member>(); // Creating the Members linked list
+		File database = new File("MemberDatabase.csv"); //Opening the .csv file
 		
+		Scanner reader = new Scanner(database); // Created the scanner object to read the file
+		
+		
+		while(reader.hasNextLine()) { // While there are still more Members
+			String MemberDataLine = reader.nextLine(); //Read the whole line of data
+			String[] MemberData = MemberDataLine.split(",", 0); // Split line into an array along the tabs since it is a tab delimited
+			// 0 = name
+			// 1 = IDNumber
+			// 2 = email
+			// 3 = streetAddress
+			// 4 = city
+			// 5 = state
+			// 6 = zip
+			// 7 = suspended
+			Member Member = new Member();
+			Member.setName(MemberData[0]);
+			Member.setIDNumber(MemberData[1]);
+			Member.setEmail(MemberData[2]);
+			Member.setStreetAddress(MemberData[3]);
+			Member.setCity(MemberData[4]);
+			Member.setState(MemberData[5]);
+			Member.setZip(MemberData[6]);
+			if(MemberData[7].equals("T")) {
+				Member.setSuspended(true);
+			}
+			else {
+				Member.setSuspended(false);
+			}
+			
+			Members.add(Member); // Adding to database
+			
+		}
+		
+		reader.close(); // Closing the reader object
+		*/
 	}
 	
 	/**
@@ -102,7 +141,7 @@ public class WeeksServices {
 	/**
 	 * Main function for testing
 	 */
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	/*
 	public static int main(String[] args) {
 =======

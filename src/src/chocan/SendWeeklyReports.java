@@ -1,4 +1,4 @@
-package src.chocan;
+package chocan;
 
 
 /**
@@ -9,7 +9,7 @@ package src.chocan;
 public class SendWeeklyReports {
 
 		/**
-		 * Constructor for service
+		 * Constructor for sendWeeklyReports
 		 */
 		public SendWeeklyReports() {
 
@@ -17,9 +17,11 @@ public class SendWeeklyReports {
 		
 		/**
 		 * Void function calling WriteReport to send out weekly reports
+		 * Creates all the weekly reports, including member reports, provider reports, summary reports, and EFT reports
 		 */
+		
 		public void mainAccountingProcedure() {
-			WriteReport weeklyReports = new WriteReports();
+			WriteReports weeklyReports = new WriteReports();
 			weeklyReports.writeMemberReport(0);
 			weeklyReports.writeProviderReport(0);
 			weeklyReports.writeSummaryReport();

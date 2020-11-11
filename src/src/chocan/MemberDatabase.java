@@ -26,7 +26,7 @@ public class MemberDatabase {
 		
 		while(reader.hasNextLine()) { // While there are still more Members
 			String MemberDataLine = reader.nextLine(); //Read the whole line of data
-			String[] MemberData = MemberDataLine.split("\t", 0); // Split line into an array along the tabs since it is a tab delimited
+			String[] MemberData = MemberDataLine.split(",", 0); // Split line into an array along the tabs since it is a tab delimited
 			// 0 = name
 			// 1 = IDNumber
 			// 2 = email
@@ -69,13 +69,13 @@ public class MemberDatabase {
 		while (listIterator.hasNext()) { // While there are still Members
 			Member current = listIterator.next();
 			// This will create a tab delimited list in the proper order
-			writer.write(current.getName() + "\t");
-			writer.write(current.getIDNumber() + "\t");
-			writer.write(current.getEmail() + "\t");
-			writer.write(current.getStreetAddress() + "\t");
-			writer.write(current.getCity() + "\t");
-			writer.write(current.getState() + "\t");
-			writer.write(current.getZip() + "\t");
+			writer.write(current.getName() + ",");
+			writer.write(current.getIDNumber() + ",");
+			writer.write(current.getEmail() + ",");
+			writer.write(current.getStreetAddress() + ",");
+			writer.write(current.getCity() + ",");
+			writer.write(current.getState() + ",");
+			writer.write(current.getZip() + ",");
 			writer.write(current.getSuspended() + "\n");
 		}
 		writer.close(); // Closing the writer object

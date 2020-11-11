@@ -4,7 +4,12 @@ import java.io.*;
 
 public class ServicesOffered {
 	
-	
+/**
+ * Gets a service name given a service code
+ * @param serviceCode
+ * @return service name
+ * @throws Exception
+ */
 public String getServiceName(String serviceCode) throws Exception {
 	int bool = 0;
 	String returnItem = "";
@@ -26,6 +31,12 @@ public String getServiceName(String serviceCode) throws Exception {
 	return returnItem;
 }
 
+/**
+ * Gets a service fee given a service code
+ * @param serviceCode
+ * @return service fee
+ * @throws Exception
+ */
 public String getServiceFee(String serviceCode) throws Exception {
 	int bool = 0;
 	String returnItem = "";
