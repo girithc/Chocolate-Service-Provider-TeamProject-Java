@@ -18,19 +18,21 @@ public class WriteReports {
 	}
 	
 	public void writeMemberReport(String code) throws Exception {
+		
 		if (code != "0") {
 			
-		String name = "";
+			String name = ""; //place to store member name
+				
+			Member member = new Member(); //creating member variable of Member type
+			MemberDatabase memberDatabase = new MemberDatabase();
+			member = memberDatabase.getMember(code);
+			name = member.getName();
+			System.out.println(name);
 			
-		Member member = new Member();
-		MemberDatabase memberDatabase = new MemberDatabase();
-		member = memberDatabase.getMember(code);
-		name = member.getName();
-		
-		FileWriter fw = new FileWriter("Member.txt");
-		fw.write("Member name: " + name);
-		
-		fw.close();
+			//FileWriter fw = new FileWriter("Member.txt");
+			//fw.write("Member name: " + name);
+			
+			//fw.close();
 		
 		//ServicesPerformed = new LinkedList<ServicePerformed>();
 		//WeeksServices weeksServices = new WeeksServices();
