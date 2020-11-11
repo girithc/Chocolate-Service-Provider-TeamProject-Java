@@ -18,18 +18,18 @@ public class RequestReports{
 		String name = scanner.next(); 
 		if(name.equalsIgnoreCase("member"))
 		{
-			writeMemberReport(id);
+			//writeMemberReport(id);
 		}
 		if(name.equalsIgnoreCase("provider"))
 		{
-			writeProviderReport(id);
+			//writeProviderReport(id);
 		}
 		{
-			writeSummaryReport
+			//writeSummaryReport
 		}
 		if(name.equalsIgnoreCase("eft"))
 		{
-			writeEFTReport
+			//writeEFTReport
 		}
 		
 }

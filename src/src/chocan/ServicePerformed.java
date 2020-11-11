@@ -12,7 +12,7 @@ public class ServicePerformed {
 	private String dateProvided;
 	private int providerNumber;
 	private int memberNumber;
-	protected int serviceCode;
+	protected String serviceCode;
 	private String comments;
 	
 	/**
@@ -23,7 +23,7 @@ public class ServicePerformed {
 	}
 	
 	/**
-	 * Used to set the name
+	 * 
 	 * @param dateAndTime, current date and time to be input
 	 */
 	public void setCurrDateAndTime(String dateAndTime) {
@@ -31,7 +31,7 @@ public class ServicePerformed {
 	}
 	
 	/**
-	 * Used to retrieve the name
+	 * 
 	 * @return currDateAndTime, returns the current date and time
 	 */
 	public String getCurrDateAndTime() {
@@ -39,7 +39,7 @@ public class ServicePerformed {
 	}
 	
 	/**
-	 * Used to set the name
+	 * 
 	 * @param date, date the service was provided on
 	 */
 	public void setDateProvided(String date) {
@@ -47,7 +47,7 @@ public class ServicePerformed {
 	}
 	
 	/**
-	 * Used to retrieve the name
+	 * 
 	 * @return dateProvided, returns the date of the service
 	 */
 	public String getDateProvided() {
@@ -55,7 +55,7 @@ public class ServicePerformed {
 	}
 	
 	/**
-	 * Used to set the name
+	 * 
 	 * @param id, the provider id assigned with the service
 	 */
 	public void setProviderNumber(int id) {
@@ -63,7 +63,7 @@ public class ServicePerformed {
 	}
 	
 	/**
-	 * Used to retrieve the name
+	 * 
 	 * @return providerNumber, returns the id of the provider
 	 */
 	public int getProviderNumber() {
@@ -71,7 +71,7 @@ public class ServicePerformed {
 	}
 	
 	/**
-	 * Used to set the name
+	 * 
 	 * @param id, member id who recieved the service
 	 */
 	public void setMemberNumber(int id) {
@@ -79,7 +79,7 @@ public class ServicePerformed {
 	}
 
 	/**
-	 * Used to retrieve the name
+	 * 
 	 * @return memberNumber, returns the id of the member
 	 */
 	public int getMemberNumber() {
@@ -87,23 +87,23 @@ public class ServicePerformed {
 	}
 	
 	/**
-	 * Used to set the name
+	 * 
 	 * @param code, code of the service being performed
 	 */
-	public void setServiceCode(int code) {
+	public void setServiceCode(String code) {
 		serviceCode = code;
 	}
 	
 	/**
-	 * Used to retrieve the name
+	 * 
 	 * @return serviceCode, returns the code of the service
 	 */
-	public int getServiceCode() {
+	public String getServiceCode() {
 		return serviceCode;
 	}
 	
 	/**
-	 * Used to set the name
+	 * 
 	 * @param inputComments, comments added to teh service
 	 */
 	public void setComments(String inputComments) {
@@ -111,7 +111,7 @@ public class ServicePerformed {
 	}
 	
 	/**
-	 * Used to retrieve the name
+	 * 
 	 * @return comments, returns comments on the service 
 	 */
 	public String getComments() {
