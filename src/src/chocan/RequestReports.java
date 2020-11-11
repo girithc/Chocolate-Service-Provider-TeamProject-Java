@@ -38,13 +38,11 @@ public class RequestReports extends WriteReports{
 	 		if(name.equalsIgnoreCase("member report"))
 	 		{
 	 			idPrompt();
-		
-				r1.writeMemberReport(id);
+	 			r1.writeMemberReport(id);
 	 		}
 	 		if(name.equalsIgnoreCase("provider report"))
 	 		{
 	 			idPrompt();
-				
 				r1.writeProviderReport(id);
 	 		}
 			if(name.equalsIgnoreCase("summary report"))
