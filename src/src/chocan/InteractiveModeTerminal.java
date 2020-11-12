@@ -1,45 +1,57 @@
 package chocan;
-import java.io.BufferedReader;
+
 import java.util.Scanner;  // Import the Scanner class
-import java.io.InputStreamReader;
+
 
 public class InteractiveModeTerminal {
 
-	
-	public InteractiveModeTerminal() {
-		
-	}
-	
-	public String promptForAction() {
-		
-		System.out.println("Choose an action to be performed");
-		System.out.println("Enter '1' for Add Record");
-		System.out.println("Enter '2' for Delete Record");
-		System.out.println("Enter '3' for Update Record");
-		
-		Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+  public InteractiveModeTerminal() {
 
-	    String action = myObj.nextLine();
-	    
-	    return action;
-		
+  }
+
+  /**
+   * Prompts for user input to choose action
+   * @return String holding the action chosen by the user
+   * @author annekatherinefike
+   */
+  public String promptForAction() {
+
+    System.out.println("Choose an action to be performed");
+	System.out.println("Enter '1' for Add Record");
+	System.out.println("Enter '2' for Delete Record");
+	System.out.println("Enter '3' for Update Record");
+    Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+	String action = myObj.nextLine();
+	myObj.close();
+	return action;
+	
+  }
+	/**
+	 * Prompts for user input to choose if the action is to be done for a member or provider
+	 * @return String holding the user's input 
+	 * @author annekatherinefike
+	 */
+  public String promptForMemberOrProvider() {
+
+    System.out.println("Choose to perform action for either a member or provider.");
+    System.out.println("Enter '1' to choose member");
+	System.out.println("Enter '2' to choose provider");
+	
+	Scanner mObj = new Scanner(System.in);
+	
+	String action = mObj.nextLine();
+	mObj.close();
+	return action;
+	
 	}
 	
-	public String promptForMemberOrProvider() {
-		
-		System.out.println("Choose to perform action for either a member or provider.");
-		System.out.println("Enter '1' to choose member");
-		System.out.println("Enter '2' to choose provider");
-		
-		Scanner mObj = new Scanner(System.in);
-		
-		String action = mObj.nextLine();
-		
-		return action;
-		
-	}
-	
-	public void performAction(String action, String memberOrProvider) {
+  /**
+   * Performs action based on return values of promptForAction and promptForMemberOrProvider
+   * @param action
+   * @param memberOrProvider
+   * @author annekatherinefike
+   */
+  public void performAction(String action, String memberOrProvider) {
 		
 		if (action.equalsIgnoreCase("1") && memberOrProvider.equalsIgnoreCase("1")) {
 			
