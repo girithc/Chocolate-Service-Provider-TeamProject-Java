@@ -50,8 +50,9 @@ public class InteractiveModeTerminal {
    * @param action
    * @param memberOrProvider
    * @author annekatherinefike
+ * @throws Exception 
    */
-  public void performAction(String action, String memberOrProvider) {
+  public void performAction(String action, String memberOrProvider) throws Exception {
 		
 		if (action.equalsIgnoreCase("1") && memberOrProvider.equalsIgnoreCase("1")) {
 			

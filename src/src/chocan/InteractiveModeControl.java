@@ -22,7 +22,7 @@ public class InteractiveModeControl {
 	}
 	
 
-	public static void addMember(Member newMember) throws Exception{
+	public void addMember(Member newMember) throws Exception{
 		
 		MemberDatabase mbase =  new MemberDatabase();
 
@@ -78,7 +78,7 @@ public class InteractiveModeControl {
 		
 	}
 	
-	public static void deleteMember() throws Exception{
+	public void deleteMember() throws Exception{
 		MemberDatabase mbase =  new MemberDatabase();
 
 		Scanner sc = new Scanner(System.in);
@@ -97,7 +97,7 @@ public class InteractiveModeControl {
 		
 	}
 	
-	public static void updateMember(String IdMember, Member temp) throws Exception{
+	public void updateMember(String IdMember, Member temp) throws Exception{
 		
 		MemberDatabase mbase =  new MemberDatabase();
 
@@ -156,7 +156,7 @@ public class InteractiveModeControl {
 	}
 
 	
-public static void addProvider(Provider newProvider) throws Exception{
+public void addProvider(Provider newProvider) throws Exception{
 		
 		ProviderDatabase pbase =  new ProviderDatabase();
 
@@ -211,7 +211,7 @@ public static void addProvider(Provider newProvider) throws Exception{
 		
 	}
 	
-	public static void deleteProvider() throws Exception{
+	public void deleteProvider() throws Exception{
 		ProviderDatabase pbase =  new ProviderDatabase();
 
 		Scanner sc = new Scanner(System.in);
@@ -230,7 +230,7 @@ public static void addProvider(Provider newProvider) throws Exception{
 		
 	}
 	
-	public static void updateProvider(String IdProvider, Provider temp) throws Exception{
+	public void updateProvider(String IdProvider, Provider temp) throws Exception{
 		
 		ProviderDatabase pbase =  new ProviderDatabase();
 
@@ -289,7 +289,7 @@ public static void addProvider(Provider newProvider) throws Exception{
 	}
 	
 	
-	public static void printMember(Member p) {
+	public void printMember(Member p) {
 		
 
 		System.out.println("Member added:");
