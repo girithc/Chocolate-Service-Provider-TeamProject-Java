@@ -18,12 +18,13 @@ public class SendWeeklyReports {
 		/**
 		 * Void function calling WriteReport to send out weekly reports
 		 * Creates all the weekly reports, including member reports, provider reports, summary reports, and EFT reports
+		 * @throws Exception 
 		 */
 		
-		public void mainAccountingProcedure() {
+		public void mainAccountingProcedure() throws Exception {
 			WriteReports weeklyReports = new WriteReports();
-			weeklyReports.writeMemberReport(0);
-			weeklyReports.writeProviderReport(0);
+			weeklyReports.writeMemberReport("0");
+			weeklyReports.writeProviderReport("0");
 			weeklyReports.writeSummaryReport();
 		}
 }  
