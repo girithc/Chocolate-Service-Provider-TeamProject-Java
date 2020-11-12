@@ -10,33 +10,52 @@ import java.util.Scanner;
 
 public class WriteReports {
 	
-	//private LinkedList<ServicePerformed> ServicesPerformed;
-	
 		
 	public WriteReports() {
-		//ServicesPerformed = new LinkedList<ServicePerformed>();
+		
 	}
 	
 	public void writeMemberReport(String code) throws Exception{
+		
 		if (code != "0") {
-			
-		String name = "";
-			
-		Member member = new Member();
-		MemberDatabase memberDatabase = new MemberDatabase();
-		member = memberDatabase.getMember(code);
-		name = member.getName();
 		
-		FileWriter fw = new FileWriter("Member.txt");
-		fw.write("Member name: " + name);
+			Member member = new Member();
+			MemberDatabase mDatabase = new MemberDatabase();
+			member = mDatabase.getMember(code);
 		
-		fw.close();
-		
+			FileWriter fw = new FileWriter("Member.txt");
+			fw.write("Member name: " + member.getName() + "\n");
+			fw.write("Member number: " + code + "\n");
+			fw.write("Member street address: " + member.getStreetAddress() + "\n");
+			fw.write("Member city: " + member.getCity() + "\n");
+			fw.write("Member state: " + member.getState() + "\n");
+			fw.write("Member ZIP code: " + member.getZip() + "\n");
+		//System.out.println(name);
+		//
+		WeeksServices weeksServices = new WeeksServices();
 		//ServicesPerformed = new LinkedList<ServicePerformed>();
-		//WeeksServices weeksServices = new WeeksServices();
-		//ServicesPerformed = weeksServices.getServicesByMember(code);
-		//for (int i = 0; i < ServicesPerformed.size(); i++) {
-			//ServicesPerformed.get(0);
+		int codeInt = Integer.parseInt(code);
+		ServicePerformed[] mServices = new ServicePerformed[100];
+		//WeeksServices mServices = new WeeksServices();
+		mServices = weeksServices.getServicesByMember(codeInt);
+			
+			for (int i = 0; i < mServices.length; i++) {
+				//System.out.println(mServices[i].getDateProvided());
+				fw.write("Date provided: " + mServices[i].getDateProvided() + "\n");
+				int pID = mServices[i].getProviderNumber();
+				String pIDString = Integer.toString(pID);
+				ProviderDatabase pDatabase = new ProviderDatabase();
+				Provider p = new Provider();
+				p = pDatabase.getProvider(pIDString);
+				fw.write("Provider name: " + p.getName() + "\n");
+				int sCode = mServices[i].getServiceCode();
+				String serviceCode = Integer.toString(sCode);
+				ServicesOffered servicesOffered = new ServicesOffered();
+				fw.write("Service name: " + servicesOffered.getServiceName(serviceCode) + "\n");
+			}
+			
+			fw.close();
+		
 			
 		}
 		
@@ -44,8 +63,23 @@ public class WriteReports {
 		
 	}
 	
-	public void writeProviderReport(String id) {
+	public void writeProviderReport(String code) throws Exception {
 		
+	 	if (code != "0") {
+	 		
+			Provider provider = new Provider();
+			ProviderDatabase pDatabase = new ProviderDatabase();
+			provider = pDatabase.getProvider(code);			
+			FileWriter fw = new FileWriter("Provider.txt");
+			fw.write("Provider name: " + provider.getName() + "\n");
+			fw.write("Provider number: " + code + "\n");
+			fw.write("Provider street address: " + provider.getStreetAddress() + "\n");
+			fw.write("Provider city: " + provider.getCity() + "\n");
+			fw.write("Provider state: " + provider.getState() + "\n");
+			fw.write("Provider ZIP code: " + provider.getZip() + "\n");
+			fw.close();
+			
+	 	}
 	}
 	
 	public void writeSummaryReport() {
