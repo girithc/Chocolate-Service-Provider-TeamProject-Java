@@ -10,8 +10,8 @@ public class MainTemp {
 	public static void main(String[] args) throws Exception {
 
 	WriteReports writeReports = new WriteReports();
-	String code = "11862114";
-	writeReports.writeProviderReport(code);
+	String code = "11547298";
+	writeReports.writeMemberReport(code);
 	
 	}
 }

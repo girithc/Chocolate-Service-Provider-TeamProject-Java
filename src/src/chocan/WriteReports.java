@@ -30,14 +30,13 @@ public class WriteReports {
 			fw.write("Member city: " + member.getCity() + "\n");
 			fw.write("Member state: " + member.getState() + "\n");
 			fw.write("Member ZIP code: " + member.getZip() + "\n");
-		//System.out.println(name);
-		//
-		WeeksServices weeksServices = new WeeksServices();
+
+			/*WeeksServices weeksServices = new WeeksServices();
 		//ServicesPerformed = new LinkedList<ServicePerformed>();
-		int codeInt = Integer.parseInt(code);
-		ServicePerformed[] mServices = new ServicePerformed[100];
+			int codeInt = Integer.parseInt(code);
+			ServicePerformed[] mServices = new ServicePerformed[100];
 		//WeeksServices mServices = new WeeksServices();
-		mServices = weeksServices.getServicesByMember(codeInt);
+			mServices = weeksServices.getServicesByMember(codeInt);
 			
 			for (int i = 0; i < mServices.length; i++) {
 				//System.out.println(mServices[i].getDateProvided());
@@ -52,7 +51,7 @@ public class WriteReports {
 				String serviceCode = Integer.toString(sCode);
 				ServicesOffered servicesOffered = new ServicesOffered();
 				fw.write("Service name: " + servicesOffered.getServiceName(serviceCode) + "\n");
-			}
+			}*/
 			
 			fw.close();
 		
