@@ -59,7 +59,7 @@ public class InteractiveModeTerminal {
 			Member member = new Member();
 			InteractiveModeControl interactiveModeControl = new InteractiveModeControl();
 			
-			//interactiveModeControl.addMember(member);
+			interactiveModeControl.addMember(member);
 				
 		}
 		
@@ -68,67 +68,69 @@ public class InteractiveModeTerminal {
 			Provider provider = new Provider();
 			InteractiveModeControl interactiveModeControl = new InteractiveModeControl();
 			
-			//interactiveModeControl.addProvider(provider);
+			interactiveModeControl.addProvider(provider);
 				
 		}
 		
 		else if (action.equalsIgnoreCase("2") && memberOrProvider.equalsIgnoreCase("1")) {
 			
-			Scanner mObj = new Scanner(System.in);
+			/*Scanner mObj = new Scanner(System.in);
 			System.out.println("Enter member ID of member to be deleted: ");
 			
 			String mID = mObj.nextLine();
-			int mIDNum = Integer.parseInt(mID);
+			int mIDNum = Integer.parseInt(mID);*/
 			
 			InteractiveModeControl interactiveModeControl = new InteractiveModeControl();
 			
-			//interactiveModeControl.deleteMember(mIDNum);
+			interactiveModeControl.deleteMember();
 				
 		}
 		
 		else if (action.equalsIgnoreCase("2") && memberOrProvider.equalsIgnoreCase("2")) {
 			
-			Scanner mObj = new Scanner(System.in);
+			/*Scanner mObj = new Scanner(System.in);
 			System.out.println("Enter provider ID of provider to be deleted: ");
 			
 			String pID = mObj.nextLine();
-			int pIDNum = Integer.parseInt(pID);
+			int pIDNum = Integer.parseInt(pID);*/
 			
 			InteractiveModeControl interactiveModeControl = new InteractiveModeControl();
 			
-			//interactiveModeControl.deleteProvider(pIDNum);
+			interactiveModeControl.deleteProvider();
 				
 		}
 		
 		else if (action.equalsIgnoreCase("3") && memberOrProvider.equalsIgnoreCase("1")) {
 			
-			Scanner mObj = new Scanner(System.in);
-			System.out.println("Enter member ID of member to be updated: ");
+			/*Scanner mObj = new Scanner(System.in);
+			System.out.println("Enter member ID of member to be updated: ");*/
 			
-			String mID = mObj.nextLine();
-			int mIDNum = Integer.parseInt(mID);
+			String mID = "";
+			//int mIDNum = Integer.parseInt(mID);
 			
 			InteractiveModeControl interactiveModeControl = new InteractiveModeControl();
 			Member member = new Member();
 			
 			//member = interactiveModeControl.getMember(mIDNum);
-			//interactiveModeControl.updateMember(mIDNum, member);
+			interactiveModeControl.updateMember(mID, member);
 				
 		}
 		
 		else if (action.equalsIgnoreCase("3") && memberOrProvider.equalsIgnoreCase("2")) {
 			
-			Scanner mObj = new Scanner(System.in);
+			/*Scanner mObj = new Scanner(System.in);
 			System.out.println("Enter provider ID of provider to be updated: ");
 			
 			String pID = mObj.nextLine();
-			int pIDNum = Integer.parseInt(pID);
+			int pIDNum = Integer.parseInt(pID);*/
+			
+			String pID = "";
 			
 			InteractiveModeControl interactiveModeControl = new InteractiveModeControl();
 			Provider provider = new Provider();
 			
 			//provider = interactiveModeControl.getProvider(pIDNum);
-			//interactiveModeControl.updateMember(pIDNum, provider);
+			interactiveModeControl.updateProvider(pID, provider);
 				
 		}
 		
