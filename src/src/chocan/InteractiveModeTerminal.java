@@ -3,16 +3,26 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class InteractiveModeTerminal {
-<<<<<<< HEAD
 
-=======
 	
 	public InteractiveModeTerminal() {
 		
 	}
 	
->>>>>>> branch 'master' of https://bitbucket.org/popoola/fall2020team11
-	public static void main(String[] args) throws Exception {
+	public void promptForAction() {
+		
+	}
+	
+	public void promptForMemberOrProvider() {
+		
+	}
+	
+	public void performAction() {
+		
+	}
+	
+
+	/*public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		
 		System.out.println("Select an action to be performed");
@@ -93,6 +103,6 @@ public class InteractiveModeTerminal {
 		
 		
 
-	}
+	}*/
 
 }
