@@ -11,7 +11,7 @@ public class MainTemp {
 
 	WriteReports writeReports = new WriteReports();
 	String code = "11547298";
-	writeReports.writeMemberReport(code);
+	writeReports.writeProviderReport(code);
 	
 	}
 }
