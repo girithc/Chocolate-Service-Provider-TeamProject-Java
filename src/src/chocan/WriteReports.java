@@ -10,11 +10,19 @@ import java.util.Scanner;
 
 public class WriteReports {
 	
-		
+	/**
+	 * 	Constructor
+	 */
 	public WriteReports() {
 		
 	}
 	
+	/**
+	 * Writes individual member report based on given member code or writes weekly member reports
+	 * @param code
+	 * @throws Exception
+	 * @author annekatherinefike
+	 */
 	public void writeMemberReport(String code) throws Exception {
 		
 		if (code.equals("0")) {
@@ -112,6 +120,12 @@ public class WriteReports {
 		
 	}
 	
+	/**
+	 * Writes individual provider report based on given provider code or writes weekly provider reports
+	 * @param code
+	 * @throws Exception
+	 * @author annekatherinefike
+	 */
 	public void writeProviderReport(String code) throws Exception {
 		
 	 	if (code.equals("0")) {
@@ -224,6 +238,11 @@ public class WriteReports {
 	 	}
 	}
 	
+	/**
+	 * Writes summary report for the week
+	 * @throws Exception
+	 * @author annekatherinefike
+	 */
 	public void writeSummaryReport() throws Exception {
 		
 		FileWriter fw = new FileWriter("Summary.txt");
@@ -282,6 +301,11 @@ public class WriteReports {
 		
 	}
 	
+	/**
+	 * Writes EFT Report for the week
+	 * @throws Exception
+	 * @author annekatherinefike
+	 */
 	public void writeEFTReports() throws Exception {
 		
 		FileWriter fw = new FileWriter("EFT.txt");
