@@ -15,10 +15,14 @@ public class WriteReports {
 		
 	}
 	
-	public void writeMemberReport(String code) throws Exception{
+	public void writeMemberReport(String code) throws Exception {
 		
-		if (code != "0") {
+		if (code.equals("0")) {
 		
+		}	
+		
+		else {
+			
 			Member member = new Member();
 			MemberDatabase mDatabase = new MemberDatabase();
 			member = mDatabase.getMember(code);
@@ -31,11 +35,9 @@ public class WriteReports {
 			fw.write("Member state: " + member.getState() + "\n");
 			fw.write("Member ZIP code: " + member.getZip() + "\n");
 
-			/*WeeksServices weeksServices = new WeeksServices();
-		//ServicesPerformed = new LinkedList<ServicePerformed>();
+			WeeksServices weeksServices = new WeeksServices();
 			int codeInt = Integer.parseInt(code);
 			ServicePerformed[] mServices = new ServicePerformed[100];
-		//WeeksServices mServices = new WeeksServices();
 			mServices = weeksServices.getServicesByMember(codeInt);
 			
 			for (int i = 0; i < mServices.length; i++) {
@@ -51,22 +53,27 @@ public class WriteReports {
 				String serviceCode = Integer.toString(sCode);
 				ServicesOffered servicesOffered = new ServicesOffered();
 				fw.write("Service name: " + servicesOffered.getServiceName(serviceCode) + "\n");
-			}*/
+			}
 			
 			fw.close();
 		
 			
-		}
-		
+		}	
 		
 		
 	}
 	
 	public void writeProviderReport(String code) throws Exception {
 		
-	 	if (code != "0") {
+	 	if (code.equals("0")) {
+			
+			
+			
+	 	}
+	 	
+	 	else {
 	 		
-			Provider provider = new Provider();
+	 		Provider provider = new Provider();
 			ProviderDatabase pDatabase = new ProviderDatabase();
 			provider = pDatabase.getProvider(code);			
 			FileWriter fw = new FileWriter("Provider.txt");
@@ -77,7 +84,6 @@ public class WriteReports {
 			fw.write("Provider state: " + provider.getState() + "\n");
 			fw.write("Provider ZIP code: " + provider.getZip() + "\n");
 			fw.close();
-			
 	 	}
 	}
 	
