@@ -90,6 +90,30 @@ public class WriteReports {
 			ServicePerformed[] pServices = new ServicePerformed[100];
 			pServices = weeksServices.getServicesByProvider(codeInt);
 			
+			int totalFee = 0;
+			
+			for (int i = 0; i < pServices.length; i++) {
+				fw.write("Date of service: " + pServices[i].getDateProvided() + "\n");
+				fw.write("Date and time data were received by the computer: " + pServices[i].getCurrDateAndTime() + "\n");
+				int mID = pServices[i].getMemberNumber();
+				String mIDString = Integer.toString(mID);
+				MemberDatabase mDatabase = new MemberDatabase();
+				Member m = new Member();
+				m = mDatabase.getMember(mIDString);
+				fw.write("Member name: " + m.getName() + "\n");
+				fw.write("Service code: " + pServices[i].getServiceCode() + "\n");
+				int sCode = pServices[i].getServiceCode();
+				String stringCode = Integer.toString(sCode);
+				ProviderDirectory pDirectory = new ProviderDirectory();
+				fw.write("Fee to be paid: $" + pDirectory.getServiceFee(stringCode) + "\n");
+				String serviceFee = pDirectory.getServiceFee(stringCode);
+				int numFee = Integer.parseInt(serviceFee);
+				totalFee = totalFee + numFee;
+			}
+			
+			fw.write("Total number of consulatations with members: " + pServices.length + "\n");
+			fw.write("Total fee for week: $" + totalFee + "\n");
+			
 			
 	 	}
 	}
