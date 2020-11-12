@@ -1,4 +1,4 @@
-package chocan;
+package src.chocan;
 
 /**
  * Class for services
@@ -15,7 +15,7 @@ public class ServicePerformed {
 	private int serviceCode;
 	private String comments;
 	
-	/**
+	/** 
 	 * Constructor for service
 	 */
 	public ServicePerformed() {
