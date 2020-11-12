@@ -282,9 +282,54 @@ public class WriteReports {
 		
 	}
 	
-	public void writeEFTReports() {
+	public void writeEFTReports() throws Exception {
 		
+		FileWriter fw = new FileWriter("EFT.txt");
 		
+		ProviderDatabase proDatabase = new ProviderDatabase();
+		String[] allProIDs = new String[100];
+		allProIDs = proDatabase.getAllProviderID();
+		ServicePerformed[] proServices = new ServicePerformed[100];
+		
+		WeeksServices wServices = new WeeksServices();
+		
+		for (int i = 0; i < allProIDs.length; i++) { // loops through every provider in provider database
+			
+			String pID = allProIDs[i];
+			int pIDNum = Integer.parseInt(pID);
+			proServices = wServices.getServicesByProvider(pIDNum);
+			
+			if (!(proServices.equals(null))) { // if the list is not empty, get ServicePerformed information
+				
+				Provider provider = new Provider();
+				ProviderDatabase pDatabase = new ProviderDatabase();
+				provider = pDatabase.getProvider(pID);			
+				fw.write("Provider name: " + provider.getName() + "\n");
+				
+				WeeksServices weeksServices = new WeeksServices();
+				int codeInt = Integer.parseInt(pID);
+				ServicePerformed[] pServices = new ServicePerformed[100];
+				pServices = weeksServices.getServicesByProvider(codeInt);
+				
+				int totalFee = 0;
+				
+				for (int j = 0; j < pServices.length; j++) { //loops through every service
+					
+					int sCode = pServices[j].getServiceCode();
+					String stringCode = Integer.toString(sCode);
+					ProviderDirectory pDirectory = new ProviderDirectory();
+					String serviceFee = pDirectory.getServiceFee(stringCode);
+					int numFee = Integer.parseInt(serviceFee);
+					totalFee = totalFee + numFee;
+					
+				}
+				
+				fw.write("	Amount to be paid $: " + totalFee + "\n");
+				fw.write("\n");
+		
+			
+			}
+		}
 		
 	}
 }
