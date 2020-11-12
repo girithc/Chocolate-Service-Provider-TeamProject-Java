@@ -84,6 +84,13 @@ public class WriteReports {
 			fw.write("Provider state: " + provider.getState() + "\n");
 			fw.write("Provider ZIP code: " + provider.getZip() + "\n");
 			fw.close();
+			
+			WeeksServices weeksServices = new WeeksServices();
+			int codeInt = Integer.parseInt(code);
+			ServicePerformed[] pServices = new ServicePerformed[100];
+			pServices = weeksServices.getServicesByProvider(codeInt);
+			
+			
 	 	}
 	}
 	
