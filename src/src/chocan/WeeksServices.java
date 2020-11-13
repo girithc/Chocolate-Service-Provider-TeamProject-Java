@@ -13,8 +13,7 @@ import java.util.*;
  */
 public class WeeksServices {
 	
-	private int serviceCount;
-	private LinkedList<ServicePerformed> weeksServices = new LinkedList<ServicePerformed>();
+	private LinkedList<ServicePerformed> weeksServices;
 	
 	/**
 	 * Constructor for services list
@@ -24,6 +23,8 @@ public class WeeksServices {
 		
 		File database = new File("WeeksServicesDatabase.csv"); //Opening the .csv file
 		
+		
+		weeksServices = new LinkedList<ServicePerformed>();
 		Scanner reader = new Scanner(database); // Created the scanner object to read the file
 		
 		
@@ -39,9 +40,9 @@ public class WeeksServices {
 			ServicePerformed serviceInput = new ServicePerformed();
 			serviceInput.setCurrDateAndTime(ServiceData[0]);
 			serviceInput.setDateProvided(ServiceData[1]);
-			serviceInput.setProviderNumber(Integer.parseInt(ServiceData[2]));
-			serviceInput.setMemberNumber(Integer.parseInt(ServiceData[3]));
-			serviceInput.setServiceCode(Integer.parseInt(ServiceData[4]));
+			serviceInput.setProviderNumber(ServiceData[2]);
+			serviceInput.setMemberNumber(ServiceData[3]);
+			serviceInput.setServiceCode(ServiceData[4]);
 			serviceInput.setComments(ServiceData[5]);
 
 			
@@ -80,7 +81,6 @@ public class WeeksServices {
 	 */
 	public void addService(ServicePerformed service) throws IOException {
 		weeksServices.add(service);
-		serviceCount++;
 		updateDatabase();
 	}
 	
@@ -91,7 +91,6 @@ public class WeeksServices {
 	 */
 	public void deleteService(ServicePerformed service) throws IOException {
 		if(weeksServices.remove(service)) {
-			serviceCount++;
 			updateDatabase();
 		}
 	}
@@ -101,17 +100,27 @@ public class WeeksServices {
 	 * @param id, the id of the provider 
 	 * @return ServicesPerformed[], list of services from the provider
 	 */
-	public ServicePerformed[] getServicesByProvider(int id) {
-		ServicePerformed[] providerServices = new ServicePerformed[100];
-		int providerServiceCount = 0;
-		for(int i = 0; i < serviceCount; i++) {
-			ServicePerformed current = weeksServices.get(i);
-			if(current.getProviderNumber() == id) {
-				providerServices[providerServiceCount] = current;
-				providerServiceCount++;
+	public ServicePerformed[] getServicesByProvider(String id) {
+		
+		ListIterator<ServicePerformed> iterator = weeksServices.listIterator();
+		ServicePerformed servicePerformed = new ServicePerformed();
+		
+		LinkedList<ServicePerformed> servicesByProvider = new LinkedList<ServicePerformed>();
+		while(iterator.hasNext()) {
+			servicePerformed = iterator.next();
+			if(servicePerformed.getProviderNumber().equals(id)) {
+				servicesByProvider.add(servicePerformed);
 			}
 		}
-		return providerServices;
+		
+	
+		ServicePerformed servicesByProviderArray[] = new ServicePerformed[servicesByProvider.size()];
+		ListIterator<ServicePerformed> listIterator = servicesByProvider.listIterator();
+		for(int i=0;i < servicesByProvider.size();i++) {
+			servicesByProviderArray[i] = listIterator.next();
+		}
+		
+		return servicesByProviderArray;
 	}
 	
 	/**
@@ -119,17 +128,28 @@ public class WeeksServices {
 	 * @param id, the id of the member
 	 * @return ServicesPerformed[], list of services from the member
 	 */
-	public ServicePerformed[] getServicesByMember(int id) {
-		ServicePerformed[] memberServices = new ServicePerformed[100];
-		int memberServiceCount = 0;
-		for(int i = 0; i < serviceCount; i++) {
-			ServicePerformed current = weeksServices.get(i);
-			if(current.getMemberNumber() == id) {
-				memberServices[memberServiceCount] = current;
-				memberServiceCount++;
+	public ServicePerformed[] getServicesByMember(String id) {
+		
+		ListIterator<ServicePerformed> iterator = weeksServices.listIterator();
+		ServicePerformed servicePerformed = new ServicePerformed();
+		
+		LinkedList<ServicePerformed> servicesByMember = new LinkedList<ServicePerformed>();
+		while(iterator.hasNext()) {
+			servicePerformed = iterator.next();
+			if(servicePerformed.getMemberNumber().equals(id)) {
+				servicesByMember.add(servicePerformed);
 			}
 		}
-		return memberServices;
+		
+	
+		ServicePerformed servicesByMemberArray[] = new ServicePerformed[servicesByMember.size()];
+		ListIterator<ServicePerformed> listIterator = servicesByMember.listIterator();
+		for(int i=0;i < servicesByMember.size();i++) {
+			servicesByMemberArray[i] = listIterator.next();
+		}
+		
+		return servicesByMemberArray;
+		
 	}
 	
 	/**
@@ -138,7 +158,6 @@ public class WeeksServices {
 	 */
 	public void newWeek() throws IOException{
 		weeksServices.clear();
-		serviceCount = 0;
 		updateDatabase();
 	}
 	
@@ -158,31 +177,6 @@ public class WeeksServices {
 			System.out.print(services[i]);
 		}
 	}
-
-	/**
-	 * Main function for testing
-	 */
-	/*
-	public static void main(String[] args) {
-		WeeksServices test = new WeeksServices();
-		ServicePerformed service1 = new ServicePerformed();
-		ServicePerformed service2 = new ServicePerformed();
-		ServicePerformed service3 = new ServicePerformed();
-		ServicePerformed service4 = new ServicePerformed();
-		service1.setProviderNumber(1234);
-		service2.setProviderNumber(1234);
-		service1.setServiceCode(6666);
-		service2.setServiceCode(5555);
-		service3.setProviderNumber(54321);
-		service4.setProviderNumber(65432);
-		test.addService(service1);
-		test.addService(service2);
-		test.addService(service3);
-		test.addService(service4);
-		test.printArray(test.getServicesByProvider(1234), 100);
-		test.printList();
-	}
-	*/
-}  
+}
 
 

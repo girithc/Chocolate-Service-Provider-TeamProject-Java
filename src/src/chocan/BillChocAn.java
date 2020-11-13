@@ -1,5 +1,8 @@
 package chocan;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 
@@ -13,31 +16,54 @@ public class BillChocAn extends ServicePerformed {
 	
 	/**
 	 * Prompt user for service code
-	 * Display the asssociated service
+	 * Display the associated service
+	 * @throws Exception 
 	 */
-	public void lookUpService() 
+	public void lookUpService(Scanner input) throws Exception 
 	{
+		ProviderDirectory providerDirectory = new ProviderDirectory();
 		
-	}
-	
-	/**
-	 * Display provider directory to terminal
-	 * @throws Exception
-	 */
-	public void displayProviderDirectory() throws Exception {
-		p1.getAllServices();
+		System.out.println("\nEnter the service code:");
+		providerDirectory.getServiceName(input.nextLine().trim());
+		
 	}
 	
 	/**
 	 * Prompt user for all the information related to a provided service
 	 * Add that service to the WeeksServices database
+	 * @throws Exception 
 	 */
-	public void writeServiceReport()
+	public void writeServiceReport(Scanner input) throws Exception
 	{
-		System.out.println("Current Date and Time:"+ s1.getCurrDateAndTime() );
-		System.out.println("Date service was provided: "+ s1.getDateProvided());
-		System.out.println("Provider Number: " + s1.getProviderNumber());
-		System.out.println("Member number: "+ s1.getMemberNumber());
-		System.out.println("Service code: "+ s1.getServiceCode());
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM-DD-YYYY HH:MM:SS");
+		LocalDateTime now = LocalDateTime.now();  
+		
+		
+		WeeksServices weeksServices = new WeeksServices();
+		ServicePerformed servicePerformed = new ServicePerformed();
+		
+		servicePerformed.setCurrDateAndTime(dtf.format(now));
+		
+		System.out.println("Enter the date the service was provided (MM-DD-YYYY):");
+		servicePerformed.setDateProvided(input.nextLine().trim());
+		
+		System.out.println("Enter the provider number:");
+		servicePerformed.setProviderNumber(input.nextLine().trim());
+		
+		System.out.println("Enter the member number:)");
+		servicePerformed.setMemberNumber(input.nextLine().trim());
+		
+		System.out.println("Enter the service code:");
+		String serviceCode = input.nextLine().trim();
+		servicePerformed.setServiceCode(serviceCode);
+		
+		System.out.println("Enter any additional comments:");
+		servicePerformed.setComments(input.nextLine().trim());
+		
+		weeksServices.addService(servicePerformed);
+		
+		ProviderDirectory providerDirectory =  new ProviderDirectory();
+		System.out.println("The fee for this service is $" + providerDirectory.getServiceFee(serviceCode));
+		
 	}
 }

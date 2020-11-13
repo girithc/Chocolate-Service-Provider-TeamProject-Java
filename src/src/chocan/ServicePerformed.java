@@ -10,9 +10,9 @@ public class ServicePerformed {
 	
 	private String currDateAndTime;
 	private String dateProvided;
-	private int providerNumber;
-	private int memberNumber;
-	private int serviceCode;
+	private String providerNumber;
+	private String memberNumber;
+	private String serviceCode;
 	private String comments;
 	
 	/** 
@@ -58,7 +58,7 @@ public class ServicePerformed {
 	 * 
 	 * @param id, the provider id assigned with the service
 	 */
-	public void setProviderNumber(int id) {
+	public void setProviderNumber(String id) {
 		providerNumber = id;
 	}
 	
@@ -66,15 +66,15 @@ public class ServicePerformed {
 	 * 
 	 * @return providerNumber, returns the id of the provider
 	 */
-	public int getProviderNumber() {
+	public String getProviderNumber() {
 		return providerNumber;
 	}
 	
 	/**
 	 * 
-	 * @param id, member id who recieved the service
+	 * @param id, member id who received the service
 	 */
-	public void setMemberNumber(int id) {
+	public void setMemberNumber(String id) {
 		memberNumber = id;
 	}
 
@@ -82,7 +82,7 @@ public class ServicePerformed {
 	 * 
 	 * @return memberNumber, returns the id of the member
 	 */
-	public int getMemberNumber() {
+	public String getMemberNumber() {
 		return memberNumber;
 	}
 	
@@ -90,7 +90,7 @@ public class ServicePerformed {
 	 * 
 	 * @param code, code of the service being performed
 	 */
-	public void setServiceCode(int code) {
+	public void setServiceCode(String code) {
 		serviceCode = code;
 	}
 	
@@ -98,13 +98,13 @@ public class ServicePerformed {
 	 * 
 	 * @return serviceCode, returns the code of the service
 	 */
-	public int getServiceCode() {
+	public String getServiceCode() {
 		return serviceCode;
 	}
 	
 	/**
 	 * 
-	 * @param inputComments, comments added to teh service
+	 * @param inputComments, comments added to the service
 	 */
 	public void setComments(String inputComments) {
 		comments = inputComments;

@@ -121,7 +121,8 @@ public class Main {
 			}
 			
 			if(providerAction.equals("1")) {
-				System.out.println("Bill ChocAn stub.")
+				ProviderTerminal providerTerminal = new ProviderTerminal();
+				providerTerminal.writeNewService(input);
 			}
 			else if(providerAction.equals("2")) {
 				BillChocAn billChocAn = new BillChocAn();
