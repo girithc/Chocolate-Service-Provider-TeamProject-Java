@@ -9,7 +9,8 @@ public class InteractiveModeTerminal {
 	private String memberOrProvider;
 	
 	public InteractiveModeTerminal() {
-	
+		action = "0";
+		memberOrProvider = "0";
 	}
 
 	  /**
@@ -18,14 +19,18 @@ public class InteractiveModeTerminal {
 	   * @author annekatherinefike
 	   */
 	public void promptForAction(Scanner myObj) {
-	
-		System.out.println("Choose an action to be performed");
-	    System.out.println("Enter 1 for Add Record");
-	    System.out.println("Enter 2 for Delete Record");
-	    System.out.println("Enter 3 for Update Record");
-	    //Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-		action = myObj.nextLine().trim();
-		//myObj.close();
+		
+		while(!action.equals("1") && !action.equals("2") && !action.equals("3")) {
+			System.out.println("\nChoose an action to be performed");
+			System.out.println("Enter 1 for Add Record");
+			System.out.println("Enter 2 for Delete Record");
+			System.out.println("Enter 3 for Update Record");
+			action = myObj.nextLine().trim();
+		
+			if(!action.equals("1") && !action.equals("2") && !action.equals("3")) {
+				System.out.println("Invalid entry. Please try again.");
+			}
+		}
 		
 	 }
 	
@@ -36,14 +41,20 @@ public class InteractiveModeTerminal {
 	 */
 	public void promptForMemberOrProvider(Scanner mObj) {
 	
-		System.out.println("Choose to perform action for either a member or provider.");
-		System.out.println("Enter 1 to choose member");
-		System.out.println("Enter 2 to choose provider");
+		while(!memberOrProvider.equals("1") && !memberOrProvider.equals("2")) {
+			System.out.println("\nChoose to perform action for either a member or provider.");
+			System.out.println("Enter 1 for member");
+			System.out.println("Enter 2 for provider");
+			memberOrProvider = mObj.nextLine().trim();
+			
+			if(!memberOrProvider.equals("1") && !memberOrProvider.equals("2")) {
+				System.out.println("Invalid entry. Please try again.");
+			}
+		}
+	
 		
-		//Scanner mObj = new Scanner(System.in);
 		
-		memberOrProvider = mObj.nextLine().trim();
-		//mObj.close();
+		
 		
 	}
 		
@@ -108,7 +119,10 @@ public class InteractiveModeTerminal {
 			
 			interactiveModeControl.updateProvider(pID, provider);
 				
-		}		
+		}
+		
+		action = "0";
+		memberOrProvider = "0";
 		
 	}
 }

@@ -64,17 +64,9 @@ public class InteractiveModeControl {
 		newMember.setZip(zip);
 		newMember.setSuspended(false);
 		
-		sc.close();
-		
 		mbase.addMember(newMember);
-		//mbase.addMember(newMember);
-		//String[] MemberID = mbase.getAllMemberID();
-		//for (int i=0; i < MemberID.length; i++) {
-		//	System.out.println(MemberID[i]);
-		//}
 		
-		
-		//printMember(newMember);	
+		System.out.println("Member added.");
 		
 	}
 	
@@ -86,14 +78,18 @@ public class InteractiveModeControl {
 		System.out.println("Enter Id:");
 		String Id = sc.nextLine();
 		
-		sc.close();
+		System.out.println("The details for the member you would like to delete are given below:\n");
+		printMember(mbase.getMember(Id));
+		System.out.println("\nAre you sure would like to delete this member?");
+		System.out.println("Enter 1 for yes");
+		System.out.println("Enter 2 for no");
 		
-		mbase.deleteMember(Id);
-		//String[] MemberID = mbase.getAllMemberID();
-		//for (int i=0; i < MemberID.length; i++) {
-		//	System.out.println(MemberID[i]);
-		//}
+		String confirmation = sc.nextLine().trim();
 		
+		if(confirmation.equals("1")) {
+			mbase.deleteMember(Id);
+			System.out.println("Member deleted.");
+		}
 		
 	}
 	
@@ -144,13 +140,9 @@ public class InteractiveModeControl {
 		
 		temp.setZip(zip);
 		
-		sc.close();
-		
 		mbase.updateMember(IdMember, temp);
-		//String[] MemberID = mbase.getAllMemberID();
-		//for (int i=0; i < MemberID.length; i++) {
-		//	System.out.println(MemberID[i]);
-		//}
+		
+		System.out.println("Member updated.");
 		
 		
 	}
@@ -197,36 +189,33 @@ public void addProvider(Provider newProvider) throws Exception{
 		
 		newProvider.setZip(zip);
 		
-		sc.close();
-		
 		pbase.addProvider(newProvider);
-		//mbase.addMember(newMember);
-		//String[] MemberID = mbase.getAllMemberID();
-		//for (int i=0; i < MemberID.length; i++) {
-		//	System.out.println(MemberID[i]);
-		//}
-		
-		
-		//printMember(newMember);	
+
+		System.out.print("Provider added");
 		
 	}
 	
 	public void deleteProvider() throws Exception{
 		ProviderDatabase pbase =  new ProviderDatabase();
-
+		
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Enter Id:");
-		String Id = sc.nextLine();
+		String Id = sc.nextLine().trim();
 		
-		sc.close();
 		
-		pbase.deleteProvider(Id);
-		//String[] MemberID = mbase.getAllMemberID();
-		//for (int i=0; i < MemberID.length; i++) {
-		//	System.out.println(MemberID[i]);
-		//}
+		System.out.println("The details for the provider you would like to delete are given below:\n");
+		printProvider(pbase.getProvider(Id));
+		System.out.println("\nAre you sure would like to delete this provider?");
+		System.out.println("Enter 1 for yes");
+		System.out.println("Enter 2 for no");
 		
+		String confirmation = sc.nextLine().trim();
+		
+		if(confirmation.equals("1")) {
+			pbase.deleteProvider(Id);
+			System.out.println("Provider deleted.");
+		}
 		
 	}
 	
@@ -277,14 +266,8 @@ public void addProvider(Provider newProvider) throws Exception{
 		
 		temp.setZip(zip);
 		
-		sc.close();
-		
 		pbase.updateProvider(IdProvider, temp);
-		//String[] MemberID = mbase.getAllMemberID();
-		//for (int i=0; i < MemberID.length; i++) {
-		//	System.out.println(MemberID[i]);
-		//}
-		
+		System.out.println("Provider updated");
 		
 	}
 	
@@ -292,7 +275,6 @@ public void addProvider(Provider newProvider) throws Exception{
 	public void printMember(Member p) {
 		
 
-		System.out.println("Member added:");
 		System.out.println("Name: "+ p.getName());
 		System.out.println("Id: " + p.getIDNumber());
 		System.out.println("Email: "+ p.getEmail());
@@ -303,5 +285,18 @@ public void addProvider(Provider newProvider) throws Exception{
 
 
 	}
+	
+public void printProvider(Provider p) {
+		
 
+		System.out.println("Name: "+ p.getName());
+		System.out.println("Id: " + p.getIDNumber());
+		System.out.println("Email: "+ p.getEmail());
+		System.out.println("Street Address: "+ p.getStreetAddress());
+		System.out.println("City: "+ p.getCity());
+		System.out.println("State: "+ p.getState());
+		System.out.println("Zip Code: "+ p.getZip());
+
+
+	}
 }
