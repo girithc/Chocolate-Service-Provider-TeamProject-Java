@@ -306,7 +306,7 @@ public class WriteReports {
 	 * @throws Exception
 	 * @author annekatherinefike
 	 */
-	public void writeEFTReports() throws Exception {
+	public void writeEFTReport() throws Exception {
 		
 		FileWriter fw = new FileWriter("EFT.txt");
 		

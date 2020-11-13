@@ -5,55 +5,55 @@ import java.util.Scanner;  // Import the Scanner class
 
 public class InteractiveModeTerminal {
 
-  public InteractiveModeTerminal() {
-
-  }
-
-  /**
-   * Prompts for user input to choose action
-   * @return String holding the action chosen by the user
-   * @author annekatherinefike
-   */
-  public String promptForAction() {
-
-    System.out.println("Choose an action to be performed");
-	System.out.println("Enter '1' for Add Record");
-	System.out.println("Enter '2' for Delete Record");
-	System.out.println("Enter '3' for Update Record");
-    Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-	String action = myObj.nextLine();
-	myObj.close();
-	return action;
+	private String action;
+	private String memberOrProvider;
 	
-  }
+	public InteractiveModeTerminal() {
+	
+	}
+
+	  /**
+	   * Prompts for user input to choose action
+	   * @return String holding the action chosen by the user
+	   * @author annekatherinefike
+	   */
+	public void promptForAction(Scanner myObj) {
+	
+		System.out.println("Choose an action to be performed");
+	    System.out.println("Enter 1 for Add Record");
+	    System.out.println("Enter 2 for Delete Record");
+	    System.out.println("Enter 3 for Update Record");
+	    //Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+		action = myObj.nextLine().trim();
+		//myObj.close();
+		
+	 }
+	
 	/**
 	 * Prompts for user input to choose if the action is to be done for a member or provider
 	 * @return String holding the user's input 
 	 * @author annekatherinefike
 	 */
-  public String promptForMemberOrProvider() {
-
-    System.out.println("Choose to perform action for either a member or provider.");
-    System.out.println("Enter '1' to choose member");
-	System.out.println("Enter '2' to choose provider");
+	public void promptForMemberOrProvider(Scanner mObj) {
 	
-	Scanner mObj = new Scanner(System.in);
-	
-	String action = mObj.nextLine();
-	mObj.close();
-	return action;
-	
-	}
-	
-  /**
-   * Performs action based on return values of promptForAction and promptForMemberOrProvider
-   * @param action
-   * @param memberOrProvider
-   * @author annekatherinefike
- * @throws Exception 
-   */
-  public void performAction(String action, String memberOrProvider) throws Exception {
+		System.out.println("Choose to perform action for either a member or provider.");
+		System.out.println("Enter 1 to choose member");
+		System.out.println("Enter 2 to choose provider");
 		
+		//Scanner mObj = new Scanner(System.in);
+		
+		memberOrProvider = mObj.nextLine().trim();
+		//mObj.close();
+		
+	}
+		
+	/**
+	 * Performs action based on return values of promptForAction and promptForMemberOrProvider
+	 * @author annekatherinefike
+	 * @throws Exception 
+	 */
+	public void performAction() throws Exception {
+			
 		if (action.equalsIgnoreCase("1") && memberOrProvider.equalsIgnoreCase("1")) {
 			
 			Member member = new Member();
@@ -137,7 +137,7 @@ public class InteractiveModeTerminal {
 		
 	}
 	
-
+	
 	/*public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		
@@ -149,7 +149,7 @@ public class InteractiveModeTerminal {
 		
 		InputStreamReader sr = new InputStreamReader(System.in);
 		BufferedReader br = new BufferedReader(sr);
-
+	
 		int cType = 0; // Add / Edit / Delete
 		int cRecord = 0; // Member / Provider
 		try {
@@ -161,7 +161,7 @@ public class InteractiveModeTerminal {
 		}
 		
 		//System.out.println("Thank you " + choice);
-
+	
 		
 		if(cType > 0 && cType < 4) {
 			
@@ -215,10 +215,10 @@ public class InteractiveModeTerminal {
 			
 			
 		}
-
+	
 		
 		
-
+	
 	}*/
-
-}
+	
+	}

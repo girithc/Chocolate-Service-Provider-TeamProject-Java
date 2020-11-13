@@ -53,7 +53,7 @@ public class RequestReports extends WriteReports{
 	 		if(name.equalsIgnoreCase("eft report"))
 	 		{
 				
-				r1.writeEFTReports();
+				r1.writeEFTReport();
 	 		}
 	 		
 	}
