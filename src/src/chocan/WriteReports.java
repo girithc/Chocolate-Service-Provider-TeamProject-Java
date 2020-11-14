@@ -37,15 +37,14 @@ public class WriteReports {
 			for (int i = 0; i < allMemIDs.length; i++) {
 				
 				String mID = allMemIDs[i];
-				int mIDNum = Integer.parseInt(mID);
-				memServices = wServices.getServicesByMember(mIDNum);
+				memServices = wServices.getServicesByMember(mID);
 				
 				if (!(memServices.equals(null))) { // if the list is not empty
 					Member member = new Member();
-					MemberDatabase mDatabase = new MemberDatabase();
-					member = mDatabase.getMember(code);
-				
-					FileWriter fw = new FileWriter("Member.txt");
+					member = memDatabase.getMember(code);
+					
+					String fileName = code + ".txt";
+					FileWriter fw = new FileWriter(fileName);
 					fw.write("Member name: " + member.getName() + "\n");
 					fw.write("Member number: " + mID + "\n");
 					fw.write("Member street address: " + member.getStreetAddress() + "\n");
@@ -53,24 +52,18 @@ public class WriteReports {
 					fw.write("Member state: " + member.getState() + "\n");
 					fw.write("Member ZIP code: " + member.getZip() + "\n");
 
-					WeeksServices weeksServices = new WeeksServices();
-					int codeInt = Integer.parseInt(mID);
-					ServicePerformed[] mServices = new ServicePerformed[100];
-					mServices = weeksServices.getServicesByMember(codeInt);
 					
-					for (int j = 0; j < mServices.length; j++) {
+					for (int j = 0; j < memServices.length; j++) {
 						//System.out.println(mServices[i].getDateProvided());
-						fw.write("Date provided: " + mServices[j].getDateProvided() + "\n");
-						int pID = mServices[j].getProviderNumber();
-						String pIDString = Integer.toString(pID);
+						fw.write("Date provided: " + memServices[j].getDateProvided() + "\n");
+						String pID = memServices[j].getProviderNumber();
 						ProviderDatabase pDatabase = new ProviderDatabase();
 						Provider p = new Provider();
-						p = pDatabase.getProvider(pIDString);
+						p = pDatabase.getProvider(pID);
 						fw.write("Provider name: " + p.getName() + "\n");
-						int sCode = mServices[j].getServiceCode();
-						String serviceCode = Integer.toString(sCode);
-						ServicesOffered servicesOffered = new ServicesOffered();
-						fw.write("Service name: " + servicesOffered.getServiceName(serviceCode) + "\n");
+						String sCode = memServices[j].getServiceCode();
+						ProviderDirectory providerDirectory = new ProviderDirectory();
+						fw.write("Service name: " + providerDirectory.getServiceName(sCode) + "\n");
 					}
 					
 					fw.close();
@@ -83,8 +76,9 @@ public class WriteReports {
 			Member member = new Member();
 			MemberDatabase mDatabase = new MemberDatabase();
 			member = mDatabase.getMember(code);
-		
-			FileWriter fw = new FileWriter("Member.txt");
+			
+			String fileName = code + ".txt";
+			FileWriter fw = new FileWriter(fileName);
 			fw.write("Member name: " + member.getName() + "\n");
 			fw.write("Member number: " + code + "\n");
 			fw.write("Member street address: " + member.getStreetAddress() + "\n");
@@ -93,23 +87,20 @@ public class WriteReports {
 			fw.write("Member ZIP code: " + member.getZip() + "\n");
 
 			WeeksServices weeksServices = new WeeksServices();
-			int codeInt = Integer.parseInt(code);
 			ServicePerformed[] mServices = new ServicePerformed[100];
-			mServices = weeksServices.getServicesByMember(codeInt);
+			mServices = weeksServices.getServicesByMember(code);
 			
 			for (int i = 0; i < mServices.length; i++) {
 				//System.out.println(mServices[i].getDateProvided());
 				fw.write("Date provided: " + mServices[i].getDateProvided() + "\n");
-				int pID = mServices[i].getProviderNumber();
-				String pIDString = Integer.toString(pID);
+				String pID = mServices[i].getProviderNumber();
 				ProviderDatabase pDatabase = new ProviderDatabase();
 				Provider p = new Provider();
-				p = pDatabase.getProvider(pIDString);
+				p = pDatabase.getProvider(pID);
 				fw.write("Provider name: " + p.getName() + "\n");
-				int sCode = mServices[i].getServiceCode();
-				String serviceCode = Integer.toString(sCode);
+				String sCode = mServices[i].getServiceCode();
 				ServicesOffered servicesOffered = new ServicesOffered();
-				fw.write("Service name: " + servicesOffered.getServiceName(serviceCode) + "\n");
+				fw.write("Service name: " + servicesOffered.getServiceName(sCode) + "\n");
 			}
 			
 			fw.close();
@@ -140,8 +131,7 @@ public class WriteReports {
 			for (int i = 0; i < allProIDs.length; i++) {
 				
 				String pID = allProIDs[i];
-				int pIDNum = Integer.parseInt(pID);
-				proServices = wServices.getServicesByProvider(pIDNum);
+				proServices = wServices.getServicesByProvider(pID);
 				
 				if (!(proServices.equals(null))) { // if the list is not empty
 					
@@ -158,27 +148,24 @@ public class WriteReports {
 					fw.close();
 					
 					WeeksServices weeksServices = new WeeksServices();
-					int codeInt = Integer.parseInt(pID);
 					ServicePerformed[] pServices = new ServicePerformed[100];
-					pServices = weeksServices.getServicesByProvider(codeInt);
+					pServices = weeksServices.getServicesByProvider(pID);
 					
 					int totalFee = 0;
 					
 					for (int j = 0; j < pServices.length; j++) {
 						fw.write("Date of service: " + pServices[j].getDateProvided() + "\n");
 						fw.write("Date and time data were received by the computer: " + pServices[i].getCurrDateAndTime() + "\n");
-						int mID = pServices[j].getMemberNumber();
-						String mIDString = Integer.toString(mID);
+						String mID = pServices[j].getMemberNumber();
 						MemberDatabase mDatabase = new MemberDatabase();
 						Member m = new Member();
-						m = mDatabase.getMember(mIDString);
+						m = mDatabase.getMember(mID);
 						fw.write("Member name: " + m.getName() + "\n");
 						fw.write("Service code: " + pServices[j].getServiceCode() + "\n");
-						int sCode = pServices[j].getServiceCode();
-						String stringCode = Integer.toString(sCode);
+						String sCode = pServices[j].getServiceCode();
 						ProviderDirectory pDirectory = new ProviderDirectory();
-						fw.write("Fee to be paid: $" + pDirectory.getServiceFee(stringCode) + "\n");
-						String serviceFee = pDirectory.getServiceFee(stringCode);
+						fw.write("Fee to be paid: $" + pDirectory.getServiceFee(sCode) + "\n");
+						String serviceFee = pDirectory.getServiceFee(sCode);
 						int numFee = Integer.parseInt(serviceFee);
 						totalFee = totalFee + numFee;
 					}
@@ -206,27 +193,24 @@ public class WriteReports {
 			fw.close();
 			
 			WeeksServices weeksServices = new WeeksServices();
-			int codeInt = Integer.parseInt(code);
 			ServicePerformed[] pServices = new ServicePerformed[100];
-			pServices = weeksServices.getServicesByProvider(codeInt);
+			pServices = weeksServices.getServicesByProvider(code);
 			
 			int totalFee = 0;
 			
 			for (int i = 0; i < pServices.length; i++) {
 				fw.write("Date of service: " + pServices[i].getDateProvided() + "\n");
 				fw.write("Date and time data were received by the computer: " + pServices[i].getCurrDateAndTime() + "\n");
-				int mID = pServices[i].getMemberNumber();
-				String mIDString = Integer.toString(mID);
+				String mID = pServices[i].getMemberNumber();
 				MemberDatabase mDatabase = new MemberDatabase();
 				Member m = new Member();
-				m = mDatabase.getMember(mIDString);
+				m = mDatabase.getMember(mID);
 				fw.write("Member name: " + m.getName() + "\n");
 				fw.write("Service code: " + pServices[i].getServiceCode() + "\n");
-				int sCode = pServices[i].getServiceCode();
-				String stringCode = Integer.toString(sCode);
+				String sCode = pServices[i].getServiceCode();
 				ProviderDirectory pDirectory = new ProviderDirectory();
-				fw.write("Fee to be paid: $" + pDirectory.getServiceFee(stringCode) + "\n");
-				String serviceFee = pDirectory.getServiceFee(stringCode);
+				fw.write("Fee to be paid: $" + pDirectory.getServiceFee(sCode) + "\n");
+				String serviceFee = pDirectory.getServiceFee(sCode);
 				int numFee = Integer.parseInt(serviceFee);
 				totalFee = totalFee + numFee;
 			}

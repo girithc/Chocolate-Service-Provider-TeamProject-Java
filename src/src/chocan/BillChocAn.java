@@ -6,7 +6,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 
-public class BillChocAn extends ServicePerformed {
+public class BillChocAn {
+	
 	ServicePerformed s1 = new ServicePerformed();
 	ProviderDirectory p1 = new ProviderDirectory();
 	

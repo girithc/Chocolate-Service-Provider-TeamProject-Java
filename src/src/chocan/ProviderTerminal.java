@@ -8,9 +8,7 @@ public class ProviderTerminal {
 	private int IDNumber;
 	
 		
-	}
-	public void writeNewService(Scanner input) throws Exception
-	{
+	public void writeNewService(Scanner input) throws Exception {
 		BillChocAn billChocAn = new BillChocAn();
 		
 		String decision = "0";
@@ -25,28 +23,31 @@ public class ProviderTerminal {
 			
 			if(!decision.equals("1") && !decision.equals("2") && !decision.equals("3")) {
 				System.out.println("Invalid input. Please try again.");
+			}
+				
 		}
 		
 		if(decision.equals("1")) {
-			billChocAn.lookUpService();
+			billChocAn.lookUpService(input);
 		}
-		
-		
+		else if(decision.equals("2")) {
+			getProviderDirectory();
+		}
 		
 		billChocAn.writeServiceReport(input);
 	}
+		
 	public void notifyProvider(String message)
 	{
 			System.out.println(message);
 		
 	}
-	public void getProviderDirectory() throws Exception
-	{
+	public void getProviderDirectory() throws Exception {
 		ProviderDirectory providerDirectory = new ProviderDirectory();
 		providerDirectory.getAllServices();
 	}
-	public char verifyMember(String id) throws Exception
-	{
+	
+	public char verifyMember(String id) throws Exception {
 		MemberDatabase m2 = new MemberDatabase();
 	char y = 0;
 	char n = 0;
