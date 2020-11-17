@@ -1,6 +1,0 @@
-Provider name: Sam Noyes
-Provider number: 11547298
-Provider street address: 608 6th Avenue
-Provider city: Tuscaloosa
-Provider state: AL
-Provider ZIP code: 35404

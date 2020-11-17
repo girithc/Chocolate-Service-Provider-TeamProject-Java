@@ -1,6 +1,0 @@
-Member name: Sam Noyes
-Member number: 11547298
-Member street address: 608 6th Avenue
-Member city: Tuscaloosa
-Member state: AL
-Member ZIP code: 35404
