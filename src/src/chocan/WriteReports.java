@@ -243,8 +243,7 @@ public class WriteReports {
 		for (int i = 0; i < allProIDs.length; i++) { // loops through every provider in provider database
 			
 			String pID = allProIDs[i];
-			int pIDNum = Integer.parseInt(pID);
-			proServices = wServices.getServicesByProvider(pIDNum);
+			proServices = wServices.getServicesByProvider(pID);
 			
 			if (!(proServices.equals(null))) { // if the list is not empty, get ServicePerformed information
 				
@@ -254,9 +253,8 @@ public class WriteReports {
 				fw.write("Provider name: " + provider.getName() + "\n");
 				
 				WeeksServices weeksServices = new WeeksServices();
-				int codeInt = Integer.parseInt(pID);
 				ServicePerformed[] pServices = new ServicePerformed[100];
-				pServices = weeksServices.getServicesByProvider(codeInt);
+				pServices = weeksServices.getServicesByProvider(pID);
 				
 				int totalFee = 0;
 				
@@ -264,10 +262,9 @@ public class WriteReports {
 				
 				for (int j = 0; j < pServices.length; j++) { //loops through every service
 				
-					int sCode = pServices[j].getServiceCode();
-					String stringCode = Integer.toString(sCode);
+					String sCode = pServices[j].getServiceCode();
 					ProviderDirectory pDirectory = new ProviderDirectory();
-					String serviceFee = pDirectory.getServiceFee(stringCode);
+					String serviceFee = pDirectory.getServiceFee(sCode);
 					int numFee = Integer.parseInt(serviceFee);
 					totalFee = totalFee + numFee;
 					
@@ -304,8 +301,7 @@ public class WriteReports {
 		for (int i = 0; i < allProIDs.length; i++) { // loops through every provider in provider database
 			
 			String pID = allProIDs[i];
-			int pIDNum = Integer.parseInt(pID);
-			proServices = wServices.getServicesByProvider(pIDNum);
+			proServices = wServices.getServicesByProvider(pID);
 			
 			if (!(proServices.equals(null))) { // if the list is not empty, get ServicePerformed information
 				
@@ -315,18 +311,16 @@ public class WriteReports {
 				fw.write("Provider name: " + provider.getName() + "\n");
 				
 				WeeksServices weeksServices = new WeeksServices();
-				int codeInt = Integer.parseInt(pID);
 				ServicePerformed[] pServices = new ServicePerformed[100];
-				pServices = weeksServices.getServicesByProvider(codeInt);
+				pServices = weeksServices.getServicesByProvider(pID);
 				
 				int totalFee = 0;
 				
 				for (int j = 0; j < pServices.length; j++) { //loops through every service
 					
-					int sCode = pServices[j].getServiceCode();
-					String stringCode = Integer.toString(sCode);
+					String sCode = pServices[j].getServiceCode();
 					ProviderDirectory pDirectory = new ProviderDirectory();
-					String serviceFee = pDirectory.getServiceFee(stringCode);
+					String serviceFee = pDirectory.getServiceFee(sCode);
 					int numFee = Integer.parseInt(serviceFee);
 					totalFee = totalFee + numFee;
 					
