@@ -11,19 +11,19 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class GUI {
+public class mainGUI {
 	
 	JLabel label;
 	JFrame frame;
 	JPanel panel;
 
-	public GUI() {
+	public mainGUI() {
 		
 		JButton manager = new JButton(new AbstractAction("Manager") {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				System.out.println("Button clicked.");
 			}
 		});
 		
