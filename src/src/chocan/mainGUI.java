@@ -23,7 +23,10 @@ public class mainGUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Button clicked.");
+				
+				RequestReports requestReports = new RequestReports();
+				requestReports.reportRequestGUI();
+				
 			}
 		});
 		
@@ -61,11 +64,5 @@ public class mainGUI {
 		frame.setVisible(true);
 		
 	}
-	
-	public static void main(String[] args) {
-		new GUI();
-	}
-	
-	
 }
 
