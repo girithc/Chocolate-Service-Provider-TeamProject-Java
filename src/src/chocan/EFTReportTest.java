@@ -18,10 +18,10 @@ public class EFTReportTest {
 	@Test
 	public void test() throws Exception {
 		
-		report.writeEFTReport();							//Call writeProviderReport. Test with a predetermined entry in provider database
+		report.writeEFTReport();							//Call writeEFTReport. Test with a predetermined entry in provider database
 										
 		
-		File summaryReport = new File("Summary.txt");				//Open the provider file written by writeSummaryReport
+		File summaryReport = new File("Summary.txt");				//Open the provider file written by writeEFTReport
 		Scanner scanSummary = new Scanner(summaryReport);
 		String currentLine;
 		currentLine = scanSummary.nextLine();
