@@ -9,14 +9,20 @@ public class ProviderDirectory {
  * Prints out the provider directory
  * @throws Exception
  */
-public void getAllServices() throws Exception {
+public String[] getAllServices() throws Exception {
 	
 	Scanner sc = new Scanner(new File("ServicesOffered.csv"));
+	String[] services = new String[100];
+	int count = 0;
 	sc.useDelimiter(",");
 	while (sc.hasNext()) {
-		System.out.print(sc.next());
+		String temp = sc.next();
+		System.out.print(temp);
+		services[count] = temp;
+		count++;
 	}
 	sc.close();
+	return services;
 	
 }
 

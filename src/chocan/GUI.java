@@ -20,6 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 public class GUI {
@@ -29,7 +30,15 @@ public class GUI {
 	JPanel panel;
 	JLabel subHead;
 	JTextField textBox;
-	JList<ServicePerformed> list;
+	JTextField textBox2;
+	JTextField textBox3;
+	JTextField textBox4;
+	JTextField textBox5;
+	JTextField textBox6;
+	JTextField textBox7;
+	JTextField textBox8;
+	JList<String> list;
+	JScrollPane scrollPane;
 	
 	JButton back = new JButton();				//Create function-specific buttons
 	JButton manager = new JButton();
@@ -37,6 +46,12 @@ public class GUI {
 	JButton operator = new JButton();
 	JButton validateMember = new JButton();	
 	JButton billChocAn = new JButton();
+	JButton addMember = new JButton();
+	JButton deleteMember = new JButton();
+	JButton updateMember = new JButton();
+	JButton addProvider = new JButton();
+	JButton deleteProvider = new JButton();
+	JButton updateProvider = new JButton();
 	JButton home = new JButton(new AbstractAction("Home") {		//Create a specific button for restarting program, functionality is global
 		@Override												//so we have to set functionality in the variable declarations
 		public void actionPerformed(ActionEvent e) {
@@ -91,6 +106,7 @@ public class GUI {
 		operator = new JButton(new AbstractAction("Operator") {		//Define functionality for operator
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				operatorTerminal();
 			}
 		});
 		
@@ -304,10 +320,193 @@ public class GUI {
 	
 	private void billChocAnMemberValidated() throws Exception {
 		
-		list = new JList<ServicePerformed>();
+		services = new ProviderDirectory();
+		list = new JList<String>();
 		
-		panel.add(list);
 		resetScreen();
+		list.setListData(services.getAllServices());
+		for(int i = 2; i < 2; i++) {
+			System.out.println(list.getComponent(i));
+		}
+		scrollPane = new JScrollPane();
+	    scrollPane.setViewportView(list);
+	    list.setLayoutOrientation(JList.VERTICAL_WRAP);
+	    scrollPane.setVisible(true);
+	    scrollPane.setBounds(290, 55, 200, 200);
+	    panel.add(scrollPane);
+		
+
+		
+		
+	}
+	
+	private void operatorTerminal() {
+		
+		resetScreen();
+		home.setVisible(true);
+		addMember = new JButton(new AbstractAction("Add Member") {		
+			@Override												
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
+		
+		deleteMember = new JButton(new AbstractAction("Delete Member") {		
+			@Override												
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		updateMember = new JButton(new AbstractAction("Update Member") {		
+			@Override												
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		addProvider = new JButton(new AbstractAction("Add Provider") {		
+			@Override												
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		deleteProvider = new JButton(new AbstractAction("Delete Provider") {		
+			@Override												
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		updateProvider = new JButton(new AbstractAction("Update Provider") {		
+			@Override												
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		frame.setTitle("Operator Terminal");
+		label.setBounds(193, 5, 350, 100);
+		label.setFont(new Font("Serif", Font.PLAIN, 18));
+		label.setText("Select an action");
+		label.setVisible(true);
+		subHead.setForeground(new Color(0));
+		subHead.setText("Interactive Mode");
+		subHead.setFont(new Font("Serif", Font.HANGING_BASELINE, 14));
+		subHead.setBounds(13, -30, 350, 100);
+		subHead.setVisible(true);
+		home.setVisible(true);	
+		
+		addMember.setBounds(43, 80, 127, 35);
+		addMember.setVisible(true);
+		panel.add(addMember);
+		deleteMember.setBounds(43, 125, 127, 35);
+		deleteMember.setVisible(true);
+		panel.add(deleteMember);
+		updateMember.setBounds(43, 170, 127, 35);
+		updateMember.setVisible(true);
+		panel.add(updateMember);
+		addProvider.setBounds(185, 80, 127, 35);
+		addProvider.setVisible(true);
+		panel.add(addProvider);
+		deleteProvider.setBounds(185, 125, 127, 35);
+		deleteProvider.setVisible(true);
+		panel.add(deleteProvider);
+		updateProvider.setBounds(185, 170, 127, 35);
+		updateProvider.setVisible(true);
+		panel.add(updateProvider);
+		
+		
+		
+		}
+	
+	private void addPerson(int type) {
+		
+		Member inputMember = new Member();
+		
+		textBox = new JTextField();
+		textBox2 = new JTextField();
+		textBox3 = new JTextField();
+		textBox4 = new JTextField();
+		textBox5 = new JTextField();
+		textBox6 = new JTextField();
+		textBox7 = new JTextField();
+		textBox8 = new JTextField();
+		
+		textBox.addActionListener(new ActionListener() {					//Implement an action when enter key is pressed
+		    @Override
+		    public void actionPerformed(ActionEvent event) {
+		    	inputMember.setName(textBox.getText());
+		    }
+		});
+		textBox.setVisible(true);
+		textBox.setBounds(180, 125, 140, 25);
+		
+		textBox2.addActionListener(new ActionListener() {					//Implement an action when enter key is pressed
+		    @Override
+		    public void actionPerformed(ActionEvent event) {
+		    	inputMember.setIDNumber(textBox.getText());
+		    }
+		});
+		textBox2.setVisible(true);
+		textBox.setBounds(180, 125, 140, 25);
+		
+		textBox3.addActionListener(new ActionListener() {					//Implement an action when enter key is pressed
+		    @Override
+		    public void actionPerformed(ActionEvent event) {
+		    	inputMember.setEmail(textBox.getText());
+		    }
+		});
+		textBox3.setVisible(true);
+		textBox3.setBounds(180, 125, 140, 25);
+		
+		textBox4.addActionListener(new ActionListener() {					//Implement an action when enter key is pressed
+		    @Override
+		    public void actionPerformed(ActionEvent event) {
+		    	inputMember.setStreetAddress(textBox.getText());
+		    }
+		});
+		textBox4.setVisible(true);
+		textBox4.setBounds(180, 125, 140, 25);
+		
+		textBox5.addActionListener(new ActionListener() {					//Implement an action when enter key is pressed
+		    @Override
+		    public void actionPerformed(ActionEvent event) {
+		    	inputMember.setCity(textBox.getText());
+		    }
+		});
+		textBox5.setVisible(true);
+		textBox5.setBounds(180, 125, 140, 25);
+		
+		textBox6.addActionListener(new ActionListener() {					//Implement an action when enter key is pressed
+		    @Override
+		    public void actionPerformed(ActionEvent event) {
+		    	inputMember.setState(textBox.getText());
+		    }
+		});
+		textBox6.setVisible(true);
+		textBox6.setBounds(180, 125, 140, 25);
+		
+		textBox7.addActionListener(new ActionListener() {					//Implement an action when enter key is pressed
+		    @Override
+		    public void actionPerformed(ActionEvent event) {
+		    	inputMember.setZip(textBox.getText());
+		    }
+		});
+		textBox7.setVisible(true);
+		textBox7.setBounds(180, 125, 140, 25);
+		
+		textBox8.addActionListener(new ActionListener() {					//Implement an action when enter key is pressed
+		    @Override
+		    public void actionPerformed(ActionEvent event) {
+		    	inputMember.setEmail(textBox.getText());
+		    }
+		});
+		textBox8.setVisible(true);
+		textBox8.setBounds(180, 125, 140, 25);
+	
 		
 		
 	}
@@ -323,6 +522,7 @@ public class GUI {
 		validateMember.setVisible(false);
 		back.setVisible(false);
 		billChocAn.setVisible(false);
+		addMember.setVisible(false);
 	}
 	
 	public static void main(String[] args) {
