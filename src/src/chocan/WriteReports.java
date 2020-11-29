@@ -1,4 +1,4 @@
-package chocan; 
+package src.chocan; 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;

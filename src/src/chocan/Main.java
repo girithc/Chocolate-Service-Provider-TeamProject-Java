@@ -1,4 +1,4 @@
-package chocan;
+package src.chocan;
 
 import java.io.*;
 import java.util.InputMismatchException;
@@ -126,7 +126,7 @@ public class Main {
 			}
 			else if(providerAction.equals("2")) {
 				BillChocAn billChocAn = new BillChocAn();
-				billChocAn.displayProviderDirectory();
+		billChocAn.displayProviderDirectory();
 			}
 			
 			

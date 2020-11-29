@@ -1,4 +1,4 @@
-package chocan;
+package src.chocan;
 
 import static org.junit.Assert.*;
 import java.io.File;

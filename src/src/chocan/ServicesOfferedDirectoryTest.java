@@ -1,4 +1,4 @@
-package chocan;
+package src.chocan;
 
 import static org.junit.jupiter.api.Assertions.*;
 
