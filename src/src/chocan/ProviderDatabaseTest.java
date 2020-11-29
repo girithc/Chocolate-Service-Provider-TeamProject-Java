@@ -35,8 +35,7 @@ class ProviderDatabaseTest {
 			 Provider mName = providerDatabase.getProvider("11862114");
 			  String name =  mName.getName();
 			  Person p1 = new Person();
-			//String id=  
-			//assertEquals("11862114", id);
+			
 			  
 		}
 		
