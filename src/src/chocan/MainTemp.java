@@ -12,6 +12,7 @@ public class MainTemp {
 	Scanner myObj = new Scanner(System.in);
 	BillChocAn billchocan = new BillChocAn();
 	billchocan.writeServiceReport(myObj);
+	//billchocan.writeServiceReport(myObj);
 	
 	WriteReports writeReports = new WriteReports();
 	String code = "11547298";

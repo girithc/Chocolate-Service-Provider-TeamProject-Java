@@ -4,3 +4,15 @@ Member street address: 608 6th Avenue
 Member city: Tuscaloosa
 Member state: AL
 Member ZIP code: 35404
+Date provided: 11-29-2020
+Provider name: Rachel Nau
+Service name: dietician
+Date provided: 11-14-2020
+Provider name: Rachel Nau
+Service name: dietician
+Date provided: 11-29-2020
+Provider name: Rachel Nau
+Service name: aerobics exercise
+Date provided: 11-30-2020
+Provider name: Jared Folden
+Service name: aerobics exercise
