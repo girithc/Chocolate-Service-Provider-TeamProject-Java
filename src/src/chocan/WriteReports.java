@@ -41,9 +41,9 @@ public class WriteReports {
 				
 				if (!(memServices.equals(null))) { // if the list is not empty
 					Member member = new Member();
-					member = memDatabase.getMember(code);
+					member = memDatabase.getMember(mID);
 					
-					String fileName = code + ".txt";
+					String fileName = mID + ".txt";
 					FileWriter fw = new FileWriter(fileName);
 					fw.write("Member name: " + member.getName() + "\n");
 					fw.write("Member number: " + mID + "\n");
@@ -139,15 +139,15 @@ public class WriteReports {
 					
 					Provider provider = new Provider();
 					ProviderDatabase pDatabase = new ProviderDatabase();
-					provider = pDatabase.getProvider(pID);			
-					FileWriter fw = new FileWriter("Provider.txt");
+					provider = pDatabase.getProvider(pID);	
+					String fileName = "p" + pID + ".txt";
+					FileWriter fw = new FileWriter(fileName);
 					fw.write("Provider name: " + provider.getName() + "\n");
-					fw.write("Provider number: " + code + "\n");
+					fw.write("Provider number: " + pID + "\n");
 					fw.write("Provider street address: " + provider.getStreetAddress() + "\n");
 					fw.write("Provider city: " + provider.getCity() + "\n");
 					fw.write("Provider state: " + provider.getState() + "\n");
 					fw.write("Provider ZIP code: " + provider.getZip() + "\n");
-					fw.close();
 					
 					WeeksServices weeksServices = new WeeksServices();
 					ServicePerformed[] pServices = new ServicePerformed[100];
@@ -157,7 +157,7 @@ public class WriteReports {
 					
 					for (int j = 0; j < pServices.length; j++) {
 						fw.write("Date of service: " + pServices[j].getDateProvided() + "\n");
-						fw.write("Date and time data were received by the computer: " + pServices[i].getCurrDateAndTime() + "\n");
+						fw.write("Date and time data were received by the computer: " + pServices[j].getCurrDateAndTime() + "\n");
 						String mID = pServices[j].getMemberNumber();
 						MemberDatabase mDatabase = new MemberDatabase();
 						Member m = new Member();
@@ -175,24 +175,27 @@ public class WriteReports {
 					fw.write("Total number of consulatations with members: " + pServices.length + "\n");
 					fw.write("Total fee for week: $" + totalFee + "\n");
 					
+					fw.close();
+					
 				}	
 			}
-			
+						
 	 	}
 	 	
 	 	else {
 	 		
+	 		
 	 		Provider provider = new Provider();
 			ProviderDatabase pDatabase = new ProviderDatabase();
-			provider = pDatabase.getProvider(code);			
-			FileWriter fw = new FileWriter("Provider.txt");
+			provider = pDatabase.getProvider(code);	
+			String fileName = "p" + code + ".txt";
+			FileWriter fw = new FileWriter(fileName);
 			fw.write("Provider name: " + provider.getName() + "\n");
 			fw.write("Provider number: " + code + "\n");
 			fw.write("Provider street address: " + provider.getStreetAddress() + "\n");
 			fw.write("Provider city: " + provider.getCity() + "\n");
 			fw.write("Provider state: " + provider.getState() + "\n");
 			fw.write("Provider ZIP code: " + provider.getZip() + "\n");
-			fw.close();
 			
 			WeeksServices weeksServices = new WeeksServices();
 			ServicePerformed[] pServices = new ServicePerformed[100];
@@ -200,7 +203,11 @@ public class WriteReports {
 			
 			int totalFee = 0;
 			
+			System.out.println(pServices.length);
+						
 			for (int i = 0; i < pServices.length; i++) {
+				System.out.println("inside for loop");
+				System.out.println(i);
 				fw.write("Date of service: " + pServices[i].getDateProvided() + "\n");
 				fw.write("Date and time data were received by the computer: " + pServices[i].getCurrDateAndTime() + "\n");
 				String mID = pServices[i].getMemberNumber();
@@ -220,6 +227,7 @@ public class WriteReports {
 			fw.write("Total number of consulatations with members: " + pServices.length + "\n");
 			fw.write("Total fee for week: $" + totalFee + "\n");
 			
+			fw.close();	
 			
 	 	}
 	}
@@ -274,14 +282,14 @@ public class WriteReports {
 					
 				}
 				
-				fw.write("	Total fee: " + totalFee + "\n");
+				fw.write("	Total fee: $" + totalFee + "\n");
 				
 				overallFee = overallFee + totalFee;
 				
 			}
 		}
 				
-		fw.write("Overall total fee: " + overallFee + "\n");
+		fw.write("Overall total fee: $" + overallFee + "\n");
 		fw.close();
 		
 	}

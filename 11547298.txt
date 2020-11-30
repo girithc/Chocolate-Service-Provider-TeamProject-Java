@@ -16,3 +16,6 @@ Service name: aerobics exercise
 Date provided: 11-30-2020
 Provider name: Jared Folden
 Service name: aerobics exercise
+Date provided: 11-15-2020
+Provider name: Jared Folden
+Service name: dietician
