@@ -1,4 +1,4 @@
-package src.chocan;
+package chocan;
 
 import java.io.*;
 import java.util.Scanner;

@@ -1,18 +1,12 @@
-package src.chocan;
+package chocan;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.ColorModel;
 import java.io.FileNotFoundException;
-import java.util.Timer;
-import java.util.concurrent.TimeUnit;
-
+import java.io.IOException;
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -25,18 +19,25 @@ import javax.swing.JTextField;
 
 public class GUI {
 	
-	JLabel label;				//Create basic components of GUI
+					//Create basic components of GUI
 	JFrame frame;
 	JPanel panel;
 	JLabel subHead;
-	JTextField textBox;
-	JTextField textBox2;
-	JTextField textBox3;
-	JTextField textBox4;
-	JTextField textBox5;
-	JTextField textBox6;
-	JTextField textBox7;
-	JTextField textBox8;
+	JLabel label = new JLabel();
+	JLabel label2 = new JLabel();
+	JLabel label3 = new JLabel();
+	JLabel label4 = new JLabel();
+	JLabel label5 = new JLabel();
+	JLabel label6 = new JLabel();
+	JLabel label7 = new JLabel();
+	JLabel label8 = new JLabel();
+	JTextField textBox = new JTextField();
+	JTextField textBox2 = new JTextField();
+	JTextField textBox3 = new JTextField();
+	JTextField textBox4 = new JTextField();
+	JTextField textBox5 = new JTextField();
+	JTextField textBox6 = new JTextField();
+	JTextField textBox7 = new JTextField();
 	JList<String> list;
 	JScrollPane scrollPane;
 	
@@ -52,7 +53,14 @@ public class GUI {
 	JButton addProvider = new JButton();
 	JButton deleteProvider = new JButton();
 	JButton updateProvider = new JButton();
+	JButton submit = new JButton();
+	JButton providerDirectory = new JButton();
 	JButton home = new JButton(new AbstractAction("Home") {		//Create a specific button for restarting program, functionality is global
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		@Override												//so we have to set functionality in the variable declarations
 		public void actionPerformed(ActionEvent e) {
 			frame.setVisible(false);
@@ -104,6 +112,11 @@ public class GUI {
 		
 		
 		operator = new JButton(new AbstractAction("Operator") {		//Define functionality for operator
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				operatorTerminal();
@@ -115,6 +128,11 @@ public class GUI {
 
 		
 		provider = new JButton(new AbstractAction("Provider") { 	//Define functionality for provider
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -132,6 +150,11 @@ public class GUI {
 
 		
 		manager = new JButton(new AbstractAction("Manager") {	//Define functionality for manager
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -197,6 +220,11 @@ public class GUI {
 	private void providerTerminal() {
 		
 		validateMember = new JButton(new AbstractAction("Validate Member") {	//Create a specific button for validate member functionality
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -208,6 +236,11 @@ public class GUI {
 		});
 		
 		billChocAn = new JButton(new AbstractAction("Bill ChocAn") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				resetScreen();
@@ -246,6 +279,11 @@ public class GUI {
 	private void validateMember(int type) throws Exception {	//@param determines what follows after the member is validated. 0 = Nothing, 1 = BillChocAn,
 		
 		back = new JButton(new AbstractAction("Back") {		//Create a specific button for operator terminal
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				providerTerminal();
@@ -278,9 +316,6 @@ public class GUI {
 		for(int i = 0; i < 3; i++) {
 			System.out.println(all[i]);
 		}
-		//
-		
-		members.getMember("11880129").setSuspended(true);  //For testing Member Suspended case
 		
 		textBox.addActionListener(new ActionListener() {					//Implement an action when enter key is pressed
 		    @Override
@@ -345,21 +380,43 @@ public class GUI {
 		resetScreen();
 		home.setVisible(true);
 		addMember = new JButton(new AbstractAction("Add Member") {		
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override												
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				try {
+					addPerson(0);
+				} catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		
 		deleteMember = new JButton(new AbstractAction("Delete Member") {		
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override												
 			public void actionPerformed(ActionEvent e) {
-				
+				try {
+					deletePerson(0);
+				} catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		
 		updateMember = new JButton(new AbstractAction("Update Member") {		
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override												
 			public void actionPerformed(ActionEvent e) {
 				
@@ -367,20 +424,43 @@ public class GUI {
 		});
 		
 		addProvider = new JButton(new AbstractAction("Add Provider") {		
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override												
 			public void actionPerformed(ActionEvent e) {
-				
+				try {
+					addPerson(1);
+				} catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		
 		deleteProvider = new JButton(new AbstractAction("Delete Provider") {		
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override												
 			public void actionPerformed(ActionEvent e) {
-				
+				try {
+					deletePerson(1);
+				} catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		
 		updateProvider = new JButton(new AbstractAction("Update Provider") {		
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override												
 			public void actionPerformed(ActionEvent e) {
 				
@@ -399,22 +479,22 @@ public class GUI {
 		subHead.setVisible(true);
 		home.setVisible(true);	
 		
-		addMember.setBounds(43, 80, 127, 35);
+		addMember.setBounds(108, 85, 127, 35);
 		addMember.setVisible(true);
 		panel.add(addMember);
-		deleteMember.setBounds(43, 125, 127, 35);
+		deleteMember.setBounds(108, 130, 127, 35);
 		deleteMember.setVisible(true);
 		panel.add(deleteMember);
-		updateMember.setBounds(43, 170, 127, 35);
+		updateMember.setBounds(108, 175, 127, 35);
 		updateMember.setVisible(true);
 		panel.add(updateMember);
-		addProvider.setBounds(185, 80, 127, 35);
+		addProvider.setBounds(265, 85, 127, 35);
 		addProvider.setVisible(true);
 		panel.add(addProvider);
-		deleteProvider.setBounds(185, 125, 127, 35);
+		deleteProvider.setBounds(265, 130, 127, 35);
 		deleteProvider.setVisible(true);
 		panel.add(deleteProvider);
-		updateProvider.setBounds(185, 170, 127, 35);
+		updateProvider.setBounds(265, 175, 127, 35);
 		updateProvider.setVisible(true);
 		panel.add(updateProvider);
 		
@@ -422,9 +502,15 @@ public class GUI {
 		
 		}
 	
-	private void addPerson(int type) {
+	private void addPerson(int type) throws FileNotFoundException {
+		
+		resetScreen();
 		
 		Member inputMember = new Member();
+		members = new MemberDatabase();
+		
+		Provider inputProvider = new Provider();
+		providers = new ProviderDatabase();
 		
 		textBox = new JTextField();
 		textBox2 = new JTextField();
@@ -433,80 +519,263 @@ public class GUI {
 		textBox5 = new JTextField();
 		textBox6 = new JTextField();
 		textBox7 = new JTextField();
-		textBox8 = new JTextField();
 		
-		textBox.addActionListener(new ActionListener() {					//Implement an action when enter key is pressed
-		    @Override
-		    public void actionPerformed(ActionEvent event) {
-		    	inputMember.setName(textBox.getText());
-		    }
+		label2 = new JLabel();
+		label3 = new JLabel();
+		label4 = new JLabel();
+		label5 = new JLabel();
+		label6 = new JLabel();
+		label7 = new JLabel();
+		label8 = new JLabel();
+		
+		submit = new JButton(new AbstractAction("Submit") {		
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override												
+			public void actionPerformed(ActionEvent e) {
+				if (type == 0) {
+					inputMember.setName(textBox.getText());
+					inputMember.setIDNumber(textBox2.getText());
+					inputMember.setEmail(textBox3.getText());
+					inputMember.setStreetAddress(textBox4.getText());
+					inputMember.setCity(textBox5.getText());
+					inputMember.setState(textBox6.getText());
+					inputMember.setZip(textBox7.getText());
+					textBox.setText("");
+					textBox2.setText("");
+					textBox3.setText("");
+					textBox4.setText("");
+					textBox5.setText("");
+					textBox6.setText("");
+					textBox7.setText("");
+					try {
+						members.addMember(inputMember);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+				} else {
+					inputProvider.setName(textBox.getText());
+					inputProvider.setIDNumber(textBox2.getText());
+					inputProvider.setEmail(textBox3.getText());
+					inputProvider.setStreetAddress(textBox4.getText());
+					inputProvider.setCity(textBox5.getText());
+					inputProvider.setState(textBox6.getText());
+					inputProvider.setZip(textBox7.getText());
+					textBox.setText("");
+					textBox2.setText("");
+					textBox3.setText("");
+					textBox4.setText("");
+					textBox5.setText("");
+					textBox6.setText("");
+					textBox7.setText("");
+					try {
+						providers.addProvider(inputProvider);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+				}
+			}
 		});
+		submit.setBounds(180, 240, 140, 25);
+		submit.setVisible(true);
+		
+		back = new JButton(new AbstractAction("Back") {		
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override												
+			public void actionPerformed(ActionEvent e) {
+				operatorTerminal();
+			}
+		});
+		back.setBounds(7, 240, 100, 25);
+		back.setVisible(true);
+		
 		textBox.setVisible(true);
-		textBox.setBounds(180, 125, 140, 25);
+		textBox.setBounds(15, 60, 140, 25);
 		
-		textBox2.addActionListener(new ActionListener() {					//Implement an action when enter key is pressed
-		    @Override
-		    public void actionPerformed(ActionEvent event) {
-		    	inputMember.setIDNumber(textBox.getText());
-		    }
-		});
 		textBox2.setVisible(true);
-		textBox.setBounds(180, 125, 140, 25);
+		textBox2.setBounds(215, 60, 140, 25);
 		
-		textBox3.addActionListener(new ActionListener() {					//Implement an action when enter key is pressed
-		    @Override
-		    public void actionPerformed(ActionEvent event) {
-		    	inputMember.setEmail(textBox.getText());
-		    }
-		});
 		textBox3.setVisible(true);
-		textBox3.setBounds(180, 125, 140, 25);
-		
-		textBox4.addActionListener(new ActionListener() {					//Implement an action when enter key is pressed
-		    @Override
-		    public void actionPerformed(ActionEvent event) {
-		    	inputMember.setStreetAddress(textBox.getText());
-		    }
-		});
+		textBox3.setBounds(15, 110, 240, 25);
+
 		textBox4.setVisible(true);
-		textBox4.setBounds(180, 125, 140, 25);
-		
-		textBox5.addActionListener(new ActionListener() {					//Implement an action when enter key is pressed
-		    @Override
-		    public void actionPerformed(ActionEvent event) {
-		    	inputMember.setCity(textBox.getText());
-		    }
-		});
+		textBox4.setBounds(15, 160, 340, 25);
+
 		textBox5.setVisible(true);
-		textBox5.setBounds(180, 125, 140, 25);
-		
-		textBox6.addActionListener(new ActionListener() {					//Implement an action when enter key is pressed
-		    @Override
-		    public void actionPerformed(ActionEvent event) {
-		    	inputMember.setState(textBox.getText());
-		    }
-		});
+		textBox5.setBounds(15, 210, 140, 25);
+
 		textBox6.setVisible(true);
-		textBox6.setBounds(180, 125, 140, 25);
-		
-		textBox7.addActionListener(new ActionListener() {					//Implement an action when enter key is pressed
-		    @Override
-		    public void actionPerformed(ActionEvent event) {
-		    	inputMember.setZip(textBox.getText());
-		    }
-		});
+		textBox6.setBounds(175, 210, 140, 25);
+
 		textBox7.setVisible(true);
-		textBox7.setBounds(180, 125, 140, 25);
+		textBox7.setBounds(335, 210, 140, 25);
 		
-		textBox8.addActionListener(new ActionListener() {					//Implement an action when enter key is pressed
-		    @Override
-		    public void actionPerformed(ActionEvent event) {
-		    	inputMember.setEmail(textBox.getText());
-		    }
-		});
-		textBox8.setVisible(true);
-		textBox8.setBounds(180, 125, 140, 25);
+		if(type == 0) {
+			label.setText("Add Member");
+		} else {
+			label.setText("Add Provider");
+		}
+		label.setBounds(193, -30, 350, 100);
+		label.setFont(new Font("Serif", Font.BOLD, 20));
+		label.setVisible(true);
+		
+		label2.setText("Name");
+		label2.setBounds(20, 40, 140, 25);
+		
+		if (type == 0) {
+			label3.setText("Member ID Number");
+		} else {
+			label3.setText("Provider ID Number");
+		}
+		label3.setBounds(220, 40, 140, 25);
+		
+		label4.setText("Email");
+		label4.setBounds(20, 90, 140, 25);
+		
+		label5.setText("Street Address");
+		label5.setBounds(20, 140, 140, 25);
+		
+		label6.setText("City");
+		label6.setBounds(20, 190, 140, 25);
+		
+		label7.setText("State");
+		label7.setBounds(180, 190, 140, 25);
+		
+		label8.setText("Zip Code");
+		label8.setBounds(340, 190, 140, 25);
+		
+		
+		panel.add(textBox);
+		panel.add(textBox2);
+		panel.add(textBox3);
+		panel.add(textBox4);
+		panel.add(textBox5);
+		panel.add(textBox6);
+		panel.add(textBox7);
+		panel.add(label);
+		panel.add(label2);
+		panel.add(label3);
+		panel.add(label4);
+		panel.add(label5);
+		panel.add(label6);
+		panel.add(label7);
+		panel.add(label8);
+		panel.add(back);
+		panel.add(submit);
+		
+	}
 	
+	private void deletePerson(int type) throws FileNotFoundException{
+		
+		members = new MemberDatabase();
+		providers = new ProviderDatabase();
+		
+		resetScreen();
+		
+		back = new JButton(new AbstractAction("Back") {		
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override												
+			public void actionPerformed(ActionEvent e) {
+				operatorTerminal();
+			}
+		});
+		back.setBounds(7, 240, 100, 25);
+		back.setVisible(true);
+		
+		if(type == 0) {
+			label.setText("Delete Member");
+		} else {
+			label.setText("Delete Provider");
+		}
+		label.setBounds(193, -30, 350, 100);
+		label.setFont(new Font("Serif", Font.BOLD, 20));
+		label.setVisible(true);
+		
+		textBox.setBounds(180, 125, 140, 25);
+		textBox.setVisible(true);
+		
+		if(type == 0) {
+			label2.setText("Enter Member's ID");
+		} else {
+			label2.setText("Enter Provider's ID");
+		}
+		label2.setFont(new Font("Serif", Font.PLAIN, 14));			//Restructure label
+		label2.setBounds(195, 55, 350, 100);
+		label2.setVisible(true);
+		
+		submit = new JButton(new AbstractAction("Remove") {		
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override												
+			public void actionPerformed(ActionEvent e) {
+				if(type == 0) {
+					try {
+						if(members.searchMember(textBox.getText())) {	
+			    			subHead.setText("Member Removed");																	//Display Valid message			
+			    			subHead.setFont(new Font("Serif", Font.PLAIN, 14));
+			    			subHead.setForeground(new Color(1330678324));
+			    			subHead.setLocation(200, 145);
+			    			subHead.setVisible(true);
+			    			
+			    		} else {
+			    			subHead.setText("Member Not Found");																	//Display Valid message			
+			    			subHead.setFont(new Font("Serif", Font.PLAIN, 14));
+			    			subHead.setForeground(new Color(132453650));
+			    			subHead.setLocation(200, 145);
+			    			subHead.setVisible(true);
+			    		}
+						members.deleteMember(textBox.getText());
+						textBox.setText("");
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+				} else {
+					try {
+						if(providers.searchProvider(textBox.getText())) {	
+			    			subHead.setText("Provider Removed");																	//Display Valid message			
+			    			subHead.setFont(new Font("Serif", Font.PLAIN, 14));
+			    			subHead.setForeground(new Color(1330678324));
+			    			subHead.setLocation(200, 145);
+			    			subHead.setVisible(true);
+			    			
+			    		} else {
+			    			subHead.setText("Provider Not Found");																	//Display Valid message			
+			    			subHead.setFont(new Font("Serif", Font.PLAIN, 14));
+			    			subHead.setForeground(new Color(132453650));
+			    			subHead.setLocation(200, 145);
+			    			subHead.setVisible(true);
+			    		}
+						providers.deleteProvider(textBox.getText());
+						textBox.setText("");
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
+		submit.setBounds(180, 155, 140, 25);
+		submit.setVisible(true);
+		
+		panel.add(label);
+		panel.add(label2);
+		panel.add(back);
+		panel.add(textBox);		
+		panel.add(submit);
+		panel.add(subHead);
 		
 		
 	}
@@ -523,10 +792,29 @@ public class GUI {
 		back.setVisible(false);
 		billChocAn.setVisible(false);
 		addMember.setVisible(false);
+		deleteMember.setVisible(false);
+		updateMember.setVisible(false);
+		addProvider.setVisible(false);
+		deleteProvider.setVisible(false);
+		updateProvider.setVisible(false);
+		label2.setVisible(false);
+		label3.setVisible(false);
+		label4.setVisible(false);
+		label5.setVisible(false);
+		label6.setVisible(false);
+		label7.setVisible(false);
+		label8.setVisible(false);
+		textBox2.setVisible(false);
+		textBox3.setVisible(false);
+		textBox4.setVisible(false);
+		textBox5.setVisible(false);
+		textBox6.setVisible(false);
+		textBox7.setVisible(false);
+		submit.setVisible(false);
 	}
 	
 	public static void main(String[] args) {
-		new GUI();															//Creating a new GUI() object will simply run the program
+		new GUI();	//Creating a new GUI() object will simply run the program
 	}
 	
 }

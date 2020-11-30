@@ -1,4 +1,4 @@
-package src.chocan;
+package chocan;
 
 /**
  * class for provider details
