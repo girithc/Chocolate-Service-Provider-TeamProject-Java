@@ -252,6 +252,18 @@ public class GUI {
 			}
 		});
 		
+		providerDirectory = new JButton(new AbstractAction("Provider Directory") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					
+			}
+		});
+		
 		resetScreen();
 		
 		frame.setTitle("Provider Terminal");
