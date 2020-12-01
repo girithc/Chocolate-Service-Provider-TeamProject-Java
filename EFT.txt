@@ -1,9 +1,0 @@
-Provider name: Rachel Nau
-	Amount to be paid $: 270
-
-Provider name: Sam Noyes
-	Amount to be paid $: 60
-
-Provider name: Jared Folden
-	Amount to be paid $: 220
-
