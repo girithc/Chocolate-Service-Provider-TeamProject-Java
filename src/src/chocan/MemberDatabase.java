@@ -43,7 +43,7 @@ public class MemberDatabase {
 			Member.setCity(MemberData[4]);
 			Member.setState(MemberData[5]);
 			Member.setZip(MemberData[6]);
-			if(MemberData[7].equals("T")) {
+			if(MemberData[7].equals("TRUE")) {
 				Member.setSuspended(true);
 			}
 			else {
