@@ -1,0 +1,33 @@
+Provider name: Rachel Nau
+Provider number: 11862114
+Provider street address: 4144 Kenzie Boulevard
+Provider city: Jackson
+Provider state: MI
+Provider ZIP code: 49201
+Date of service: 11-29-2020
+Date and time data were received by the computer: 11-30-2020 11:33:20
+Member name: Sam Noyes
+Service code: 598470
+Fee to be paid: $50
+Date of service: 11-14-2020
+Date and time data were received by the computer: 11-30-2020 11:33:20
+Member name: Sam Noyes
+Service code: 598470
+Fee to be paid: $50
+Date of service: 11-29-2020
+Date and time data were received by the computer: 11-30-2020 11:33:20
+Member name: Sam Noyes
+Service code: 883948
+Fee to be paid: $60
+Date of service: 11-19-2020
+Date and time data were received by the computer: 11-30-2020 11:33:20
+Member name: Jared Folden
+Service code: 598470
+Fee to be paid: $50
+Date of service: 10-13-2020
+Date and time data were received by the computer: 11-30-2020 11:33:20
+Member name: Jared Folden
+Service code: 883948
+Fee to be paid: $60
+Total number of consulatations with members: 5
+Total fee for week: $270
