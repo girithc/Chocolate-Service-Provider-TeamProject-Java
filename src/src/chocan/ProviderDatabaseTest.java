@@ -1,4 +1,4 @@
-package src.chocan;
+package chocan;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,9 +17,9 @@ class ProviderDatabaseTest {
 	@Test
 	void successTest1() throws Exception {
 		
-		 Provider mName = providerDatabase.getProvider("11862114");
+		 Provider mName = providerDatabase.getProvider("11880129");
 		 String name =  mName.getName();
-		 assertEquals("Rachel Nau", name);
+		 assertEquals("Jared Folden", name);
 	}
 		
 		@Test
@@ -30,9 +30,9 @@ class ProviderDatabaseTest {
 	}
 		@Test
 		void successTest2() throws Exception {
-			Provider mName = providerDatabase.getProvider("11547298");
+			Provider mName = providerDatabase.getProvider("87654321");
 			 String name =  mName.getName();
-			 assertEquals("Sam Noyes", name);
+			 assertEquals("Jake Bischoff", name);
 			  
 		}
 		
