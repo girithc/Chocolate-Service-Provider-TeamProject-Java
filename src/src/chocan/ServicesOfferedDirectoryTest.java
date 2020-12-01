@@ -1,4 +1,4 @@
-package src.chocan;
+package chocan;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,10 +15,33 @@ class ServicesOfferedDirectoryTest {
 	}
 
 	@Test
-	void successTest() throws Exception {
+	void successFeeTest() throws Exception {
 		String serviceFee;
 		serviceFee = servicesOffered.getServiceFee("598470");
 		assertEquals("50", serviceFee);
 	}
+	
+	@Test
+	void successNameTest() throws Exception {
+		String serviceName;
+		serviceName = servicesOffered.getServiceName("598470");
+		assertEquals("dietician", serviceName);
+	}
+	
+	@Test
+	void invalidNumberFeeTest() throws Exception {
+		String serviceFee;
+		serviceFee = servicesOffered.getServiceFee("59470");
+		assertEquals("", serviceFee);
+	}
+	
+	@Test
+	void invalidNumberNameTest() throws Exception {
+		String serviceName;
+		serviceName = servicesOffered.getServiceName("59470");
+		assertEquals("", serviceName);
+	}
+	
+	
 
 }

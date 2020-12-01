@@ -1,11 +1,15 @@
-package src.chocan;
+package chocan;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-
+/**
+ * class that performs functions when the member is about to get a bill.
+ * @author Alisha
+ *
+ */
 public class BillChocAn {
 	
 	ServicePerformed s1 = new ServicePerformed();
@@ -37,13 +41,16 @@ public class BillChocAn {
 	public void writeServiceReport(Scanner input) throws Exception
 	{
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM-DD-YYYY HH:MM:SS");
-		LocalDateTime now = LocalDateTime.now();  
+		LocalDateTime now = LocalDateTime.now();
 		
 		
 		WeeksServices weeksServices = new WeeksServices();
 		ServicePerformed servicePerformed = new ServicePerformed();
 		
 		servicePerformed.setCurrDateAndTime(dtf.format(now));
+		
+		//using this for testing purposes
+		//servicePerformed.setCurrDateAndTime("11-30-2020 11:33:20");
 		
 		System.out.println("Enter the date the service was provided (MM-DD-YYYY):");
 		servicePerformed.setDateProvided(input.nextLine().trim());

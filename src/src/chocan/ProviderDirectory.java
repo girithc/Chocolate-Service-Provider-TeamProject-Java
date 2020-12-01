@@ -1,4 +1,4 @@
-package src.chocan;
+package chocan;
 
 import java.util.Scanner;
 import java.io.*;
@@ -19,6 +19,26 @@ public String[] getAllServices() throws Exception {
 		String temp = sc.next();
 		System.out.print(temp);
 		services[count] = temp;
+		count++;
+	}
+	sc.close();
+	return services;
+	
+}
+
+public String[][] returnAllServices() throws Exception {
+	
+	Scanner sc = new Scanner(new File("ServicesOffered.csv"));
+	String[][] services = new String[10][3];
+	int count = 0;
+	//sc.useDelimiter(",");
+	while (sc.hasNextLine()) {
+		String line = sc.nextLine();
+		String[] temp = line.split(",", 0);
+		services[count]= temp;
+		System.out.println(temp[0]);
+		System.out.println(temp[1]);
+		System.out.println(temp[2]);
 		count++;
 	}
 	sc.close();

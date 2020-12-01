@@ -1,4 +1,4 @@
-package src.chocan;
+package chocan;
 
 /**
  * Class for member details
