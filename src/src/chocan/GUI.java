@@ -15,9 +15,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -87,6 +85,8 @@ public class GUI {
 	String dateProvided;
 	
 	ServicePerformed inputService;
+	
+	WeeksServices weeksServices;
 	
 	public GUI() {
 		
@@ -282,7 +282,7 @@ public class GUI {
 		resetScreen();
 		
 		frame.setTitle("Provider Terminal");
-		label.setBounds(193, 5, 350, 100);
+		label.setBounds(188, 5, 350, 100);
 		label.setFont(new Font("Serif", Font.PLAIN, 18));
 		label.setText("Select an action");
 		label.setVisible(true);
@@ -308,6 +308,8 @@ public class GUI {
 	
 	private void validateMember(int type) throws Exception {	//@param determines what follows after the member is validated. 0 = Nothing, 1 = BillChocAn,
 		
+		resetScreen();
+		
 		back = new JButton(new AbstractAction("Back") {		//Create a specific button for operator terminal
 			/**
 			 * 
@@ -325,7 +327,7 @@ public class GUI {
 		
 		//Visibility
 		
-		resetScreen();
+
 		home.setVisible(true);							//Show home button
 		label.setVisible(true);							//Show label
 		textBox.setVisible(true);
@@ -390,9 +392,6 @@ public class GUI {
 		
 		inputService.setProviderNumber(currentProvider.getIDNumber());
 		inputService.setMemberNumber(currentMember.getIDNumber());
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");  
-		LocalDateTime now = LocalDateTime.now();  
-		inputService.setCurrDateAndTime(dtf.format(now));
 		
 		back = new JButton(new AbstractAction("Back") {		//Create a specific button for operator terminal
 			/**
@@ -405,7 +404,6 @@ public class GUI {
 				try {
 					validateMember(1);
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -512,11 +510,50 @@ public class GUI {
 		
 		scrollPane = new JScrollPane(table);
 	    scrollPane.setVisible(true);
-	    scrollPane.setLocation(95, 55);
+	    if(type == 1) {
+	    	scrollPane.setLocation(95, 35);
+	    } else {
+	    	scrollPane.setLocation(95, 55);
+	    }
 	    scrollPane.setSize(310, 120);
 	    scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 	    scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
+	    
+	    if(type == 1) {
+	    	textBox = new JTextField();
+			textBox.setBounds(170, 195, 170, 25);
+			textBox.setText("");
+			textBox.setVisible(true);
+			textBox.addActionListener(new ActionListener() {					//Implement an action when enter key is pressed
+			    @Override
+			    public void actionPerformed(ActionEvent event) {
+			    		try {
+							if(services.getServiceName(textBox.getText()) != "") {
+								inputService.setServiceCode(textBox.getText());
+								confirmService();
+							} else {
+								subHead.setText("Incorrect Service Code");																	//Display Valid message			
+								subHead.setFont(new Font("Serif", Font.PLAIN, 14));
+								subHead.setForeground(new Color(132453650));
+								subHead.setLocation(180, 195);
+								subHead.setVisible(true);
+								panel.add(subHead);
+							}
+						} catch (Exception e) {
+							e.printStackTrace();
+						}		
+			    }
+			});
+			
+			label2.setText("Enter Service Code");
+			label2.setFont(new Font("Serif", Font.PLAIN, 14));			//Restructure label
+			label2.setBounds(195, 135, 350, 100);
+			label2.setVisible(true);
+			
+			panel.add(textBox);
+			panel.add(label2);
+	    }
+	    
 	    
 		label.setText("Provider Directory");
 		label.setBounds(173, -30, 350, 100);
@@ -528,8 +565,146 @@ public class GUI {
 	    panel.add(back);
 	    panel.add(home);
 		
-
 		
+	}
+	
+	private void confirmService() throws Exception {
+		
+		resetScreen();
+		
+		weeksServices = new WeeksServices();
+		
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");  
+		LocalDateTime now = LocalDateTime.now();  
+		inputService.setCurrDateAndTime(dtf.format(now));
+		
+		back = new JButton(new AbstractAction("Back") {		//Create a specific button for operator terminal
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					providerDirectory(1);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		back.setBounds(7, 240, 100, 25);
+		back.setVisible(true);
+		
+		home.setVisible(true);
+		
+		label.setText("Confirm Service");
+		label.setBounds(173, -30, 350, 100);
+		label.setFont(new Font("Serif", Font.BOLD, 20));
+		label.setVisible(true);
+		
+		label2.setText("Service:                               " + services.getServiceName(inputService.getServiceCode()));
+		label2.setBounds(125, 10, 350, 100);
+		label2.setFont(null);
+		label2.setVisible(true);
+		
+		label3.setText("Current date/time:              " + inputService.getCurrDateAndTime());
+		label3.setBounds(125, 30, 350, 100);
+		label3.setVisible(true);
+		
+		label4.setText("Date of Service Provided:    " + inputService.getDateProvided());
+		label4.setBounds(125, 50, 350, 100);
+		label4.setVisible(true);
+		
+		label5.setText("Provider Number:                " + inputService.getProviderNumber());
+		label5.setBounds(125, 70, 350, 100);
+		label5.setVisible(true);
+		
+		label6.setText("Member Number:                " + inputService.getMemberNumber());
+		label6.setBounds(125, 90, 350, 100);
+		label6.setVisible(true);
+		
+		label7.setText("Comments:");
+		label7.setBounds(125, 110, 350, 100);
+		label7.setVisible(true);
+		
+		textBox = new JTextField();
+		textBox.setBounds(120, 165, 280, 50);
+		textBox.setText("");
+		textBox.setVisible(true);
+
+		submit = new JButton(new AbstractAction("Confirm") {		
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override												
+			public void actionPerformed(ActionEvent e) {
+				if(textBox.getText().length() > 100) {
+					subHead.setText("Comment too long");																	//Display Valid message			
+					subHead.setFont(new Font("Serif", Font.PLAIN, 14));
+					subHead.setForeground(new Color(132453650));
+					subHead.setLocation(300, 110);
+					subHead.setVisible(true);
+				} else {
+					try {
+						inputService.setComments(textBox.getText());
+						weeksServices.addService(inputService);
+						confirmation();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
+		submit.setBounds(180, 240, 140, 25);
+		submit.setVisible(true);
+		
+		panel.add(back);
+		panel.add(home);
+		panel.add(label);
+		panel.add(label2);
+		panel.add(label3);
+		panel.add(label4);
+		panel.add(label5);
+		panel.add(label6);
+		panel.add(label7);
+		panel.add(textBox);
+		panel.add(subHead);
+		panel.add(submit);
+		
+		
+	}
+	
+	private void confirmation() {
+		
+		resetScreen();
+		
+		submit = new JButton(new AbstractAction("Return") {		
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override												
+			public void actionPerformed(ActionEvent e) {
+				providerTerminal();
+			}
+		});
+		submit.setBounds(180, 140, 140, 35);
+		submit.setVisible(true);
+		
+		home.setVisible(true);
+		
+		label.setText("Your service has been recorded");
+		label.setBounds(123, 30, 350, 100);
+		label.setFont(new Font("Serif", Font.BOLD, 20));
+		label.setVisible(true);
+		
+		panel.add(submit);
+		panel.add(home);
+		panel.add(label);
 		
 	}
 	
