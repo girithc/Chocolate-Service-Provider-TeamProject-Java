@@ -42,7 +42,6 @@ public class WriteReports {
 				if (!(memServices.equals(null))) { // if the list is not empty
 					Member member = new Member();
 					member = memDatabase.getMember(mID);
-					
 					String fileName = mID + ".txt";
 					FileWriter fw = new FileWriter(fileName);
 					fw.write("Member name: " + member.getName() + "\n");
@@ -51,10 +50,34 @@ public class WriteReports {
 					fw.write("Member city: " + member.getCity() + "\n");
 					fw.write("Member state: " + member.getState() + "\n");
 					fw.write("Member ZIP code: " + member.getZip() + "\n");
-
+					
+					
+					//String[] date = new String[memServices.length];
+					//String min = memServices[0].getDateProvided();
+					//int counter = 1;
+					//System.out.println(memServices[counter].getDateProvided());
+					/*
+					while (counter < memServices.length) {
+						for (int j = 0 + counter; j < memServices.length; j++) {
+							int compare = memServices[j].getDateProvided().compareTo(min);
+							if (compare < 0) {
+								min = memServices[j].getDateProvided();
+							}
+						}
+						date[counter] = min;
+						counter++;
+						min = memServices[counter].getDateProvided();
+					}
+					
+					for (int r = 0; r < memServices.length; r++) {
+						System.out.println(date[r]);
+					}
+					*/
+					
 					
 					for (int j = 0; j < memServices.length; j++) {
-						//System.out.println(mServices[i].getDateProvided());
+						//System.out.println(memServices[j].getDateProvided());
+						//System.out.println(j);
 						fw.write("Date provided: " + memServices[j].getDateProvided() + "\n");
 						String pID = memServices[j].getProviderNumber();
 						ProviderDatabase pDatabase = new ProviderDatabase();

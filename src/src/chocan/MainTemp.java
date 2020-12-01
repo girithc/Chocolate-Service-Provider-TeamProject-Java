@@ -15,7 +15,7 @@ public class MainTemp {
 	//billchocan.writeServiceReport(myObj);
 	
 	WriteReports writeReports = new WriteReports();
-	writeReports.writeEFTReport();
+	writeReports.writeMemberReport("0");
 	
 	}
 }
