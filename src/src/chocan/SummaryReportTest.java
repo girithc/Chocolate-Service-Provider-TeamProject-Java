@@ -25,15 +25,16 @@ public class SummaryReportTest {
 		Scanner scanSummary = new Scanner(summaryReport);
 		String currentLine;
 		currentLine = scanSummary.nextLine();
-		assertEquals("Provider name: Sam Noyes", currentLine);		//Scan each line of the file to match the test input
+		assertEquals("Provider name: Rachel Nau", currentLine);		//Scan each line of the file to match the test input
 		currentLine = scanSummary.nextLine();
-		assertEquals("	Total number of consulatations with members: 1" , currentLine); 
+		assertEquals("	Total number of consulatations with members: 0" , currentLine); 
 		currentLine = scanSummary.nextLine();
-		assertEquals("Overall total fee: 50", currentLine); // service: dietitian  fee: 50
+		assertEquals(" Total fee: 0", currentLine); // service: dietitian  fee: 50
 		
 		scanSummary.close();			//Close the scanner
 					
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 }
+
