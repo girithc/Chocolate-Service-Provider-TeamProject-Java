@@ -7,6 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -14,8 +17,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 
 public class GUI {
 	
@@ -38,8 +44,8 @@ public class GUI {
 	JTextField textBox5 = new JTextField();
 	JTextField textBox6 = new JTextField();
 	JTextField textBox7 = new JTextField();
-	JList<String> list;
-	JScrollPane scrollPane;
+	JTable table;
+	JScrollPane scrollPane = new JScrollPane();
 	
 	JButton back = new JButton();				//Create function-specific buttons
 	JButton manager = new JButton();
@@ -78,6 +84,10 @@ public class GUI {
 	
 	Dimension size;					//Create a variable for Dimension object--used for internal calculations
 
+	String dateProvided;
+	
+	ServicePerformed inputService;
+	
 	public GUI() {
 		
 		frame = new JFrame();			//Instantiate basic control variables
@@ -92,6 +102,7 @@ public class GUI {
 		frame.pack();
 		frame.add(panel);											//Add panel to frame
 		frame.setSize(500, 300);								//Set size width=500, height = 300
+		frame.setResizable(false);
 		
 		mainScreen(); 							//Format the main screen
 		
@@ -260,7 +271,11 @@ public class GUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					
+				try {
+					providerDirectory(0);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		
@@ -277,12 +292,15 @@ public class GUI {
 		subHead.setBounds(13, -30, 350, 100);
 		subHead.setVisible(true);
 		home.setVisible(true);		
-		validateMember.setBounds(43, 80, 127, 35);
+		validateMember.setBounds(180, 85, 127, 35);
 		validateMember.setVisible(true);
-		billChocAn.setBounds(185, 80, 127, 35);
+		billChocAn.setBounds(180, 130, 127, 35);
 		billChocAn.setVisible(true);
+		providerDirectory.setBounds(180, 175, 127, 35);
+		providerDirectory.setVisible(true);
 		panel.add(validateMember);
 		panel.add(billChocAn);
+		panel.add(providerDirectory);
 	
 		
 		
@@ -341,7 +359,8 @@ public class GUI {
 		    			subHead.setVisible(true);
 		    			currentMember = members.getMember(textBox.getText());
 		    			if(type == 1 && subHead.isVisible()) {
-		    				billChocAnMemberValidated();				//Run billChocAnMemberValidated screen 
+		    				inputService = new ServicePerformed();
+		    				enterDateAndTime();				//Run billChocAnMemberValidated screen 
 		    			}
 		    		} else if(members.searchMember(textBox.getText()) && members.getMember(textBox.getText()).getSuspended() == true){
 		    			subHead.setText("Member Suspended");														//Display Suspended message
@@ -365,22 +384,149 @@ public class GUI {
 		
 	}
 	
-	private void billChocAnMemberValidated() throws Exception {
-		
-		services = new ProviderDirectory();
-		list = new JList<String>();
+	private void enterDateAndTime() {
 		
 		resetScreen();
-		list.setListData(services.getAllServices());
-		for(int i = 2; i < 2; i++) {
-			System.out.println(list.getComponent(i));
-		}
-		scrollPane = new JScrollPane();
-	    scrollPane.setViewportView(list);
-	    list.setLayoutOrientation(JList.VERTICAL_WRAP);
+		
+		inputService.setProviderNumber(currentProvider.getIDNumber());
+		inputService.setMemberNumber(currentMember.getIDNumber());
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");  
+		LocalDateTime now = LocalDateTime.now();  
+		inputService.setCurrDateAndTime(dtf.format(now));
+		
+		back = new JButton(new AbstractAction("Back") {		//Create a specific button for operator terminal
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					validateMember(1);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		back.setBounds(7, 240, 100, 25);
+		back.setVisible(true);
+		
+		home.setVisible(true);
+		
+		label.setText("<html>Enter Date of Service <br/>&nbsp&nbsp&nbsp MM-DD-YYYY</html>");
+		label.setFont(new Font("Serif", Font.PLAIN, 14));			//Restructure label
+		label.setBounds(185, 55, 350, 100);
+		label.setVisible(true);
+		
+		textBox = new JTextField();
+		textBox.setBounds(160, 125, 170, 25);
+		textBox.setText("");
+		textBox.setVisible(true);
+		textBox.addActionListener(new ActionListener() {					//Implement an action when enter key is pressed
+		    @Override
+		    public void actionPerformed(ActionEvent event) {
+		    	boolean approved = true;
+		    	for(int i = 0; i < textBox.getText().length(); i++) {
+		    		if(textBox.getText().length() != 10 || textBox.getText() == null) {
+		    			subHead.setText("<html> &nbsp&nbsp&nbsp Incorrect Formatting <br/> Please format like above </html>");																	//Display Valid message			
+		    			subHead.setFont(new Font("Serif", Font.PLAIN, 14));
+		    			subHead.setForeground(new Color(132453650));
+		    			subHead.setLocation(180, 115);
+		    			subHead.setVisible(true);
+		    			approved = false;
+		    			break;
+		    		} else if(i != 2 && i != 5) {
+		    			if(!(Character.isDigit(textBox.getText().charAt(i)))) {
+		    				subHead.setText("<html> &nbsp&nbsp&nbsp Incorrect Formatting <br/> Please format like above </html>");																	//Display Valid message			
+			    			subHead.setFont(new Font("Serif", Font.PLAIN, 14));
+			    			subHead.setForeground(new Color(132453650));
+			    			subHead.setLocation(180, 115);
+			    			subHead.setVisible(true);
+			    			approved = false;
+			    			break;
+		    			}
+		    		} else {
+		    			if(!(textBox.getText().charAt(i) == '-')) {
+		    				subHead.setText("<html> &nbsp&nbsp&nbsp Incorrect Formatting <br/> Please format like above </html>");																	//Display Valid message			
+			    			subHead.setFont(new Font("Serif", Font.PLAIN, 14));
+			    			subHead.setForeground(new Color(132453650));
+			    			subHead.setLocation(180, 115);
+			    			subHead.setVisible(true);
+			    			approved = false;
+			    			break;
+		    			}
+		    		}
+		    	}
+		    	if(approved) {
+		    		try {
+		    			inputService.setDateProvided(textBox.getText());
+						providerDirectory(1);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+		    	}
+		    	
+		    }
+		});
+		
+		panel.add(back);
+		panel.add(home);
+		panel.add(textBox);
+		panel.add(subHead);
+		
+		
+	}
+	
+	private void providerDirectory(int type) throws Exception {
+		
+		resetScreen();
+		
+		back = new JButton(new AbstractAction("Back") {		//Create a specific button for operator terminal
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(type == 1) {
+					enterDateAndTime();
+				} else {
+					providerTerminal();
+				}
+			}
+		});
+		back.setBounds(7, 240, 100, 25);
+		back.setVisible(true);
+		
+		home.setVisible(true);
+		
+		services = new ProviderDirectory();
+		String[] columnNames = { "Service Code", "Service Name", "Price"};
+		
+		table = new JTable(services.returnAllServices(), columnNames);
+		table.getColumnModel().getColumn(0).setPreferredWidth(145);
+		table.getColumnModel().getColumn(1).setPreferredWidth(175);
+		
+		scrollPane = new JScrollPane(table);
 	    scrollPane.setVisible(true);
-	    scrollPane.setBounds(290, 55, 200, 200);
+	    scrollPane.setLocation(95, 55);
+	    scrollPane.setSize(310, 120);
+	    scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+	    scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+	    
+		label.setText("Provider Directory");
+		label.setBounds(173, -30, 350, 100);
+		label.setFont(new Font("Serif", Font.BOLD, 20));
+		label.setVisible(true);
+	    
 	    panel.add(scrollPane);
+	    panel.add(label);
+	    panel.add(back);
+	    panel.add(home);
 		
 
 		
@@ -809,6 +955,7 @@ public class GUI {
 		addProvider.setVisible(false);
 		deleteProvider.setVisible(false);
 		updateProvider.setVisible(false);
+		providerDirectory.setVisible(false);
 		label2.setVisible(false);
 		label3.setVisible(false);
 		label4.setVisible(false);
@@ -823,6 +970,7 @@ public class GUI {
 		textBox6.setVisible(false);
 		textBox7.setVisible(false);
 		submit.setVisible(false);
+		scrollPane.setVisible(false);
 	}
 	
 	public static void main(String[] args) {
