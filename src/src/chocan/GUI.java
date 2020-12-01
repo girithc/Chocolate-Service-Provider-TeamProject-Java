@@ -940,6 +940,7 @@ public class GUI {
 					textBox7.setText("");
 					try {
 						members.addMember(inputMember);
+						addPerson(0);
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
@@ -960,6 +961,7 @@ public class GUI {
 					textBox7.setText("");
 					try {
 						providers.addProvider(inputProvider);
+						addPerson(1);
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
