@@ -26,6 +26,9 @@ public class MemberDatabase {
 		
 		while(reader.hasNextLine()) { // While there are still more Members
 			String MemberDataLine = reader.nextLine(); //Read the whole line of data
+			if (MemberDataLine.equals("\n")) {
+				break;
+			}
 			String[] MemberData = MemberDataLine.split(",", 0); // Split line into an array along the tabs since it is a tab delimited
 			// 0 = name
 			// 1 = IDNumber
@@ -51,7 +54,6 @@ public class MemberDatabase {
 			}
 			
 			Members.add(Member); // Adding to database
-			
 		}
 		
 		reader.close(); // Closing the reader object

@@ -30,6 +30,9 @@ public class WeeksServices {
 		
 		while(reader.hasNextLine()) { 
 			String ServiceDataLine = reader.nextLine(); //Read the whole line of data
+			if (ServiceDataLine.equals("\n")) {
+				break;
+			}
 			String[] ServiceData = ServiceDataLine.split(",", 0); // Split line into an array along the commas since it is a comma delimited
 			// 0 = currDateAndTime
 			// 1 = dateProvided

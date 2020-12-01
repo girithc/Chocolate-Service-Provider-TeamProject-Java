@@ -31,6 +31,9 @@ public class ProviderDatabase {
 		
 		while(reader.hasNextLine()) { // While there are still more providers
 			String providerDataLine = reader.nextLine(); //Read the whole line of data
+			if (providerDataLine.equals("\n")) {
+				break;
+			}
 			String[] providerData = providerDataLine.split(",", 0); // Split line into an array along the tabs since it is a tab delimited
 			// 0 = name
 			// 1 = IDNumber
