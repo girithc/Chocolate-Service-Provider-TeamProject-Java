@@ -12,14 +12,18 @@ import java.time.format.DateTimeFormatter;
 
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
+
+//import com.sun.tools.javac.comp.MemberEnter;
 
 public class GUI {
 	
@@ -44,6 +48,9 @@ public class GUI {
 	JTextField textBox7 = new JTextField();
 	JTable table;
 	JScrollPane scrollPane = new JScrollPane();
+	JRadioButton active = new JRadioButton("Active");
+	JRadioButton suspended = new JRadioButton("Suspended");
+	ButtonGroup status = new ButtonGroup();
 	
 	JButton back = new JButton();				//Create function-specific buttons
 	JButton manager = new JButton();
@@ -83,6 +90,7 @@ public class GUI {
 	Dimension size;					//Create a variable for Dimension object--used for internal calculations
 
 	String dateProvided;
+	String oldID;
 	
 	ServicePerformed inputService;
 	
@@ -147,7 +155,7 @@ public class GUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					providerLoginScreen();
+					providerLoginScreen(0);
 				} catch (FileNotFoundException e1) {
 					e1.printStackTrace();
 				} catch (Exception e1) {
@@ -184,7 +192,7 @@ public class GUI {
 		panel.add(home);						
 	}
 	
-	private void providerLoginScreen() throws Exception {
+	private void providerLoginScreen(int type) throws Exception {
 		
 		//Visibility 
 		
@@ -195,7 +203,26 @@ public class GUI {
 		textBox = new JTextField();						//Create input text box		
 		textBox.setBounds(180, 125, 140, 25);
 		panel.add(textBox);								//Add to panel
-		label.setText("Enter your ChocAn Provider Number");
+		if(type == 1) {
+			label.setText("             Enter Provider's ID");
+			
+			back = new JButton(new AbstractAction("Back") {		
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
+				@Override												
+				public void actionPerformed(ActionEvent e) {
+					operatorTerminal();
+				}
+			});
+			back.setBounds(7, 240, 100, 25);
+			back.setVisible(true);
+			panel.add(back);
+		} else {
+			label.setText("Enter your ChocAn Provider Number");
+		}
 		label.setFont(new Font("Serif", Font.PLAIN, 14));			//Restructure label
 		label.setBounds(143, 55, 350, 100);
 		
@@ -213,7 +240,11 @@ public class GUI {
 		    	try {
 		    		if(providers.searchProvider(textBox.getText())) {				  //If input ID is found as an ID in provider directory
 		    			currentProvider = providers.getProvider(textBox.getText());
-		    			providerTerminal();											//Then start the providerTerminal menu
+		    			if(type == 1) {
+		    				updatePerson(1);
+		    			} else {
+		    				providerTerminal();	
+		    			}								//Then start the providerTerminal menu
 		    		} else {
 		    			subHead.setText("Incorrect provider number");				//Else show error message
 		    			subHead.setFont(new Font("Serif", Font.PLAIN, 14));
@@ -318,7 +349,11 @@ public class GUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				providerTerminal();
+				if(type == 2) {
+					operatorTerminal();
+				} else {
+					providerTerminal();
+				}
 			}
 		});
 		
@@ -363,6 +398,8 @@ public class GUI {
 		    			if(type == 1 && subHead.isVisible()) {
 		    				inputService = new ServicePerformed();
 		    				enterDateAndTime();				//Run billChocAnMemberValidated screen 
+		    			} else if (type == 2) {
+		    				updatePerson(0);
 		    			}
 		    		} else if(members.searchMember(textBox.getText()) && members.getMember(textBox.getText()).getSuspended() == true){
 		    			subHead.setText("Member Suspended");														//Display Suspended message
@@ -370,6 +407,9 @@ public class GUI {
 		    			subHead.setForeground(new Color(132453650));
 		    			subHead.setLocation(200, 115);
 		    			subHead.setVisible(true);
+		    			if(type == 2) {
+		    				updatePerson(0);
+		    			}
 		    		} else {
 		    			subHead.setText("Invalid Member");															//Else show error message
 		    			subHead.setFont(new Font("Serif", Font.PLAIN, 14));
@@ -654,6 +694,8 @@ public class GUI {
 						confirmation();
 					} catch (IOException e1) {
 						e1.printStackTrace();
+					} catch (Exception e1) {
+						e1.printStackTrace();
 					}
 				}
 			}
@@ -677,7 +719,7 @@ public class GUI {
 		
 	}
 	
-	private void confirmation() {
+	private void confirmation() throws Exception {
 		
 		resetScreen();
 		
@@ -702,15 +744,22 @@ public class GUI {
 		label.setFont(new Font("Serif", Font.BOLD, 20));
 		label.setVisible(true);
 		
+		label2.setText("The fee to be paid is $" + services.getServiceFee(inputService.getServiceCode()));
+		label2.setBounds(123, 60, 350, 100);
+		label2.setFont(null);
+		label2.setVisible(true);
+		
 		panel.add(submit);
 		panel.add(home);
 		panel.add(label);
+		panel.add(label2);
 		
 	}
 	
 	private void operatorTerminal() {
 		
 		resetScreen();
+		
 		home.setVisible(true);
 		addMember = new JButton(new AbstractAction("Add Member") {		
 			/**
@@ -752,7 +801,11 @@ public class GUI {
 
 			@Override												
 			public void actionPerformed(ActionEvent e) {
-				
+				try {
+					validateMember(2);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		
@@ -796,7 +849,11 @@ public class GUI {
 
 			@Override												
 			public void actionPerformed(ActionEvent e) {
-				
+				try {
+					providerLoginScreen(1);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		
@@ -877,6 +934,11 @@ public class GUI {
 					inputMember.setCity(textBox5.getText());
 					inputMember.setState(textBox6.getText());
 					inputMember.setZip(textBox7.getText());
+					if(active.isSelected()) {
+						inputMember.setSuspended(false);
+					} else {
+						inputMember.setSuspended(true);
+					}
 					textBox.setText("");
 					textBox2.setText("");
 					textBox3.setText("");
@@ -983,6 +1045,18 @@ public class GUI {
 		
 		label8.setText("Zip Code");
 		label8.setBounds(340, 190, 140, 25);
+		
+		if(type == 0) {
+			status.add(active);
+			status.add(suspended);
+			active.setBounds(300, 90, 140, 25);
+			suspended.setBounds(300, 110, 140, 25);
+			active.setVisible(true);
+			suspended.setVisible(true);
+			panel.add(active);
+			panel.add(suspended);
+			
+		}
 		
 		
 		panel.add(textBox);
@@ -1113,6 +1187,233 @@ public class GUI {
 		
 	}
 	
+	private void updatePerson(int type) throws FileNotFoundException {
+
+		resetScreen();
+
+		members = new MemberDatabase();
+		providers = new ProviderDatabase();
+		
+		textBox = new JTextField();
+		textBox2 = new JTextField();
+		textBox3 = new JTextField();
+		textBox4 = new JTextField();
+		textBox5 = new JTextField();
+		textBox6 = new JTextField();
+		textBox7 = new JTextField();
+		
+		label2 = new JLabel();
+		label3 = new JLabel();
+		label4 = new JLabel();
+		label5 = new JLabel();
+		label6 = new JLabel();
+		label7 = new JLabel();
+		label8 = new JLabel();
+		
+		submit = new JButton(new AbstractAction("Update") {		
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override												
+			public void actionPerformed(ActionEvent e) {
+				if (type == 0) {
+					
+					oldID = currentMember.getIDNumber();
+
+					if(textBox.getText() != "") {
+						System.out.println(textBox.getText());
+						currentMember.setName(textBox.getText());
+					}
+					if(textBox2.getText() != "") {
+						currentMember.setIDNumber(textBox2.getText());
+					}
+					if(textBox3.getText() != "") {
+						currentMember.setEmail(textBox3.getText());
+					}
+					if(textBox4.getText() != "") {
+						currentMember.setStreetAddress(textBox4.getText());
+					}
+					if(textBox5.getText() != "") {
+						currentMember.setCity(textBox5.getText());
+					}
+					if(textBox6.getText() != "") {
+						currentMember.setState(textBox6.getText());
+					}
+					if(textBox7.getText() != "") {
+						currentMember.setZip(textBox7.getText());
+					}
+					if(active.isSelected() && currentMember.getSuspended()) {
+						currentMember.setSuspended(false);
+					} else if (suspended.isSelected() && !(currentMember.getSuspended())) {
+						currentMember.setSuspended(true);
+					}
+					try {
+						members.updateMember(oldID, currentMember);
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+					
+					textBox.setText("");
+					textBox2.setText("");
+					textBox3.setText("");
+					textBox4.setText("");
+					textBox5.setText("");
+					textBox6.setText("");
+					textBox7.setText("");
+				} else {
+					
+					oldID = currentProvider.getIDNumber();
+					
+					if(textBox.getText() != "") {
+						currentProvider.setName(textBox.getText());
+					}
+					if(textBox2.getText() != "") {
+						currentProvider.setIDNumber(textBox2.getText());
+					}
+					if(textBox3.getText() != "") {
+						currentProvider.setEmail(textBox3.getText());
+					}
+					if(textBox4.getText() != "") {
+						currentProvider.setStreetAddress(textBox4.getText());
+					}
+					if(textBox5.getText() != "") {
+						currentProvider.setCity(textBox5.getText());
+					}
+					if(textBox6.getText() != "") {
+						currentProvider.setState(textBox6.getText());
+					}
+					if(textBox7.getText() != "") {
+						currentProvider.setZip(textBox7.getText());
+					}
+					
+					try {
+						providers.updateProvider(oldID, currentProvider);
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+					
+					textBox.setText("");
+					textBox2.setText("");
+					textBox3.setText("");
+					textBox4.setText("");
+					textBox5.setText("");
+					textBox6.setText("");
+					textBox7.setText("");
+				}
+			}
+		});
+		submit.setBounds(180, 240, 140, 25);
+		submit.setVisible(true);
+		
+		back = new JButton(new AbstractAction("Back") {		
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override												
+			public void actionPerformed(ActionEvent e) {
+				operatorTerminal();
+			}
+		});
+		back.setBounds(7, 240, 100, 25);
+		back.setVisible(true);
+		
+		textBox.setVisible(true);
+		textBox.setBounds(15, 60, 140, 25);
+		
+		textBox2.setVisible(true);
+		textBox2.setBounds(215, 60, 140, 25);
+		
+		textBox3.setVisible(true);
+		textBox3.setBounds(15, 110, 240, 25);
+
+		textBox4.setVisible(true);
+		textBox4.setBounds(15, 160, 340, 25);
+
+		textBox5.setVisible(true);
+		textBox5.setBounds(15, 210, 140, 25);
+
+		textBox6.setVisible(true);
+		textBox6.setBounds(175, 210, 140, 25);
+
+		textBox7.setVisible(true);
+		textBox7.setBounds(335, 210, 140, 25);
+		
+		textBox.setText("");
+		textBox2.setText("");
+		textBox3.setText("");
+		textBox4.setText("");
+		textBox5.setText("");
+		textBox6.setText("");
+		textBox7.setText("");
+		
+		if(type == 0) {
+			label.setText("Update Member");
+		} else {
+			label.setText("Update Provider");
+		}
+		label.setBounds(193, -30, 350, 100);
+		label.setFont(new Font("Serif", Font.BOLD, 20));
+		label.setVisible(true);
+		
+		label2.setText("Name");
+		label2.setBounds(20, 40, 140, 25);
+		
+		if (type == 0) {
+			label3.setText("Member ID Number");
+		} else {
+			label3.setText("Provider ID Number");
+		}
+		label3.setBounds(220, 40, 140, 25);
+		
+		label4.setText("Email");
+		label4.setBounds(20, 90, 140, 25);
+		
+		label5.setText("Street Address");
+		label5.setBounds(20, 140, 140, 25);
+		
+		label6.setText("City");
+		label6.setBounds(20, 190, 140, 25);
+		
+		label7.setText("State");
+		label7.setBounds(180, 190, 140, 25);
+		
+		label8.setText("Zip Code");
+		label8.setBounds(340, 190, 140, 25);
+		
+		if(type == 0) {
+			status.add(active);
+			status.add(suspended);
+			active.setBounds(300, 90, 140, 25);
+			suspended.setBounds(300, 110, 140, 25);
+			active.setVisible(true);
+			suspended.setVisible(true);
+			panel.add(active);
+			panel.add(suspended);
+			
+		}
+		panel.add(textBox);
+		panel.add(textBox2);
+		panel.add(textBox3);
+		panel.add(textBox4);
+		panel.add(textBox5);
+		panel.add(textBox6);
+		panel.add(textBox7);
+		panel.add(label);
+		panel.add(label2);
+		panel.add(label3);
+		panel.add(label4);
+		panel.add(label5);
+		panel.add(label6);
+		panel.add(label7);
+		panel.add(label8);
+		panel.add(back);
+		panel.add(submit);
+	}
+
 	private void resetScreen() {											//Resets every element in the panel to not visible.
 		label.setVisible(false);											//This requires each new element to be manually set to 
 		subHead.setVisible(false);											//visible when they are needed in a specific screen
@@ -1146,6 +1447,8 @@ public class GUI {
 		textBox7.setVisible(false);
 		submit.setVisible(false);
 		scrollPane.setVisible(false);
+		active.setVisible(false);
+		suspended.setVisible(false);
 	}
 	
 	public static void main(String[] args) {
