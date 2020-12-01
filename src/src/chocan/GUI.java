@@ -226,14 +226,6 @@ public class GUI {
 		label.setFont(new Font("Serif", Font.PLAIN, 14));			//Restructure label
 		label.setBounds(143, 55, 350, 100);
 		
-		//Functionality
-		
-		String[] all = new String[10]; 
-		all = providers.getAllProviderID();
-		for(int i = 0; i < 3; i++) {
-			System.out.println(all[i]);
-		}
-		
 		textBox.addActionListener(new ActionListener() {							//Implement an action when enter key is pressed
 		    @Override
 		    public void actionPerformed(ActionEvent event) {
