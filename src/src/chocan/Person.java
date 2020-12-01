@@ -1,4 +1,4 @@
-package chocan;
+package src.chocan;
 
 /**
  * General class for person details

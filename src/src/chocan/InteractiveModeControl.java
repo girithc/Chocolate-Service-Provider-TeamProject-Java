@@ -1,4 +1,4 @@
-package chocan;
+package src.chocan;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
 import java.util.ListIterator;
