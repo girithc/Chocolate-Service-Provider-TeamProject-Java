@@ -15,7 +15,7 @@ class ProviderDatabaseTest {
 	}
 
 	@Test
-	void successTest() throws Exception {
+	void successTest1() throws Exception {
 		
 		 Provider mName = providerDatabase.getProvider("11862114");
 		 
@@ -31,10 +31,11 @@ class ProviderDatabaseTest {
 			 assertEquals("Provider not found", name);
 	}
 		@Test
-		void sanityTest() throws Exception {
-			 Provider mName = providerDatabase.getProvider("11862114");
-			  String name =  mName.getName();
-			  Person p1 = new Person();
+		void successTest2() throws Exception {
+			Provider mName = providerDatabase.getProvider("11547298");
+			 
+			 String name =  mName.getName();
+			 assertEquals("Sam Noyes", name);
 			  
 		}
 		
