@@ -25,7 +25,8 @@ public String getServiceName(String serviceCode) throws Exception {
 		}
 	}
 	if (bool == 0) {
-		System.out.println("Service code entered is invalid.");
+		ProviderTerminal pTerminal = new ProviderTerminal();
+		pTerminal.notifyProvider("Service code entered is invalid.");
 	}
 	br.close();
 	return returnItem;
@@ -52,7 +53,8 @@ public String getServiceFee(String serviceCode) throws Exception {
 		}
 	}
 	if (bool == 0) {
-		System.out.println("Service code entered is invalid.");
+		ProviderTerminal pTerminal = new ProviderTerminal();
+		pTerminal.notifyProvider("Service code entered is invalid.");
 	}
 	br.close();
 	return returnItem;
