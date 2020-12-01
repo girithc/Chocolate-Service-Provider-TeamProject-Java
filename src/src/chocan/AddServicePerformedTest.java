@@ -15,7 +15,7 @@ public class AddServicePerformedTest {
 		
 		servicePerformed.setCurrDateAndTime("11-30-2020 11:33:20");
 		servicePerformed.setDateProvided("11-05-2020");
-		servicePerformed.setProviderNumber("11934579");
+		servicePerformed.setProviderNumber("11880129");
 		servicePerformed.setMemberNumber("11862114");
 		servicePerformed.setServiceCode("598470");
 		servicePerformed.setComments("Great session");
@@ -40,10 +40,10 @@ public class AddServicePerformedTest {
 		
 		assertEquals("Haya Calhoun", p.getName());*/
 		
-		String sCode = mServices[mServices.length - 1].getServiceCode();
+		/*String sCode = mServices[mServices.length - 1].getServiceCode();
 		ServicesOffered servicesOffered = new ServicesOffered();
 		
-		assertEquals("dietician", servicesOffered.getServiceName(sCode));
+		assertEquals("dietician", servicesOffered.getServiceName(sCode));*/
 	}
 	
 	@Test
@@ -58,7 +58,7 @@ public class AddServicePerformedTest {
 		Provider p = new Provider();
 		p = pDatabase.getProvider(pID);
 		
-		assertEquals("Haya Calhoun", p.getName());
+		assertEquals("Jared Folden", p.getName());
 		
 	}
 	
