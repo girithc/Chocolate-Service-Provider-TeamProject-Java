@@ -16,7 +16,7 @@ public class EFTReportTest {
 	}
 
 	@Test
-	public void test() throws Exception {
+	public void validReport() throws Exception {
 		
 		report.writeEFTReport();							//Call writeEFTReport. Test with a predetermined entry in provider database
 										
@@ -29,6 +29,26 @@ public class EFTReportTest {
 		currentLine = scanSummary.nextLine();
 		//assertEquals("	Amount to be paid $: 0" , currentLine); // service: dietitian  fee: 50
 		assertEquals("	Total number of consulatations with members: 0" , currentLine);
+		scanSummary.close();			//Close the scanner
+					
+		//fail("Not yet implemented");
+	}
+	
+	@Test
+	public void invalidReport() throws Exception {
+		
+		report.writeEFTReport();							//Call writeEFTReport. Test with a predetermined entry in provider database
+										
+		
+		File summaryReport = new File("Summary.txt");				//Open the provider file written by writeEFTReport
+		Scanner scanSummary = new Scanner(summaryReport);
+		String currentLine;
+		currentLine = scanSummary.nextLine();
+		assertNotEquals("Should not be equal", "", currentLine);		//Scan each line of the file to match the test input
+		currentLine = scanSummary.nextLine();
+		assertNotEquals("Should not be equal", "", currentLine);
+		currentLine = scanSummary.nextLine();
+		assertNotEquals("Should not be equal", "", currentLine);
 		scanSummary.close();			//Close the scanner
 					
 		//fail("Not yet implemented");
