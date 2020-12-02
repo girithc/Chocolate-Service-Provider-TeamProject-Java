@@ -22,7 +22,8 @@ public class BillChocAn {
 	/**
 	 * Prompt user for service code
 	 * Display the associated service
-	 * @throws Exception 
+	 * @param input which is the service code
+	 * @throws Exception for invalid input
 	 */
 	public void lookUpService(Scanner input) throws Exception 
 	{
@@ -36,7 +37,8 @@ public class BillChocAn {
 	/**
 	 * Prompt user for all the information related to a provided service
 	 * Add that service to the WeeksServices database
-	 * @throws Exception 
+	 * @param input for the report
+	 * @throws Exception for invalid input
 	 */
 	public void writeServiceReport(Scanner input) throws Exception
 	{

@@ -14,8 +14,8 @@ public class ProviderTerminal {
 		/**
 		 * prompts for input.
 		 * writes the services to the report based on input.
-		 * @param input
-		 * @throws Exception
+		 * @param input the choice of service
+		 * @throws Exception for invalid input
 		 */
 	public void writeNewService(Scanner input) throws Exception {
 		BillChocAn billChocAn = new BillChocAn();
@@ -48,7 +48,7 @@ public class ProviderTerminal {
 		
 	/**
 	 * notify the provider with the desired message.
-	 * @param message
+	 * @param message to display to the provider
 	 */
 	public void notifyProvider(String message)
 	{
@@ -59,7 +59,7 @@ public class ProviderTerminal {
 	/**
 	 * gets services from the provider directory.
 	 * display provider directory
-	 * @throws Exception
+	 * @throws Exception for invalid input
 	 */
 	public void getProviderDirectory() throws Exception {
 		ProviderDirectory providerDirectory = new ProviderDirectory();
@@ -70,9 +70,9 @@ public class ProviderTerminal {
 	 * prompts for member id
 	 * verifies member status based on member id
 	 * returns a value based on member status
-	 * @param id
-	 * @return char
-	 * @throws Exception
+	 * @param id for the member
+	 * @return char for member status
+	 * @throws Exception for invalid input 
 	 */
 	public char verifyMember(String id) throws Exception {
 		MemberDatabase m2 = new MemberDatabase();

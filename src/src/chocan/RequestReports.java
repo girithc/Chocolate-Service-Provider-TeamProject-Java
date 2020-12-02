@@ -7,7 +7,7 @@ import java.util.*;
  * @author Alisha
  *
  */
-public class RequestReports extends WriteReports{
+public class RequestReports{
 	private String id;
 	private String request;
 	 	WriteReports r1 = new WriteReports();
