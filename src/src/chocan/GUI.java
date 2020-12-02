@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -20,10 +21,11 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
-//import com.sun.tools.javac.comp.MemberEnter;
+
 
 public class GUI {
 	
@@ -51,12 +53,14 @@ public class GUI {
 	JRadioButton active = new JRadioButton("Active");
 	JRadioButton suspended = new JRadioButton("Suspended");
 	ButtonGroup status = new ButtonGroup();
+	JTextArea reportWindow = new JTextArea();
+	JScrollPane scroll = new JScrollPane();
 	
 	JButton back = new JButton();				//Create function-specific buttons
 	JButton manager = new JButton();
 	JButton provider = new JButton();
 	JButton operator = new JButton();
-	JButton mainAccountingProcedure = new JButton();
+	JButton mainAccountingProcedureButton = new JButton();
 	JButton validateMember = new JButton();	
 	JButton billChocAn = new JButton();
 	JButton addMember = new JButton();
@@ -65,6 +69,10 @@ public class GUI {
 	JButton addProvider = new JButton();
 	JButton deleteProvider = new JButton();
 	JButton updateProvider = new JButton();
+	JButton requestMemberReports = new JButton();
+	JButton requestProviderReports = new JButton();
+	JButton requestSummaryReports = new JButton();
+	JButton requestEFTReports = new JButton();
 	JButton submit = new JButton();
 	JButton providerDirectory = new JButton();
 	JButton home = new JButton(new AbstractAction("Home") {		//Create a specific button for restarting program, functionality is global
@@ -120,15 +128,19 @@ public class GUI {
 	
 	private void mainScreen() {
 		
+		resetScreen();
+		
 		home.setBounds(390, 240, 100, 25);		//Set bounds of home button  (x , y, width, height)
 		home.setVisible(false);					//Do not show home button on home screen
 		
 		label.setBounds(105, 15, 350, 100);	
 		label.setText("Chocaholics Anonymous");				//Format Label
-		label.setFont(new Font("Futura", Font.BOLD, 23));	
+		label.setFont(new Font("Futura", Font.BOLD, 23));
+		label.setVisible(true);
 		
 		subHead.setBounds(150, 50, 250, 100);					//Format sub header
 		subHead.setText("Please select your account type");
+		subHead.setVisible(true);
 		
 		
 		operator = new JButton(new AbstractAction("Operator") {		//Define functionality for operator
@@ -144,7 +156,8 @@ public class GUI {
 		});
 		
 		size = operator.getPreferredSize();
-		operator.setBounds(55, 180, size.width+6, size.height+5);	//Format operator button based on recommended size
+		operator.setBounds(55, 160, size.width+6, size.height+5);	//Format operator button based on recommended size
+		operator.setVisible(true);
 
 		
 		provider = new JButton(new AbstractAction("Provider") { 	//Define functionality for provider
@@ -166,7 +179,8 @@ public class GUI {
 		});
 		
 		size = provider.getPreferredSize();
-		provider.setBounds(203, 180, size.width+10, size.height+5);		//Format provider button
+		provider.setBounds(203, 160, size.width+10, size.height+5);		//Format provider button
+		provider.setVisible(true);
 		
 		manager = new JButton(new AbstractAction("Manager") {	//Define functionality for manager
 			/**
@@ -176,10 +190,16 @@ public class GUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				managerTerminal();
 			}
 		});
 		
-		mainAccountingProcedure = new JButton(new AbstractAction("Run Main Accounting Procedure") {	//Define functionality for manager
+		size = manager.getPreferredSize();
+		manager.setBounds(351, 160, size.width+8, size.height+5);	//Format manager button
+		manager.setVisible(true);
+		
+		
+		mainAccountingProcedureButton = new JButton(new AbstractAction("Run Main Accounting Procedure") {	//Define functionality for manager
 			/**
 			 * 
 			 */
@@ -187,13 +207,62 @@ public class GUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				SendWeeklyReports mAP = new SendWeeklyReports();
+				try {
+					mAP.mainAccountingProcedure();
+					resetScreen();
+					label.setText("Weekly Reports Have Been Written");
+					label.setBounds(103, 30, 450, 100);
+					label.setFont(new Font("Serif", Font.BOLD, 20));
+					label.setVisible(true);
+					
+					submit = new JButton(new AbstractAction("Return") {		
+						/**
+						 * 
+						 */
+						private static final long serialVersionUID = 1L;
+
+						@Override												
+						public void actionPerformed(ActionEvent e) {
+							mainScreen();
+						}
+					});
+					submit.setBounds(180, 140, 140, 35);
+					submit.setVisible(true);
+					
+				} catch (Exception e1) {
+					resetScreen();
+					label.setText("Error Writing Reports. Please Try Again");
+					label.setBounds(63, 30, 450, 100);
+					label.setFont(new Font("Serif", Font.BOLD, 20));
+					label.setVisible(true);
+					
+					submit = new JButton(new AbstractAction("Return") {		
+						/**
+						 * 
+						 */
+						private static final long serialVersionUID = 1L;
+
+						@Override												
+						public void actionPerformed(ActionEvent e) {
+							mainScreen();
+						}
+					});
+					submit.setBounds(180, 140, 140, 35);
+					submit.setVisible(true);
+					
+				}
+				panel.add(label);
+				panel.add(submit);
+				
+				
 			}
 		});
 		
+		size = mainAccountingProcedureButton.getPreferredSize();
+		mainAccountingProcedureButton.setBounds(121, 220, size.width+8, size.height+5);	//Format manager button
+		mainAccountingProcedureButton.setVisible(true);
 		
-		
-		size = manager.getPreferredSize();
-		manager.setBounds(351, 180, size.width+8, size.height+5);	//Format manager button
 		
 		panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));	//Formats panel on the frame object
 		panel.setLayout(null);												//No predetermined layout
@@ -202,9 +271,212 @@ public class GUI {
 		panel.add(manager);
 		panel.add(provider);								//Add objects to the panel
 		panel.add(operator);
-		panel.add(home);						
+		panel.add(home);	
+		panel.add(mainAccountingProcedureButton);
 	}
 	
+	private void managerTerminal() {
+		
+		resetScreen();
+		
+		frame.setTitle("Manager Terminal");
+		label.setBounds(178, 0, 350, 100);
+		label.setFont(new Font("Serif", Font.PLAIN, 18));
+		label.setText("Request a Report");
+		label.setVisible(true);
+		subHead.setForeground(new Color(0));
+		subHead.setText("Welcome ChocAn Manager!");
+		subHead.setFont(new Font("Serif", Font.HANGING_BASELINE, 14));
+		subHead.setBounds(13, -30, 350, 100);
+		subHead.setVisible(true);
+		
+		home.setVisible(true);
+		
+		requestMemberReports = new JButton(new AbstractAction("Member Report") {	//Create a specific button for validate member functionality
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					validateMember(3);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		requestMemberReports.setBounds(180, 85, 127, 35);
+		requestMemberReports.setVisible(true);
+		
+		requestProviderReports = new JButton(new AbstractAction("Provider Report") {	//Create a specific button for validate member functionality
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					providerLoginScreen(2);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		requestProviderReports.setBounds(180, 130, 127, 35);
+		requestProviderReports.setVisible(true);
+		
+		requestSummaryReports = new JButton(new AbstractAction("Summary Report") {	//Create a specific button for validate member functionality
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					showReport(2);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		requestSummaryReports.setBounds(180, 175, 127, 35);
+		requestSummaryReports.setVisible(true);
+		
+		requestEFTReports = new JButton(new AbstractAction("EFT Report") {	//Create a specific button for validate member functionality
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					showReport(3);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		requestEFTReports.setBounds(180, 220, 127, 35);
+		requestEFTReports.setVisible(true);
+		
+		
+		
+		panel.add(home);
+		panel.add(subHead);
+		panel.add(requestMemberReports);
+		panel.add(requestProviderReports);
+		panel.add(requestSummaryReports);
+		panel.add(requestEFTReports);
+		
+		
+		
+	}
+	
+	private void showReport(int type) throws Exception {
+		
+		resetScreen();
+
+		
+		back = new JButton(new AbstractAction("Back") {		//Create a specific button for operator terminal
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(type == 0) {
+					try {
+						validateMember(3);
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+				} else if (type == 1) {
+					try {
+						providerLoginScreen(2);
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+				} else {
+					managerTerminal();
+				}
+			}
+		});
+		back.setBounds(7, 240, 100, 25);
+		
+		back.setVisible(true);
+		home.setVisible(true);
+		
+		
+		
+		
+		WriteReports report = new WriteReports();	
+		
+		try {
+			if(type == 0) {
+				report.writeMemberReport(currentMember.getIDNumber());
+				FileReader reader = new FileReader(currentMember.getIDNumber() + ".txt");
+				reportWindow.read(reader, currentMember.getIDNumber() + ".txt"); 
+			} else if(type == 1) {
+				report.writeProviderReport(currentProvider.getIDNumber());
+				FileReader reader = new FileReader("p" +currentProvider.getIDNumber() + ".txt");
+				reportWindow.read(reader, "p " + currentProvider.getIDNumber() + ".txt"); 
+			} else if(type == 2) {
+				report.writeSummaryReport();
+				FileReader reader = new FileReader("Summary.txt");
+				reportWindow.read(reader, "Summary.txt"); 
+			} else if(type == 3) {
+				report.writeEFTReport();
+				FileReader reader = new FileReader("EFT.txt");
+				reportWindow.read(reader, "EFT.txt"); 
+			}
+			reportWindow.setBounds(105, 45, 290, 220);
+			reportWindow.setVisible(true);
+			reportWindow.setEditable(false);
+			reportWindow.setBorder(BorderFactory.createLoweredBevelBorder());
+			scroll = new JScrollPane(reportWindow);
+			scroll.setLocation(105, 45);
+			scroll.setSize(290,220);
+			scroll.setVisible(true);
+			scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+			scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+			panel.add(scroll);
+			label.setText("This report has been written to file:");
+		} catch (Exception e){
+			if(type == 0) {
+				subHead.setText("Member has no services on record");
+			} else if(type == 1){						//Display Suspended message
+				subHead.setText("Provider has no services on record");
+			} else if(type == 2) {
+				subHead.setText("Summary report was not completed");
+			} else if(type == 3) {
+				subHead.setText("EFT report was not completed");
+			}
+			subHead.setFont(new Font("Serif", Font.PLAIN, 14));
+			subHead.setForeground(new Color(132453650));
+			subHead.setLocation(160, 75);
+			subHead.setVisible(true);
+			reportWindow.setVisible(false);
+			label.setText("      Error writing report to file:");
+		}
+		
+		
+		label.setBounds(128, -25, 350, 100);
+		label.setFont(new Font("Serif", Font.PLAIN, 18));
+		label.setVisible(true);
+		
+		
+		panel.add(reportWindow);
+		panel.add(back);
+		panel.add(label);
+
+	}
+
 	private void providerLoginScreen(int type) throws Exception {
 		
 		//Visibility 
@@ -216,7 +488,7 @@ public class GUI {
 		textBox = new JTextField();						//Create input text box		
 		textBox.setBounds(180, 125, 140, 25);
 		panel.add(textBox);								//Add to panel
-		if(type == 1) {
+		if(type == 1 || type == 2) {
 			label.setText("             Enter Provider's ID");
 			
 			back = new JButton(new AbstractAction("Back") {		
@@ -227,7 +499,11 @@ public class GUI {
 
 				@Override												
 				public void actionPerformed(ActionEvent e) {
-					operatorTerminal();
+					if (type == 1) {
+						operatorTerminal();
+					} else if (type == 2) {
+						managerTerminal();
+					}
 				}
 			});
 			back.setBounds(7, 240, 100, 25);
@@ -247,9 +523,11 @@ public class GUI {
 		    			currentProvider = providers.getProvider(textBox.getText());
 		    			if(type == 1) {
 		    				updatePerson(1);
-		    			} else {
+		    			} else if (type == 0){
 		    				providerTerminal();	
-		    			}								//Then start the providerTerminal menu
+		    			}	else {
+		    				showReport(1);//Then start the providerTerminal menu
+		    			}
 		    		} else {
 		    			subHead.setText("Incorrect provider number");				//Else show error message
 		    			subHead.setFont(new Font("Serif", Font.PLAIN, 14));
@@ -356,8 +634,10 @@ public class GUI {
 			public void actionPerformed(ActionEvent e) {
 				if(type == 2) {
 					operatorTerminal();
-				} else {
+				} else if (type == 0){
 					providerTerminal();
+				} else {
+					managerTerminal();
 				}
 			}
 		});
@@ -398,6 +678,10 @@ public class GUI {
 		    				enterDateAndTime();				//Run billChocAnMemberValidated screen 
 		    			} else if (type == 2) {
 		    				updatePerson(0);
+		    			} else if (type == 3) {
+		    				showReport(0);
+		    			} else {
+		    				
 		    			}
 		    		} else if(members.searchMember(textBox.getText()) && members.getMember(textBox.getText()).getSuspended() == true){
 		    			subHead.setText("Member Suspended");														//Display Suspended message
@@ -407,6 +691,10 @@ public class GUI {
 		    			subHead.setVisible(true);
 		    			if(type == 2) {
 		    				updatePerson(0);
+		    			} else if (type == 3) {
+		    				showReport(0);
+		    			} else {
+		    				
 		    			}
 		    		} else {
 		    			subHead.setText("Invalid Member");															//Else show error message
@@ -545,6 +833,7 @@ public class GUI {
 		table = new JTable(services.returnAllServices(), columnNames);
 		table.getColumnModel().getColumn(0).setPreferredWidth(145);
 		table.getColumnModel().getColumn(1).setPreferredWidth(175);
+		table.setBorder(BorderFactory.createLoweredBevelBorder());
 		
 		scrollPane = new JScrollPane(table);
 	    scrollPane.setVisible(true);
@@ -1396,7 +1685,7 @@ public class GUI {
 		manager.setVisible(false);
 		provider.setVisible(false);
 		operator.setVisible(false);
-		mainAccountingProcedure.setVisible(false);
+		mainAccountingProcedureButton.setVisible(false);
 		validateMember.setVisible(false);
 		back.setVisible(false);
 		billChocAn.setVisible(false);
@@ -1424,6 +1713,13 @@ public class GUI {
 		scrollPane.setVisible(false);
 		active.setVisible(false);
 		suspended.setVisible(false);
+		requestMemberReports.setVisible(false);
+		requestProviderReports.setVisible(false);
+		requestSummaryReports.setVisible(false);
+		requestEFTReports.setVisible(false);
+		reportWindow.setVisible(false);
+		scroll.setVisible(false);
+		
 	}
 	
 	public static void main(String[] args) {

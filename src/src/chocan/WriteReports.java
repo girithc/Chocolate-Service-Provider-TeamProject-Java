@@ -112,7 +112,7 @@ public class WriteReports {
 			fw.write("Member street address: " + member.getStreetAddress() + "\n");
 			fw.write("Member city: " + member.getCity() + "\n");
 			fw.write("Member state: " + member.getState() + "\n");
-			fw.write("Member ZIP code: " + member.getZip() + "\n");
+			fw.write("Member ZIP code: " + member.getZip() + "\n\n\n");
 			
 
 			WeeksServices weeksServices = new WeeksServices();
@@ -167,7 +167,7 @@ public class WriteReports {
 				fw.write("Provider name: " + p.getName() + "\n");
 				String sCode = mServices[indicator].getServiceCode();
 				ProviderDirectory providerDirectory = new ProviderDirectory();
-				fw.write("Service name: " + providerDirectory.getServiceName(sCode) + "\n");
+				fw.write("Service name: " + providerDirectory.getServiceName(sCode) + "\n\n");
 		
 				counter++;
 				min = "456";
