@@ -50,7 +50,7 @@ public class BillChocAn {
 		servicePerformed.setCurrDateAndTime(dtf.format(now));
 		
 		//using this for testing purposes
-		//servicePerformed.setCurrDateAndTime("11-30-2020 11:33:20");
+		//servicePerformed.setCurrDateAndTime("11-30-2020 01:20:34");
 		
 		System.out.println("Enter the date the service was provided (MM-DD-YYYY):");
 		servicePerformed.setDateProvided(input.nextLine().trim());

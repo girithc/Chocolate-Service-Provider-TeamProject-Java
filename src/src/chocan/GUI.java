@@ -167,7 +167,6 @@ public class GUI {
 		
 		size = provider.getPreferredSize();
 		provider.setBounds(203, 180, size.width+10, size.height+5);		//Format provider button
-
 		
 		manager = new JButton(new AbstractAction("Manager") {	//Define functionality for manager
 			/**

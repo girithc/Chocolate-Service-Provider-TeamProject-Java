@@ -1,0 +1,10 @@
+Provider name: Jared Folden
+	Total number of consulatations with members: 5
+	Total fee: $280
+Provider name: Alisha Kale
+	Total number of consulatations with members: 5
+	Total fee: $280
+Provider name: Jake Bischoff
+	Total number of consulatations with members: 4
+	Total fee: $210
+Overall total fee: $770
