@@ -13,7 +13,7 @@ public class ProviderTerminal {
 	
 		/**
 		 * prompts for input.
-		 * writes the services to the report based on input.
+		 * looks for service or provider directory based on input
 		 * @param input the choice of service
 		 * @throws Exception for invalid input
 		 */
