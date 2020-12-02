@@ -13,6 +13,7 @@ public class EFTReportTest {
 	@Before
 	public void setUp() throws Exception {
 		report = new WriteReports();
+		Reset.main(null);
 	}
 
 	@Test

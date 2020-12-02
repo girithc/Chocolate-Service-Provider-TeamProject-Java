@@ -13,10 +13,11 @@ public class SummaryReportTest {
 	@Before
 	public void setUp() throws Exception {
 		report = new WriteReports();
+		Reset.main(null);
 	}
 
 	@Test
-	public void validReport() throws Exception {
+	public void summaryReportSuccessTest() throws Exception {
 		
 		report.writeSummaryReport();							//Call writeProviderReport. Test with a predetermined entry in provider database
 										
@@ -37,7 +38,7 @@ public class SummaryReportTest {
 	}
 	
 	@Test
-	public void invalidReport() throws Exception {
+	public void summaryReportFailureTest() throws Exception {
 		
 		report.writeSummaryReport();							//Call writeProviderReport. Test with a predetermined entry in provider database
 										
