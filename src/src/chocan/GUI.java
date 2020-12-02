@@ -56,6 +56,7 @@ public class GUI {
 	JButton manager = new JButton();
 	JButton provider = new JButton();
 	JButton operator = new JButton();
+	JButton mainAccountingProcedure = new JButton();
 	JButton validateMember = new JButton();	
 	JButton billChocAn = new JButton();
 	JButton addMember = new JButton();
@@ -178,6 +179,19 @@ public class GUI {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+		
+		mainAccountingProcedure = new JButton(new AbstractAction("Run Main Accounting Procedure") {	//Define functionality for manager
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		
+		
 		
 		size = manager.getPreferredSize();
 		manager.setBounds(351, 180, size.width+8, size.height+5);	//Format manager button
@@ -368,13 +382,6 @@ public class GUI {
 		panel.add(back);
 		
 		//Functionality
-		
-		//
-		String[] all = new String[10]; 
-		all = members.getAllMemberID();			//For testing use only
-		for(int i = 0; i < 3; i++) {
-			System.out.println(all[i]);
-		}
 		
 		textBox.addActionListener(new ActionListener() {					//Implement an action when enter key is pressed
 		    @Override
@@ -1103,6 +1110,7 @@ public class GUI {
 		label.setFont(new Font("Serif", Font.BOLD, 20));
 		label.setVisible(true);
 		
+		textBox = new JTextField();
 		textBox.setBounds(180, 125, 140, 25);
 		textBox.setVisible(true);
 		
@@ -1131,7 +1139,6 @@ public class GUI {
 			    			subHead.setForeground(new Color(1330678324));
 			    			subHead.setLocation(200, 145);
 			    			subHead.setVisible(true);
-			    			
 			    		} else {
 			    			subHead.setText("Member Not Found");																	//Display Valid message			
 			    			subHead.setFont(new Font("Serif", Font.PLAIN, 14));
@@ -1215,86 +1222,44 @@ public class GUI {
 				if (type == 0) {
 					
 					oldID = currentMember.getIDNumber();
-
-					if(textBox.getText() != "") {
-						System.out.println(textBox.getText());
-						currentMember.setName(textBox.getText());
-					}
-					if(textBox2.getText() != "") {
-						currentMember.setIDNumber(textBox2.getText());
-					}
-					if(textBox3.getText() != "") {
-						currentMember.setEmail(textBox3.getText());
-					}
-					if(textBox4.getText() != "") {
-						currentMember.setStreetAddress(textBox4.getText());
-					}
-					if(textBox5.getText() != "") {
-						currentMember.setCity(textBox5.getText());
-					}
-					if(textBox6.getText() != "") {
-						currentMember.setState(textBox6.getText());
-					}
-					if(textBox7.getText() != "") {
-						currentMember.setZip(textBox7.getText());
-					}
+					
+					currentMember.setName(textBox.getText());
+					currentMember.setIDNumber(textBox2.getText());
+					currentMember.setEmail(textBox3.getText());
+					currentMember.setStreetAddress(textBox4.getText());
+					currentMember.setCity(textBox5.getText());
+					currentMember.setState(textBox6.getText());
+					currentMember.setZip(textBox7.getText());
 					if(active.isSelected() && currentMember.getSuspended()) {
 						currentMember.setSuspended(false);
 					} else if (suspended.isSelected() && !(currentMember.getSuspended())) {
 						currentMember.setSuspended(true);
 					}
+					
 					try {
 						members.updateMember(oldID, currentMember);
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}
-					
-					textBox.setText("");
-					textBox2.setText("");
-					textBox3.setText("");
-					textBox4.setText("");
-					textBox5.setText("");
-					textBox6.setText("");
-					textBox7.setText("");
+
 				} else {
 					
 					oldID = currentProvider.getIDNumber();
 					
-					if(textBox.getText() != "") {
-						currentProvider.setName(textBox.getText());
-					}
-					if(textBox2.getText() != "") {
-						currentProvider.setIDNumber(textBox2.getText());
-					}
-					if(textBox3.getText() != "") {
-						currentProvider.setEmail(textBox3.getText());
-					}
-					if(textBox4.getText() != "") {
-						currentProvider.setStreetAddress(textBox4.getText());
-					}
-					if(textBox5.getText() != "") {
-						currentProvider.setCity(textBox5.getText());
-					}
-					if(textBox6.getText() != "") {
-						currentProvider.setState(textBox6.getText());
-					}
-					if(textBox7.getText() != "") {
-						currentProvider.setZip(textBox7.getText());
-					}
+					currentProvider.setName(textBox.getText());
+					currentProvider.setIDNumber(textBox2.getText());
+					currentProvider.setEmail(textBox3.getText());
+					currentProvider.setStreetAddress(textBox4.getText());
+					currentProvider.setCity(textBox5.getText());
+					currentProvider.setState(textBox6.getText());
+					currentProvider.setZip(textBox7.getText());
 					
 					try {
 						providers.updateProvider(oldID, currentProvider);
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}
-					
-					textBox.setText("");
-					textBox2.setText("");
-					textBox3.setText("");
-					textBox4.setText("");
-					textBox5.setText("");
-					textBox6.setText("");
-					textBox7.setText("");
+
 				}
 			}
 		});
@@ -1336,14 +1301,23 @@ public class GUI {
 		textBox7.setVisible(true);
 		textBox7.setBounds(335, 210, 140, 25);
 		
-		textBox.setText("");
-		textBox2.setText("");
-		textBox3.setText("");
-		textBox4.setText("");
-		textBox5.setText("");
-		textBox6.setText("");
-		textBox7.setText("");
-		
+		if(type == 0) {
+			textBox.setText(currentMember.getName());
+			textBox2.setText(currentMember.getIDNumber());
+			textBox3.setText(currentMember.getEmail());
+			textBox4.setText(currentMember.getStreetAddress());
+			textBox5.setText(currentMember.getCity());
+			textBox6.setText(currentMember.getState());
+			textBox7.setText(currentMember.getZip());
+		} else {
+			textBox.setText(currentProvider.getName());
+			textBox2.setText(currentProvider.getIDNumber());
+			textBox3.setText(currentProvider.getEmail());
+			textBox4.setText(currentProvider.getStreetAddress());
+			textBox5.setText(currentProvider.getCity());
+			textBox6.setText(currentProvider.getState());
+			textBox7.setText(currentProvider.getZip());
+		}
 		if(type == 0) {
 			label.setText("Update Member");
 		} else {
@@ -1385,6 +1359,13 @@ public class GUI {
 			suspended.setBounds(300, 110, 140, 25);
 			active.setVisible(true);
 			suspended.setVisible(true);
+			if(currentMember.getSuspended()) {
+				suspended.setSelected(true);
+				active.setSelected(false);
+			} else {
+				suspended.setSelected(false);
+				active.setSelected(true);
+			}
 			panel.add(active);
 			panel.add(suspended);
 			
@@ -1416,6 +1397,7 @@ public class GUI {
 		manager.setVisible(false);
 		provider.setVisible(false);
 		operator.setVisible(false);
+		mainAccountingProcedure.setVisible(false);
 		validateMember.setVisible(false);
 		back.setVisible(false);
 		billChocAn.setVisible(false);
