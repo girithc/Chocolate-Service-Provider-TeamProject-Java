@@ -13,40 +13,39 @@ public class EFTReportTest {
 	@Before
 	public void setUp() throws Exception {
 		report = new WriteReports();
+		Reset.main(null);
 	}
 
 	@Test
-	public void validReport() throws Exception {
+	public void eftReportSuccessTest() throws Exception {
 		
 		report.writeEFTReport();							//Call writeEFTReport. Test with a predetermined entry in provider database
 										
 		
-		File summaryReport = new File("Summary.txt");				//Open the provider file written by writeEFTReport
+		File summaryReport = new File("EFT.txt");				//Open the provider file written by writeEFTReport
 		Scanner scanSummary = new Scanner(summaryReport);
 		String currentLine;
 		currentLine = scanSummary.nextLine();
-		assertEquals("Provider name: Rachel Nau", currentLine);		//Scan each line of the file to match the test input
+		assertEquals("Provider name: Jared Folden", currentLine);		//Scan each line of the file to match the test input
 		currentLine = scanSummary.nextLine();
 		//assertEquals("	Amount to be paid $: 0" , currentLine); // service: dietitian  fee: 50
-		assertEquals("	Total number of consulatations with members: 0" , currentLine);
+		assertEquals("	Amount to be paid $: 160" , currentLine);
 		scanSummary.close();			//Close the scanner
 					
 		//fail("Not yet implemented");
 	}
 	
 	@Test
-	public void invalidReport() throws Exception {
+	public void eftReportFailureTest() throws Exception {
 		
 		report.writeEFTReport();							//Call writeEFTReport. Test with a predetermined entry in provider database
 										
 		
-		File summaryReport = new File("Summary.txt");				//Open the provider file written by writeEFTReport
+		File summaryReport = new File("EFT.txt");				//Open the provider file written by writeEFTReport
 		Scanner scanSummary = new Scanner(summaryReport);
 		String currentLine;
 		currentLine = scanSummary.nextLine();
 		assertNotEquals("Should not be equal", "", currentLine);		//Scan each line of the file to match the test input
-		currentLine = scanSummary.nextLine();
-		assertNotEquals("Should not be equal", "", currentLine);
 		currentLine = scanSummary.nextLine();
 		assertNotEquals("Should not be equal", "", currentLine);
 		scanSummary.close();			//Close the scanner
