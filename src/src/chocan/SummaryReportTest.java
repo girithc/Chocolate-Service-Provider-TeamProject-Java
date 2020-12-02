@@ -25,11 +25,11 @@ public class SummaryReportTest {
 		Scanner scanSummary = new Scanner(summaryReport);
 		String currentLine;
 		currentLine = scanSummary.nextLine();
-		assertEquals("Provider name: Rachel Nau", currentLine);		//Scan each line of the file to match the test input
+		assertEquals("Provider name: Jared Folden", currentLine);		//Scan each line of the file to match the test input
 		currentLine = scanSummary.nextLine();
-		assertEquals("	Total number of consulatations with members: 0" , currentLine); 
+		assertEquals("	Total number of consulatations with members: 3" , currentLine); 
 		currentLine = scanSummary.nextLine();
-		assertEquals(" Total fee: 0", currentLine); // service: dietitian  fee: 50
+		assertEquals("	Total fee: $160", currentLine); // service: dietitian  fee: 50
 		
 		scanSummary.close();			//Close the scanner
 					
