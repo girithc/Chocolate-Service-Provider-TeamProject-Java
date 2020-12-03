@@ -26,6 +26,7 @@ public class WriteReports {
 	public void writeMemberReport(String code) throws Exception {
 		
 		if (code.equals("0")) {
+			
 		
 			MemberDatabase memDatabase = new MemberDatabase();
 			String[] allMemIDs = new String[100];
@@ -51,51 +52,53 @@ public class WriteReports {
 					fw.write("Member state: " + member.getState() + "\n");
 					fw.write("Member ZIP code: " + member.getZip() + "\n");
 					
-					
-					int counter = 0;
-					int indicator = 0;
-					int exception[] = new int[memServices.length];
-					exception[0] = -1;
-					int bool = 0;
-					String min = memServices[0].getDateProvided();
-					while (counter < memServices.length) {
-						
-						
-						for (int j = 0; j < memServices.length; j++) {
+					if (memServices.length != 0) { //if the member has services
+						int counter = 0;
+						int indicator = 0;
+						int exception[] = new int[memServices.length];
+						exception[0] = -1;
+						int bool = 0;
+						String min = memServices[0].getDateProvided();
+						while (counter < memServices.length) {
 							
-							int compare = memServices[j].getDateProvided().compareTo(min);
-							if (compare <= 0) {
-								for (int p = 0; p < counter; p++) {
-									if (j == exception[p]) {
-										bool = 1;
+							
+							for (int j = 0; j < memServices.length; j++) {
+								
+								int compare = memServices[j].getDateProvided().compareTo(min);
+								if (compare <= 0) {
+									for (int p = 0; p < counter; p++) {
+										if (j == exception[p]) {
+											bool = 1;
+										}
+									}
+									if (bool != 1) {
+										min = memServices[j].getDateProvided();
+										indicator = j;
 									}
 								}
-								if (bool != 1) {
-									min = memServices[j].getDateProvided();
-									indicator = j;
-								}
+								bool = 0;
 							}
-							bool = 0;
-						}
-						
-						exception[counter] = indicator;
-													
-						fw.write("Date provided: " + memServices[indicator].getDateProvided() + "\n");
-						String pID = memServices[indicator].getProviderNumber();
-						ProviderDatabase pDatabase = new ProviderDatabase();
-						Provider p = new Provider();
-						p = pDatabase.getProvider(pID);
-						fw.write("Provider name: " + p.getName() + "\n");
-						String sCode = memServices[indicator].getServiceCode();
-						ProviderDirectory providerDirectory = new ProviderDirectory();
-						fw.write("Service name: " + providerDirectory.getServiceName(sCode) + "\n");
-				
-						counter++;
-						min = "456";
-					}				
+							
+							exception[counter] = indicator;
+														
+							fw.write("Date provided: " + memServices[indicator].getDateProvided() + "\n");
+							String pID = memServices[indicator].getProviderNumber();
+							ProviderDatabase pDatabase = new ProviderDatabase();
+							Provider p = new Provider();
+							p = pDatabase.getProvider(pID);
+							fw.write("Provider name: " + p.getName() + "\n");
+							String sCode = memServices[indicator].getServiceCode();
+							ProviderDirectory providerDirectory = new ProviderDirectory();
+							fw.write("Service name: " + providerDirectory.getServiceName(sCode) + "\n");
+					
+							counter++;
+							min = "456";
+						}		
+					}
 					
 					fw.close();
 				}
+				
 			}
 		}	
 		
@@ -119,59 +122,47 @@ public class WriteReports {
 			ServicePerformed[] mServices = new ServicePerformed[100];
 			mServices = weeksServices.getServicesByMember(code);
 			
-
+			if (mServices.length != 0) {
 			
-			/*for (int i = 0; i < mServices.length; i++) {
-				fw.write("Date provided: " + mServices[i].getDateProvided() + "\n");
-				String pID = mServices[i].getProviderNumber();
-				ProviderDatabase pDatabase = new ProviderDatabase();
-				Provider p = new Provider();
-				p = pDatabase.getProvider(pID);
-				fw.write("Provider name: " + p.getName() + "\n");
-				String sCode = mServices[i].getServiceCode();
-				ServicesOffered servicesOffered = new ServicesOffered();
-				fw.write("Service name: " + servicesOffered.getServiceName(sCode) + "\n");
-			}
-			*/
-			
-			int counter = 0;
-			int indicator = 0;
-			int exception[] = new int[mServices.length];
-			exception[0] = -1;
-			int bool = 0;
-			String min = mServices[0].getDateProvided();
-			while (counter < mServices.length) {		
-				for (int j = 0; j < mServices.length; j++) {
-					int compare = mServices[j].getDateProvided().compareTo(min);
-					if (compare <= 0) {	
-						for (int p = 0; p < counter; p++) {	
-							if (j == exception[p]) {
-								bool = 1;	
+				int counter = 0;
+				int indicator = 0;
+				int exception[] = new int[mServices.length];
+				exception[0] = -1;
+				int bool = 0;
+				String min = mServices[0].getDateProvided();
+				while (counter < mServices.length) {		
+					for (int j = 0; j < mServices.length; j++) {
+						int compare = mServices[j].getDateProvided().compareTo(min);
+						if (compare <= 0) {	
+							for (int p = 0; p < counter; p++) {	
+								if (j == exception[p]) {
+									bool = 1;	
+								}
+							}
+							if (bool != 1) {	
+								min = mServices[j].getDateProvided();
+								indicator = j;
 							}
 						}
-						if (bool != 1) {	
-							min = mServices[j].getDateProvided();
-							indicator = j;
-						}
+						bool = 0;
 					}
-					bool = 0;
+					
+					exception[counter] = indicator;
+												
+					fw.write("Date provided: " + mServices[indicator].getDateProvided() + "\n");
+					String pID = mServices[indicator].getProviderNumber();
+					ProviderDatabase pDatabase = new ProviderDatabase();
+					Provider p = new Provider();
+					p = pDatabase.getProvider(pID);
+					fw.write("Provider name: " + p.getName() + "\n");
+					String sCode = mServices[indicator].getServiceCode();
+					ProviderDirectory providerDirectory = new ProviderDirectory();
+					fw.write("Service name: " + providerDirectory.getServiceName(sCode) + "\n\n");
+			
+					counter++;
+					min = "456";
 				}
-				
-				exception[counter] = indicator;
-											
-				fw.write("Date provided: " + mServices[indicator].getDateProvided() + "\n");
-				String pID = mServices[indicator].getProviderNumber();
-				ProviderDatabase pDatabase = new ProviderDatabase();
-				Provider p = new Provider();
-				p = pDatabase.getProvider(pID);
-				fw.write("Provider name: " + p.getName() + "\n");
-				String sCode = mServices[indicator].getServiceCode();
-				ProviderDirectory providerDirectory = new ProviderDirectory();
-				fw.write("Service name: " + providerDirectory.getServiceName(sCode) + "\n\n");
-		
-				counter++;
-				min = "456";
-			}				
+			}
 			
 			fw.close();
 		
@@ -223,49 +214,52 @@ public class WriteReports {
 					
 					int totalFee = 0;
 					
-					int counter = 0;
-					int indicator = 0;
-					int exception[] = new int[pServices.length];
-					exception[0] = -1;
-					int bool = 0;
-					String min = pServices[0].getCurrDateAndTime();
-					while (counter < pServices.length) {		
-						for (int j = 0; j < pServices.length; j++) {
-							int compare = pServices[j].getCurrDateAndTime().compareTo(min);
-							if (compare <= 0) {	
-								for (int p = 0; p < counter; p++) {	
-									if (j == exception[p]) {
-										bool = 1;	
+					if (pServices.length != 0 ) {
+					
+						int counter = 0;
+						int indicator = 0;
+						int exception[] = new int[pServices.length];
+						exception[0] = -1;
+						int bool = 0;
+						String min = pServices[0].getCurrDateAndTime();
+						while (counter < pServices.length) {		
+							for (int j = 0; j < pServices.length; j++) {
+								int compare = pServices[j].getCurrDateAndTime().compareTo(min);
+								if (compare <= 0) {	
+									for (int p = 0; p < counter; p++) {	
+										if (j == exception[p]) {
+											bool = 1;	
+										}
+									}
+									if (bool != 1) {	
+										min = pServices[j].getCurrDateAndTime();
+										indicator = j;
 									}
 								}
-								if (bool != 1) {	
-									min = pServices[j].getCurrDateAndTime();
-									indicator = j;
-								}
+								bool = 0;
 							}
-							bool = 0;
-						}
+							
+							exception[counter] = indicator;
 						
-						exception[counter] = indicator;
-					
-						fw.write("Date of service: " + pServices[indicator].getDateProvided() + "\n");
-						fw.write("Date and time data were received by the computer: " + pServices[indicator].getCurrDateAndTime() + "\n");
-						String mID = pServices[indicator].getMemberNumber();
-						MemberDatabase mDatabase = new MemberDatabase();
-						Member m = new Member();
-						m = mDatabase.getMember(mID);
-						fw.write("Member name: " + m.getName() + "\n");
-						fw.write("Service code: " + pServices[indicator].getServiceCode() + "\n");
-						String sCode = pServices[indicator].getServiceCode();
-						ProviderDirectory pDirectory = new ProviderDirectory();
-						fw.write("Fee to be paid: $" + pDirectory.getServiceFee(sCode) + "\n\n");
-						String serviceFee = pDirectory.getServiceFee(sCode);
-						int numFee = Integer.parseInt(serviceFee);
-						totalFee = totalFee + numFee;
-					
-						counter++;
-						min = "456";
-					}	
+							fw.write("Date of service: " + pServices[indicator].getDateProvided() + "\n");
+							fw.write("Date and time data were received by the computer: " + pServices[indicator].getCurrDateAndTime() + "\n");
+							String mID = pServices[indicator].getMemberNumber();
+							MemberDatabase mDatabase = new MemberDatabase();
+							Member m = new Member();
+							m = mDatabase.getMember(mID);
+							fw.write("Member name: " + m.getName() + "\n");
+							fw.write("Service code: " + pServices[indicator].getServiceCode() + "\n");
+							String sCode = pServices[indicator].getServiceCode();
+							ProviderDirectory pDirectory = new ProviderDirectory();
+							fw.write("Fee to be paid: $" + pDirectory.getServiceFee(sCode) + "\n\n");
+							String serviceFee = pDirectory.getServiceFee(sCode);
+							int numFee = Integer.parseInt(serviceFee);
+							totalFee = totalFee + numFee;
+						
+							counter++;
+							min = "456";
+						}
+					}
 					
 					fw.write("\nTotal number of consulatations with members: " + pServices.length + "\n");
 					fw.write("Total fee for week: $" + totalFee + "\n");
@@ -298,51 +292,53 @@ public class WriteReports {
 			
 			int totalFee = 0;
 			
+			if (pServices.length != 0) {
 			
-			int counter = 0;
-			int indicator = 0;
-			int exception[] = new int[pServices.length];
-			exception[0] = -1;
-			int bool = 0;
-			String min = pServices[0].getCurrDateAndTime();
-			while (counter < pServices.length) {		
-				for (int j = 0; j < pServices.length; j++) {
-					int compare = pServices[j].getCurrDateAndTime().compareTo(min);
-					if (compare <= 0) {	
-						for (int p = 0; p < counter; p++) {	
-							if (j == exception[p]) {
-								bool = 1;	
+				int counter = 0;
+				int indicator = 0;
+				int exception[] = new int[pServices.length];
+				exception[0] = -1;
+				int bool = 0;
+				String min = pServices[0].getCurrDateAndTime();
+				while (counter < pServices.length) {		
+					for (int j = 0; j < pServices.length; j++) {
+						int compare = pServices[j].getCurrDateAndTime().compareTo(min);
+						if (compare <= 0) {	
+							for (int p = 0; p < counter; p++) {	
+								if (j == exception[p]) {
+									bool = 1;	
+								}
+							}
+							if (bool != 1) {	
+								min = pServices[j].getCurrDateAndTime();
+								indicator = j;
 							}
 						}
-						if (bool != 1) {	
-							min = pServices[j].getCurrDateAndTime();
-							indicator = j;
-						}
+						bool = 0;
 					}
-					bool = 0;
+					
+					exception[counter] = indicator;
+				
+							
+					fw.write("Date of service: " + pServices[indicator].getDateProvided() + "\n");
+					fw.write("Date and time data were received by the computer: " + pServices[indicator].getCurrDateAndTime() + "\n");
+					String mID = pServices[indicator].getMemberNumber();
+					MemberDatabase mDatabase = new MemberDatabase();
+					Member m = new Member();
+					m = mDatabase.getMember(mID);
+					fw.write("Member name: " + m.getName() + "\n");
+					fw.write("Service code: " + pServices[indicator].getServiceCode() + "\n");
+					String sCode = pServices[indicator].getServiceCode();
+					ProviderDirectory pDirectory = new ProviderDirectory();
+					fw.write("Fee to be paid: $" + pDirectory.getServiceFee(sCode) + "\n\n");
+					String serviceFee = pDirectory.getServiceFee(sCode);
+					int numFee = Integer.parseInt(serviceFee);
+					totalFee = totalFee + numFee;
+					
+					counter++;
+					min = "456";
+					
 				}
-				
-				exception[counter] = indicator;
-			
-						
-				fw.write("Date of service: " + pServices[indicator].getDateProvided() + "\n");
-				fw.write("Date and time data were received by the computer: " + pServices[indicator].getCurrDateAndTime() + "\n");
-				String mID = pServices[indicator].getMemberNumber();
-				MemberDatabase mDatabase = new MemberDatabase();
-				Member m = new Member();
-				m = mDatabase.getMember(mID);
-				fw.write("Member name: " + m.getName() + "\n");
-				fw.write("Service code: " + pServices[indicator].getServiceCode() + "\n");
-				String sCode = pServices[indicator].getServiceCode();
-				ProviderDirectory pDirectory = new ProviderDirectory();
-				fw.write("Fee to be paid: $" + pDirectory.getServiceFee(sCode) + "\n\n");
-				String serviceFee = pDirectory.getServiceFee(sCode);
-				int numFee = Integer.parseInt(serviceFee);
-				totalFee = totalFee + numFee;
-				
-				counter++;
-				min = "456";
-				
 			}
 			
 			fw.write("Total number of consulatations with members: " + pServices.length + "\n");
