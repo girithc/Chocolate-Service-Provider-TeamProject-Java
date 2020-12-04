@@ -6,6 +6,9 @@ import java.util.Scanner;
 import org.junit.Before;
 import org.junit.Test;
 
+/*
+@author: Girith Choudhary
+*/
 public class SummaryReportTest {
 
 	WriteReports report;
